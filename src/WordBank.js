@@ -2,9 +2,12 @@ import Fridge from "./Fridge";
 import { useState, useEffect } from 'react';
 
 const WordBank = ({ words }) => {
+console.log('wordbank has rendered');
+
 const [ selectedWord, setSelectedWords] = useState("");
 const [ wordBank, setWordBank] = useState([]);
 const [ userSelection, setUserSelection ] = useState([]);
+const [ removeWord, setRemoveWord] = useState('');
 
 useEffect(() => {
     const newWordBankArray = [];
@@ -23,6 +26,7 @@ const handleClick = (e) => {
         // use indexOf to find its index in the wordBank Array
         // splice out the word using array.splice(index, [indexNum])
     const clickedWord = e.target.textContent
+    console.log(clickedWord);
     const indexNum = wordBank.indexOf(clickedWord);
     const newWordBankArray = wordBank;
     newWordBankArray.splice([indexNum], 1);
@@ -32,10 +36,11 @@ const handleClick = (e) => {
     const newUserSelection = userSelection;
     newUserSelection.push(clickedWord);
     setUserSelection(newUserSelection);
+    console.log(userSelection, 'from handle click')
 
     // why do we need this line of code to make everything work even though we aren't using it 
     // it console logs the clicked word only after another word has been clicked
-    setSelectedWords(clickedWord);
+    setSelectedWords(e.target.textContent);
     console.log(selectedWord, 'selectedWord')
 };
 
@@ -44,9 +49,15 @@ const handleRemoveWord = (removeWord) => {
     const indexNum = newUserSelection.indexOf(removeWord);
     console.log(indexNum);
     newUserSelection.splice([indexNum], 1);
-    console.log(newUserSelection);
+    console.log(newUserSelection, 'from handleremove');
     setUserSelection(newUserSelection);
     console.log(userSelection);
+
+    const newWordBankArray = wordBank;
+    newWordBankArray.push(removeWord);
+    setWordBank(newWordBankArray);
+
+    setRemoveWord(removeWord);
 }
 
     return (
