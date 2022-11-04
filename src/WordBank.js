@@ -39,6 +39,16 @@ const handleClick = (e) => {
     console.log(selectedWord, 'selectedWord')
 };
 
+const handleRemoveWord = (removeWord) => {
+    const newUserSelection = userSelection;
+    const indexNum = newUserSelection.indexOf(removeWord);
+    console.log(indexNum);
+    newUserSelection.splice([indexNum], 1);
+    console.log(newUserSelection);
+    setUserSelection(newUserSelection);
+    console.log(userSelection);
+}
+
     return (
         <div>
             <ul>
@@ -54,7 +64,7 @@ const handleClick = (e) => {
                 } 
             </ul>
             
-            <Fridge userSelection={userSelection} />
+            <Fridge userSelection={userSelection} handleRemoveWord={handleRemoveWord} />
         </div>
     )
 }
