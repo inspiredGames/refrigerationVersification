@@ -29,6 +29,8 @@ const SearchForm = (props) => {
                 }
             })
             console.log(autoCompleteResults)
+        }).catch(() =>{
+            alert('Something went wrong. Please try again later!')
         })
     }
 

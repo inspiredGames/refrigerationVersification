@@ -11,7 +11,7 @@ const Main = () => {
         e.preventDefault();
 
         axios({
-            url: "https://api.datamuse.com/words",
+            url: "https://api.datamue.com/words",
             method: "GET",
             dataResponse: "json",
             params: {
@@ -26,7 +26,7 @@ const Main = () => {
             })
             console.log(listOfWords)
             setWords(listOfWords);
-        }).catch((error) =>{
+        }).catch(() =>{
             alert('Something went wrong. Please try again later!')
         })
     }
