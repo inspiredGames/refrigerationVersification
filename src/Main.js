@@ -39,7 +39,13 @@ const Main = () => {
         <div>
             <SearchForm handleGetWords={handleGetWords} />
 
-            <WordBank words={words}/>
+            {
+                words.length > 0
+                    ? <WordBank words={words}/>
+                    : <p>enter a search term</p>
+                
+            }
+            
 
         </div>
     )
