@@ -11,7 +11,7 @@ const Main = () => {
         e.preventDefault();
 
         axios({
-            url: "https://api.datamue.com/words",
+            url: "https://api.datamuse.com/words",
             method: "GET",
             dataResponse: "json",
             params: {
