@@ -15,7 +15,8 @@ const Main = () => {
             method: "GET",
             dataResponse: "json",
             params: {
-                ml: userInput
+                ml: userInput,
+                max: 50
             }
         }).then((res) => {
             const listOfWords = res.data.map((d) => {
@@ -23,7 +24,10 @@ const Main = () => {
                     word: d.word
                 }
             })
+            console.log(listOfWords)
             setWords(listOfWords);
+        }).catch((error) =>{
+            alert('Something went wrong. Please try again later!')
         })
     }
 
