@@ -4,23 +4,23 @@ import { useState } from 'react'
 const SearchForm = (props) => {
 
     const [userInput, setUserInput] = useState("")
-    const [autoUserInput, setAutoUserInput] = useState("")
+    // const [autoUserInput, setAutoUserInput] = useState("")
 
     // This will track the users typing
     const handleUserInput = (e) => {
-        getAutocomplete(autoUserInput)
         const input = e.target.value;
+        getAutocomplete(input)
         const lowerCaseInput = input.toLowerCase();
         setUserInput(lowerCaseInput);
     }
 
-    const getAutocomplete = () => {
+    const getAutocomplete = (userInput) => {
         axios({
             url: "https://api.datamuse.com/sug",
             method: "GET",
             dataResponse: "json",
             params: {
-                s: 'a'
+                s: userInput
             }
         }).then((res) => {
             const autoCompleteResults = res.data.map((d) =>{
