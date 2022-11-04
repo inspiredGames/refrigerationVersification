@@ -2,6 +2,7 @@ import Fridge from "./Fridge";
 import { useState, useEffect } from 'react';
 
 const WordBank = ({ words }) => {
+
 console.log('wordbank has rendered');
 
 const [ selectedWord, setSelectedWords] = useState("");
@@ -24,15 +25,14 @@ useEffect(() => {
 const handleClick = (e) => {
     // remove word from wordBank
         // use indexOf to find its index in the wordBank Array
-        // splice out the word using array.splice(index, [indexNum])
+        // splice out the word using array.splice(index, 1)
     const clickedWord = e.target.textContent
-    console.log(clickedWord);
     const indexNum = wordBank.indexOf(clickedWord);
     const newWordBankArray = wordBank;
     newWordBankArray.splice([indexNum], 1);
     setWordBank(newWordBankArray);
     
-    // set word as selectedWord
+    // put word on fridge 
     const newUserSelection = userSelection;
     newUserSelection.push(clickedWord);
     setUserSelection(newUserSelection);
@@ -44,9 +44,9 @@ const handleClick = (e) => {
     console.log(selectedWord, 'selectedWord')
 };
 
-const handleRemoveWord = (removeWord) => {
+const handleRemoveWord = (wordToRemove) => {
     const newUserSelection = userSelection;
-    const indexNum = newUserSelection.indexOf(removeWord);
+    const indexNum = newUserSelection.indexOf(wordToRemove);
     console.log(indexNum);
     newUserSelection.splice([indexNum], 1);
     console.log(newUserSelection, 'from handleremove');
@@ -54,10 +54,10 @@ const handleRemoveWord = (removeWord) => {
     console.log(userSelection);
 
     const newWordBankArray = wordBank;
-    newWordBankArray.push(removeWord);
+    newWordBankArray.push(wordToRemove);
     setWordBank(newWordBankArray);
 
-    setRemoveWord(removeWord);
+    setRemoveWord(wordToRemove);
 }
 
     return (
