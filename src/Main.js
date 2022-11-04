@@ -18,22 +18,14 @@ const Main = () => {
                 ml: userInput
             }
         }).then((res) => {
-            console.log(res)
             const listOfWords = res.data.map((d) => {
                 return {
                     word: d.word
                 }
             })
-            console.log(listOfWords)
             setWords(listOfWords);
         })
     }
-    // // This will track the users typing
-    // const handleUserInput = (e) => {
-    //     const input = e.target.value;
-    //     const lowerCaseInput = input.toLowerCase();
-    //     setUserInput(lowerCaseInput);
-    // }
 
     return (
         <div>
