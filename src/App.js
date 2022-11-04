@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import Main from './Main';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Refrigeration Versification</h1>
       </header>
+
+      <Main />
+
+      <footer>
+        <p>Copyright © 2022 <a href="https://junocollege.com/">Juno College</a></p>
+      </footer>
+      
     </div>
   );
 }
