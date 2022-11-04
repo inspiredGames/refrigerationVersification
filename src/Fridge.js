@@ -1,28 +1,10 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const Fridge = ( {selectedWord} ) => {
-    const [ wordList, setWordList ] = useState([]);
+const Fridge = ( { userSelection} ) => {
+    console.log('Fridge component has rendered');
+    const [ wordList, setWordList ] = useState(userSelection);
     // to do: reset wordList after each api search 
-
-    useEffect(() => {
-        const newWordListArray = wordList;
-        if (selectedWord) {
-            newWordListArray.push(selectedWord);
-        } else {
-            console.log('nothing to see here');
-        }
-
-        setWordList(newWordListArray);
-        console.log(wordList);
-    }, [selectedWord]);
-
-    // make an array to store all the selected words
-        // push selected word into array
-        // on click, remove selected word from array
-            // use indexOf to find its index in the wordBank Array
-            // splice out the word using array.splice(index, [indexNum])
-    // render array to page 
 
     const handleClick = (e) => {
         console.log('clicked!');

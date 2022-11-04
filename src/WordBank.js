@@ -3,10 +3,10 @@ import { useState, useEffect } from 'react';
 
 const WordBank = ({ words }) => {
 const [ selectedWord, setSelectedWords] = useState("");
-const [ wordBank, setWordBank] = useState([])
+const [ wordBank, setWordBank] = useState([]);
+const [ userSelection, setUserSelection ] = useState([]);
 
 useEffect(() => {
-    console.log("it's working!")
     const newWordBankArray = [];
     words.forEach((w) => {
         if (newWordBankArray.includes(w['word'])) {
@@ -16,7 +16,6 @@ useEffect(() => {
         }
     });
     setWordBank(newWordBankArray);
-    console.log(wordBank);
 }, []);
 
 const handleClick = (e) => {
@@ -30,8 +29,14 @@ const handleClick = (e) => {
     setWordBank(newWordBankArray);
     
     // set word as selectedWord
+    const newUserSelection = userSelection;
+    newUserSelection.push(clickedWord);
+    setUserSelection(newUserSelection);
+
+    // why do we need this line of code to make everything work even though we aren't using it 
+    // it console logs the clicked word only after another word has been clicked
     setSelectedWords(clickedWord);
-        // pass down selectedWord to Fridge as props 
+    console.log(selectedWord, 'selectedWord')
 };
 
     return (
@@ -49,7 +54,7 @@ const handleClick = (e) => {
                 } 
             </ul>
             
-            <Fridge selectedWord={selectedWord} />
+            <Fridge userSelection={userSelection} />
         </div>
     )
 }
