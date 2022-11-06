@@ -5,6 +5,8 @@ import {
   Route
 } from 'react-router-dom';
 import NavBar from './NavBar';
+import Gallery from './Gallery';
+import About from './About';
 
 function App() {
 
@@ -14,11 +16,11 @@ function App() {
       <header>
         <h1>Refrigeration Versification</h1>
       </header>
-      
+
       <Routes>
         <Route path="/" element={<Main />} />
-        {/* <Route path="/about" element={<About />} /> */}
-        {/* <Route path="/gallery" element={<Gallery />} /> */}
+        <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
 
 
