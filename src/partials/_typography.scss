@@ -1,0 +1,14 @@
+@use './variables' as *;
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1rem;
+}
+
+h1 {
+    font-weight: bold;
+}
