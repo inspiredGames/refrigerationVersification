@@ -4,7 +4,7 @@ import { useState } from 'react'
 const SearchForm = (props) => {
 
     const [userInput, setUserInput] = useState("")
-    // const [autoUserInput, setAutoUserInput] = useState("")
+    const [autoCompleteRes, setAutoCompleteRes] = useState([])
 
     // This will track the users typing
     const handleUserInput = (e) => {
@@ -22,13 +22,15 @@ const SearchForm = (props) => {
             params: {
                 s: userInput
             }
+            
         }).then((res) => {
-            const autoCompleteResults = res.data.map((d) =>{
+            // sorry could someone please explain the purpose of the d here and then whats happening in the return✨✨✨✨✨
+            const autoCompleteResults = res.data.map((d) => {
                 return{
                     word: d.word
                 }
             })
-            console.log(autoCompleteResults)
+            setAutoCompleteRes(autoCompleteResults);
         }).catch(() =>{
             alert('Something went wrong. Please try again later!')
         })
@@ -40,7 +42,15 @@ const SearchForm = (props) => {
             setUserInput('')
         }}>
             <label htmlFor="searchBar">Enter a word below</label>
-            <input type="text" id="searchBar" onChange={(e) => { handleUserInput(e) }} value={userInput} />
+            <input type="text" id="searchBar" list="searchList" onChange={(e) => { handleUserInput(e) }} value={userInput} />
+            <datalist id="searchList">
+                {autoCompleteRes.map((item) => {
+                    console.log(item);
+                    return (
+                        <option value={item.word}>{item.word}</option>
+                    )
+                })}
+            </datalist>
             <button>Submit</button>
         </form>
     )

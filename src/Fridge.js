@@ -26,7 +26,7 @@ const Fridge = ( { userSelection, handleRemoveWord} ) => {
             {
                 wordList.map((word) => {
                     return(
-                        <li onClick={(e) => {handleRemoveWord(e.target.textContent)}} key={`${word}Fridge`}>{word}</li>
+                        <li onClick={(e) => {handleRemoveWord(e.target.textContent, 'wordbank')}} key={`${word}Fridge`}>{word}</li>
                     )
                 })
             }
