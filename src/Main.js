@@ -9,7 +9,7 @@ const Main = () => {
 
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
-
+        console.log(userInput);
         axios({
             url: "https://api.datamuse.com/words",
             method: "GET",

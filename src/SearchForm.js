@@ -5,6 +5,7 @@ const SearchForm = (props) => {
 
     const [userInput, setUserInput] = useState("")
     const [autoCompleteRes, setAutoCompleteRes] = useState([])
+    const [dropDownSelection, setDropDownSelection] = useState('placeholder')
 
     // This will track the users typing
     const handleUserInput = (e) => {
@@ -12,6 +13,13 @@ const SearchForm = (props) => {
         getAutocomplete(input)
         const lowerCaseInput = input.toLowerCase();
         setUserInput(lowerCaseInput);
+    }
+
+    const userDropDownSelection = (e) => {
+        const input = e.target.value;
+        console.log(e.target.value)
+        setDropDownSelection(input);
+
     }
 
     const getAutocomplete = (userInput) => {
@@ -22,21 +30,22 @@ const SearchForm = (props) => {
             params: {
                 s: userInput
             }
-            
+
         }).then((res) => {
             // sorry could someone please explain the purpose of the d here and then whats happening in the return✨✨✨✨✨
             const autoCompleteResults = res.data.map((d) => {
-                return{
+                return {
                     word: d.word
                 }
             })
             setAutoCompleteRes(autoCompleteResults);
-        }).catch(() =>{
+        }).catch(() => {
             alert('Something went wrong. Please try again later!')
         })
     }
 
     return (
+        <>
         <form onSubmit={(e) => {
             props.handleGetWords(e, userInput)
             setUserInput('')
@@ -45,14 +54,31 @@ const SearchForm = (props) => {
             <input type="text" id="searchBar" list="searchList" onChange={(e) => { handleUserInput(e) }} value={userInput} />
             <datalist id="searchList">
                 {autoCompleteRes.map((item) => {
-                    console.log(item);
+                    
                     return (
-                        <option value={item.word}>{item.word}</option>
+                        <option value={item.word} key={item.word}>{item.word} </option>
                     )
                 })}
             </datalist>
             <button>Submit</button>
         </form>
+
+            <form id='dropDownForm' onSubmit={(e) => {
+                // this is how the if statement knows if we are selected 'dropDown':
+                props.handleGetWords(e, dropDownSelection);
+                setDropDownSelection('placeholder');
+            }}>
+                <label htmlFor='themes'>please select a theme!</label>
+                <select name="themes" id="themes" onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
+                    <option value="placeholder" disabled>select a theme</option>
+                    <option value="winter">Winter</option>
+                    <option value="spring">Spring</option>
+                    <option value="summer">Summer</option>
+                    <option value="fall">Fall</option>
+                </select>
+                <button>Submit</button>
+            </form>
+        </>
     )
 }
 
