@@ -11,8 +11,12 @@ import About from './About';
 function App() {
 
   return (
-    <body className="wrapper">
+
+    <main className="wrapper">
+
+  
       <NavBar />
+
       <header>
         <h1>Refrigeration Versification</h1>
       </header>
@@ -28,7 +32,7 @@ function App() {
         <p>Copyright © 2022 <a href="https://junocollege.com/">Juno College</a></p>
       </footer>
       
-    </body>
+    </main>
   );
 }
 
