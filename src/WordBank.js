@@ -16,13 +16,22 @@ const WordBank = ({ words }) => {
 
     useEffect(() => {
         const newWordBankArray = [];
-        words.forEach((w) => {
-            if (newWordBankArray.includes(w['word'])) {
-                console.log("it's a dupe!");
-            } else {
-                newWordBankArray.push(w['word']);
+        console.log(words)
+        words.forEach((wordObject) => {
+            if(newWordBankArray.includes(wordObject)){
+                console.log('word is included in the array')
+            }else{
+                newWordBankArray.push(wordObject)
             }
         });
+        console.log(newWordBankArray)
+        // words.forEach((w) => {
+        //     if (newWordBankArray.includes(w['word'])) {
+        //         console.log("it's a dupe!");
+        //     } else {
+        //         newWordBankArray.push(w['word']);
+        //     }
+        // });
         setWordBank(newWordBankArray);
     }, [words]);
     // ^EVERYTIME PROPS CHANGES (WORDS) DISPLAY NEW RESULTS 
