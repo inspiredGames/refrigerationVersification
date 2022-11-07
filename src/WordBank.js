@@ -9,6 +9,7 @@ const WordBank = ({ words }) => {
     const [wordBank, setWordBank] = useState([]);
     const [userSelection, setUserSelection] = useState([]);
     const [removeWord, setRemoveWord] = useState('');
+
     const [helperWordBank, setHelperWordBank] = useState([
         'a', 'al', 'ance', 'ence', 'ation', 'tion', 'an', 'and', 'sion', 'ure', 'as', 'age', 'aslant', 'at', 'away', 'back', 'ery', 'become', 'eer', 'ist', 'ity', 'ment', 'beside', 'between', 'by', 'else', 'even', 'ever', 'ness', 'for', 'from', 'ship', 'th', 'having', 'if', 'in', 'ty', 'into', 'not', 'of', 'off', 'often', 'ok', 'okay', 'on', 'only', 'onto', 'or', 'out', 'over', 'past', 'able', 'ible', 'simply', 'somewhat', 'sorry', 'sure', 'the', 'through', 'thru', 'to', 'too', 'top', 'towards', 'under', 'up', 'upon', 'upside', 'versus', 'very', 'via', 'with', 'withal', 'within', 'ary', 'yes', 'yet', 'all', 'always', 'any', 'ant', 'anyone', 'ward', 'both', 'came', 'did', 'do', 'does', 'done', 'each', 'either', 'every', 'had', 'has', 'have', 'he', 'her', 'here', 'hers', 'him', 'his', 'how', 'i', 'it', 'its', 'keep', 'kept', 'kind', 'ious', 'lot', 'many', 'may', 'me', 'ful', 'ic', 'more', 'most', 'much', 'my', 'ous', 'ive', 'less', 'y', 'ical', 'ate', 'ly', 'once', 'other', 'others', "others'", 'our', 'ours', 'remain', 'ish', 'like', 'shall', 'she', 'should', 'some', 'something', 'such', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whoever', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
     ]);
@@ -92,32 +93,35 @@ const WordBank = ({ words }) => {
     }
 
     return (
-        <div>
-            <ul>
-                {
-                    wordBank.length > 0
+        <section className="displayWords">
+            <div className="wordBank">
+                <ul className="associatedWords">
+                    {
+                        wordBank.length > 0
                         ? (wordBank.map((wordObject) => {
                             return (
                                 <li onClick={(e) => { handleClick(e, 'apiWords') }} key={wordObject['word']}>{wordObject['word']}</li>
-                            )
-                        })
-                        )
-                        : <p>send help</p>
-                }
-            </ul>
+                                )
+                            })
 
-            <ul>
-                {
+                          )
+                            : <p>send help</p>
+                        }
+                </ul>
+
+                <ul className="sufFuncWords">
+                    {
                     helperWordBank.map((suffix) => {
                         return (
                             <li onClick={(e) => { handleClick(e, 'helperWords') }} key={suffix}>{suffix}</li>
                         )
                     })
                 }
-            </ul>
+                </ul>
+            </div>
 
             <Fridge userSelection={userSelection} handleRemoveWord={handleRemoveWord} />
-        </div>
+        </section>
     )
 }
 

@@ -1,0 +1,33 @@
+@use './variables' as *;
+
+.displayWords {
+  display: flex;
+  flex-direction: row;
+}
+
+.wordBank {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  .associatedWords,
+  .sufFuncWords {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid $lightGreen;
+    li {
+      border: 2px solid $lightGreen;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      background-color: $yellow;
+      color: $darkGreen;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
