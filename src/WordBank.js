@@ -15,11 +15,13 @@ const WordBank = ({ words }) => {
 
     useEffect(() => {
         const newWordBankArray = [];
+
+        // loop through words array from api call and push each word object into the newWordBankArray if it does not already exist in there
         words.forEach((wordObject) => {
-            if(newWordBankArray.includes(wordObject)){
-                console.log('word is included in the array');
-            }else{
+            if (!newWordBankArray.includes(wordObject)) {
                 newWordBankArray.push(wordObject);
+            } else {
+                console.log('word is included in the array');
             }
         });
 
@@ -74,6 +76,7 @@ const WordBank = ({ words }) => {
         newUserSelection.splice([indexNum], 1);
         setUserSelection(newUserSelection);
 
+        // if clickedWord is from the api, then put it back into the wordBank, else put it into the helperWordBank
         if (clickedWord['apiData'] === true) {
             console.log(clickedWord['apiData']);
             const newWordBankArray = wordBank;
