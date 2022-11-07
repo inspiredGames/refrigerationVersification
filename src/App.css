@@ -320,10 +320,50 @@ nav ul li a {
 }
 
 .searchForm {
-  border: 5px solid hotpink;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+}
+
+.displayWords {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid hotpink;
+}
+
+.wordBank {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+}
+.wordBank .associatedWords,
+.wordBank .sufFuncWords {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wordBank .associatedWords li,
+.wordBank .sufFuncWords li {
+  border: 2px solid #85FB83;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #FFFEB9;
+  color: #1A4543;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.wordBank .associatedWords li:hover,
+.wordBank .sufFuncWords li:hover {
+  background-color: white;
+  color: black;
+}
+
+.fridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid hotpink;
 }

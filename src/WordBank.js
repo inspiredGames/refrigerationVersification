@@ -80,32 +80,34 @@ const WordBank = ({ words }) => {
     }
 
     return (
-        <div>
-            <ul>
-                {
-                    wordBank.length > 0
+        <section className="displayWords">
+            <div className="wordBank">
+                <ul className="associatedWords">
+                    {
+                        wordBank.length > 0
                         ? (wordBank.map((w) => {
                             return (
                                 <li onClick={(e) => { handleClick(e, 'wordBank') }} key={w}>{w}</li>
+                                )
+                            })
                             )
-                        })
-                        )
-                        : <p>send help</p>
-                }
-            </ul>
+                            : <p>send help</p>
+                        }
+                </ul>
 
-            <ul>
-                {
-                    suffixes.map((suffix) => {
-                        return (
-                            <li onClick={(e) => { handleClick(e, 'suffixes') }} key={suffix}>{suffix}</li>
-                        )
-                    })
-                }
-            </ul>
+                <ul className="sufFuncWords">
+                    {
+                        suffixes.map((suffix) => {
+                            return (
+                                <li onClick={(e) => { handleClick(e, 'suffixes') }} key={suffix}>{suffix}</li>
+                                )
+                            })
+                        }
+                </ul>
+            </div>
 
             <Fridge userSelection={userSelection} handleRemoveWord={handleRemoveWord} />
-        </div>
+        </section>
     )
 }
 

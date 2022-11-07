@@ -21,7 +21,7 @@ const Fridge = ( { userSelection, handleRemoveWord} ) => {
     // }
 
     return(
-        <ul>
+        <ul className='fridge'>
             <li>this is the fridge!</li>
             {
                 wordList.map((word) => {
