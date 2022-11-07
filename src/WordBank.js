@@ -9,71 +9,84 @@ const WordBank = ({ words }) => {
     const [wordBank, setWordBank] = useState([]);
     const [userSelection, setUserSelection] = useState([]);
     const [removeWord, setRemoveWord] = useState('');
-    const [suffixes, setSuffixes] = useState([
-        'a', 'al', 'ance', 'ence', 'ation', 'tion', 'an', 'and', 'sion', 'ure', 'as', 'age', 'aslant', 'at', 'away', 'back', 'ing', 'ery', 'become', 'eer', 'ist', 'ity', 'ment', 'beside', 'between', 'bottom', 'by', 'come', 'comes', 'coming', 'down', 'else', 'even', 'ever', 'ness', 'for', 'or', 'from', 'ship', 'th', 'having', 'highly', 'if', 'in', 'hoop', 'ty', 'instead', 'into', 'less', 'like', 'maybe', 'near', 'nearer', 'nearest', 'neath', 'never', 'not', 'of', 'off', 'often', 'ok', 'okay', 'on', 'only', 'onto', 'or', 'out', 'over', 'past', 'able', 'ible', 'al', 'simply', 'somewhat', 'sorry', 'sure', 'the', 'through', 'thru', 'to', 'too', 'top', 'towards', 'under', 'up', 'upon', 'upside', 'versus', 'very', 'via', 'with', 'withal', 'within', 'ary', 'yes', 'yet', 'all', 'always', 'any', 'ant', 'anyone', 'ward', 'both', 'came', 'did', 'do', 'does', 'done', 'each', 'either', 'every', 'wise', 'everything', 'few', 'fewer', 'had', 'has', 'have', 'he', 'her', 'here', 'hereby', 'hers', 'him', 'his', 'how', 'I', 'it', 'its', 'keep', 'kept', 'kind', 'ious', 'lot', 'many', 'may', 'me', 'ful', 'ic', 'more', 'most', 'much', 'my', 'ous', 'ive', 'less', 'y', 'ical', 'ate', 'ly', 'once', 'other', 'others', "others'", 'our', 'ours', 'remain', 'ish', 'like', 'shall', 'she', 'should', 'some', 'someone', 'something', 'stay', 'stayed', 'stays', 'such', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whoever', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
-    ])
 
+    const [helperWordBank, setHelperWordBank] = useState([
+        'a', 'al', 'ance', 'ence', 'ation', 'tion', 'an', 'and', 'sion', 'ure', 'as', 'age', 'aslant', 'at', 'away', 'back', 'ery', 'become', 'eer', 'ist', 'ity', 'ment', 'beside', 'between', 'by', 'else', 'even', 'ever', 'ness', 'for', 'from', 'ship', 'th', 'having', 'if', 'in', 'ty', 'into', 'not', 'of', 'off', 'often', 'ok', 'okay', 'on', 'only', 'onto', 'or', 'out', 'over', 'past', 'able', 'ible', 'simply', 'somewhat', 'sorry', 'sure', 'the', 'through', 'thru', 'to', 'too', 'top', 'towards', 'under', 'up', 'upon', 'upside', 'versus', 'very', 'via', 'with', 'withal', 'within', 'ary', 'yes', 'yet', 'all', 'always', 'any', 'ant', 'anyone', 'ward', 'both', 'came', 'did', 'do', 'does', 'done', 'each', 'either', 'every', 'had', 'has', 'have', 'he', 'her', 'here', 'hers', 'him', 'his', 'how', 'i', 'it', 'its', 'keep', 'kept', 'kind', 'ious', 'lot', 'many', 'may', 'me', 'ful', 'ic', 'more', 'most', 'much', 'my', 'ous', 'ive', 'less', 'y', 'ical', 'ate', 'ly', 'once', 'other', 'others', "others'", 'our', 'ours', 'remain', 'ish', 'like', 'shall', 'she', 'should', 'some', 'something', 'such', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whoever', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
+    ]);
 
     useEffect(() => {
         const newWordBankArray = [];
-        words.forEach((w) => {
-            if (newWordBankArray.includes(w['word'])) {
-                console.log("it's a dupe!");
+
+        // loop through words array from api call and push each word object into the newWordBankArray if it does not already exist in there
+        words.forEach((wordObject) => {
+            if (!newWordBankArray.includes(wordObject)) {
+                newWordBankArray.push(wordObject);
             } else {
-                newWordBankArray.push(w['word']);
+                console.log('word is included in the array');
             }
         });
+
         setWordBank(newWordBankArray);
     }, [words]);
     // ^EVERYTIME PROPS CHANGES (WORDS) DISPLAY NEW RESULTS 
 
     const handleClick = (e, array) => {
-        // remove word from wordBank
-        // use indexOf to find its index in the wordBank Array
-        // splice out the word using array.splice(index, 1)
-        const clickedWord = e.target.textContent;
-        if (array === 'wordBank') {
-            const indexNum = wordBank.indexOf(clickedWord);
+        
+        const newUserSelection = userSelection;
+
+        if (array === 'apiWords') {
+            // get index number of clickedword from wordBank array
+            const isClickedWord = (element) => element.word === e.target.textContent;
+            const indexNum = wordBank.findIndex(isClickedWord);
+            
+            // set newWordBank Array equal to existing wordBank and remove the clicked word using the index number
             const newWordBankArray = wordBank;
+            const clickedWord = wordBank[indexNum];
             newWordBankArray.splice([indexNum], 1);
-            setWordBank(newWordBankArray);
-        } else if (array === 'suffixes') {
-            const indexNum = suffixes.indexOf(clickedWord);
-            const newWordBankArray = suffixes;
+            setWordBank(newWordBankArray);  
+
+            // put word on fridge
+            newUserSelection.push({...clickedWord, apiData: true});
+            
+        } else if (array === 'helperWords') {
+            const indexNum = helperWordBank.indexOf(e.target.textContent);;
+            console.log(indexNum);
+
+            // have to make clickedWord into an object so it can be pushed into newUserSelection
+            const clickedWord = {word: e.target.textContent};
+            const newWordBankArray = helperWordBank;
+            console.log(clickedWord);
             newWordBankArray.splice([indexNum], 1);
-            setSuffixes(newWordBankArray);
+            setHelperWordBank(newWordBankArray); 
+            newUserSelection.push({...clickedWord, apiData: false});
         }
 
-        // put word on fridge 
-        const newUserSelection = userSelection;
-        newUserSelection.push(clickedWord);
         setUserSelection(newUserSelection);
-        console.log(userSelection, 'from handle click')
 
         // why do we need this line of code to make everything work even though we aren't using it 
         // it console logs the clicked word only after another word has been clicked
         setSelectedWords(e.target.textContent);
-        console.log(selectedWord, 'selectedWord')
     };
 
-    console.log(wordBank)
-    const handleRemoveWord = (wordToRemove, array) => {
+    const handleRemoveWord = (wordToRemove) => {
         const newUserSelection = userSelection;
-        const indexNum = newUserSelection.indexOf(wordToRemove);
-        console.log(indexNum);
-        newUserSelection.splice([indexNum], 1);
-        console.log(newUserSelection, 'from handleremove');
-        setUserSelection(newUserSelection);
-        console.log(userSelection);
+        const isClickedWord = (element) => element.word === wordToRemove ;
+        const indexNum = newUserSelection.findIndex(isClickedWord);
 
-        if (array === 'wordbank') {
+        const clickedWord = userSelection[indexNum];
+        newUserSelection.splice([indexNum], 1);
+        setUserSelection(newUserSelection);
+
+        // if clickedWord is from the api, then put it back into the wordBank, else put it into the helperWordBank
+        if (clickedWord['apiData'] === true) {
+            console.log(clickedWord['apiData']);
             const newWordBankArray = wordBank;
-            newWordBankArray.push(wordToRemove);
+            newWordBankArray.push(clickedWord);
             setWordBank(newWordBankArray);
-        } else if (array === 'suffixes') {
-            const newWordBankArray = suffixes;
+        } else if (clickedWord['apiData'] === false) {
+            const newWordBankArray = helperWordBank;
             newWordBankArray.push(wordToRemove);
-            setSuffixes(newWordBankArray);
+            setHelperWordBank(newWordBankArray);
         }
 
         setRemoveWord(wordToRemove);
@@ -85,24 +98,25 @@ const WordBank = ({ words }) => {
                 <ul className="associatedWords">
                     {
                         wordBank.length > 0
-                        ? (wordBank.map((w) => {
+                        ? (wordBank.map((wordObject) => {
                             return (
-                                <li onClick={(e) => { handleClick(e, 'wordBank') }} key={w}>{w}</li>
+                                <li onClick={(e) => { handleClick(e, 'apiWords') }} key={wordObject['word']}>{wordObject['word']}</li>
                                 )
                             })
-                            )
+
+                          )
                             : <p>send help</p>
                         }
                 </ul>
 
                 <ul className="sufFuncWords">
                     {
-                        suffixes.map((suffix) => {
-                            return (
-                                <li onClick={(e) => { handleClick(e, 'suffixes') }} key={suffix}>{suffix}</li>
-                                )
-                            })
-                        }
+                    helperWordBank.map((suffix) => {
+                        return (
+                            <li onClick={(e) => { handleClick(e, 'helperWords') }} key={suffix}>{suffix}</li>
+                        )
+                    })
+                }
                 </ul>
             </div>
 
