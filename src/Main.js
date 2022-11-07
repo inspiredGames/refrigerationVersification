@@ -6,6 +6,7 @@ import WordBank from './WordBank';
 const Main = () => {
 
     const [words, setWords] = useState([])
+    const [isSubmitted, setIsSubmitted] = useState(false)
 
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
@@ -26,6 +27,7 @@ const Main = () => {
             })
             console.log(listOfWords)
             setWords(listOfWords);
+            setIsSubmitted(true);
         }).catch(() =>{
             alert('Something went wrong. Please try again later!')
         })
@@ -36,10 +38,11 @@ const Main = () => {
             <SearchForm handleGetWords={handleGetWords} />
 
             {
-                words.length > 0
-                    ? <WordBank words={words}/>
-                    : <p>enter a search term</p>
-                
+                isSubmitted === true 
+                    ? words.length !== 0
+                        ? <WordBank words={words}/>
+                        : <p>There are no words that match your search. Please enter another word!</p>
+                    : null
             }
             
 
