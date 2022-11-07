@@ -51,7 +51,7 @@ const SearchForm = (props) => {
             setUserInput('')
         }}>
             <label htmlFor="searchBar">Enter a word below</label>
-            <input type="text" id="searchBar" list="searchList" onChange={(e) => { handleUserInput(e) }} value={userInput} />
+            <input type="text" id="searchBar" list="searchList" onChange={(e) => { handleUserInput(e) }} value={userInput} required/>
             <datalist id="searchList">
                 {autoCompleteRes.map((item) => {
                     
@@ -69,7 +69,7 @@ const SearchForm = (props) => {
                 setDropDownSelection('placeholder');
             }}>
                 <label htmlFor='themes'>please select a theme!</label>
-                <select name="themes" id="themes" onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
+                <select name="themes" id="themes" required onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
                     <option value="placeholder" disabled>select a theme</option>
                     <option value="winter">Winter</option>
                     <option value="spring">Spring</option>
