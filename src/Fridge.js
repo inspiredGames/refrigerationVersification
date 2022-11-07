@@ -21,16 +21,18 @@ const Fridge = ( { userSelection, handleRemoveWord} ) => {
     // }
 
     return(
-        <ul className='fridge'>
-            <li>this is the fridge!</li>
-            {
-                wordList.map((word) => {
-                    return(
-                        <li onClick={(e) => {handleRemoveWord(e.target.textContent, 'wordbank')}} key={`${word}Fridge`}>{word}</li>
-                    )
-                })
-            }
-        </ul>
+        <div className="fridge">
+            <h2>this is the fridge!</h2>
+            <ul>
+                {
+                    wordList.map((word) => {
+                        return(
+                            <li onClick={(e) => {handleRemoveWord(e.target.textContent, 'wordbank')}} key={`${word}Fridge`}>{word}</li>
+                            )
+                        })
+                    }
+            </ul>
+        </div>
     )
 };
 
