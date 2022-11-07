@@ -63,8 +63,7 @@ const SearchForm = (props) => {
             <button>Submit</button>
         </form>
 
-            <form id='dropDownForm' onSubmit={(e) => {
-                // this is how the if statement knows if we are selected 'dropDown':
+            <form onSubmit={(e) => {
                 props.handleGetWords(e, dropDownSelection);
                 setDropDownSelection('placeholder');
             }}>
