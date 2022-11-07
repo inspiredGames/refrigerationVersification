@@ -34,7 +34,7 @@ const Main = () => {
     }
 
     return (
-        <div>
+        <main>
             <SearchForm handleGetWords={handleGetWords} />
 
             {
@@ -46,7 +46,7 @@ const Main = () => {
             }
             
 
-        </div>
+        </main>
     )
 
 }
