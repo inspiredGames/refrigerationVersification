@@ -5,7 +5,7 @@ const WordBank = ({ words, searchQuery }) => {
 
     console.log('wordbank has rendered');
 
-    const [selectedWord, setSelectedWords] = useState("");
+    const [selectedWord, setSelectedWords] = useState('');
     const [wordBank, setWordBank] = useState([]);
     const [userSelection, setUserSelection] = useState([]);
     const [removeWord, setRemoveWord] = useState('');
@@ -13,7 +13,7 @@ const WordBank = ({ words, searchQuery }) => {
     const [ showHelperWords, setShowHelperWords ] = useState(false);
 
     const [helperWordBank, setHelperWordBank] = useState([
-        'a', 'al', 'ance', 'ence', 'ation', 'tion', 'an', 'and', 'sion', 'ure', 'as', 'age', 'aslant', 'at', 'away', 'back', 'ery', 'become', 'eer', 'ist', 'ity', 'ment', 'beside', 'between', 'by', 'else', 'even', 'ever', 'ness', 'for', 'from', 'ship', 'th', 'having', 'if', 'in', 'ty', 'into', 'not', 'of', 'off', 'often', 'ok', 'okay', 'on', 'only', 'onto', 'or', 'out', 'over', 'past', 'able', 'ible', 'simply', 'somewhat', 'sorry', 'sure', 'the', 'through', 'thru', 'to', 'too', 'top', 'towards', 'under', 'up', 'upon', 'upside', 'versus', 'very', 'via', 'with', 'withal', 'within', 'ary', 'yes', 'yet', 'all', 'always', 'any', 'ant', 'anyone', 'ward', 'both', 'came', 'did', 'do', 'does', 'done', 'each', 'either', 'every', 'had', 'has', 'have', 'he', 'her', 'here', 'hers', 'him', 'his', 'how', 'i', 'it', 'its', 'keep', 'kept', 'kind', 'ious', 'lot', 'many', 'may', 'me', 'ful', 'ic', 'more', 'most', 'much', 'my', 'ous', 'ive', 'less', 'y', 'ical', 'ate', 'ly', 'once', 'other', 'others', "others'", 'our', 'ours', 'remain', 'ish', 'like', 'shall', 'she', 'should', 'some', 'something', 'such', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whoever', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
+        'a', 'al', 'ance', 'are', 'ation', 'tion', 'an', 'and', 'sion', 'as', 'at', 'ery', 'ist', 'ity', 'ment', 'by', 'else', 'ness', 'for', 'from', 'th', 'if', 'in', 'ty', 'not', 'of', 'off', 'on', 'onto', 'or', 'out', 'able', 'ible', 'the', 'to', 'too', 'with', 'ary', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'is', 'it', 'its', 'ious', 'may', 'me', 'ful', 'ic', 'my', 'ous',  'y', 'ical', 'ly', 'our', 'ours', 'ish', 'she', 'should', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
     ]);
 
     useEffect(() => {
@@ -32,9 +32,14 @@ const WordBank = ({ words, searchQuery }) => {
     }, [words]);
     // ^EVERYTIME PROPS CHANGES (WORDS) DISPLAY NEW RESULTS 
 
+    useEffect(() => {
+        setUserSelection([]);
+    }, [searchQuery]);
+
     const handleClick = (e, array) => {
         
         const newUserSelection = userSelection;
+        console.log(e.target);
 
         if (array === 'apiWords') {
             // get index number of clickedword from wordBank array
