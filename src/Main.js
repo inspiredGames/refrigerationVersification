@@ -30,7 +30,7 @@ const Main = () => {
             setIsSubmitted(true);
         }).catch(() =>{
             alert('Something went wrong. Please try again later!')
-        })
+        });
     }
 
     return (

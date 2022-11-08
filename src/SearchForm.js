@@ -3,23 +3,22 @@ import { useState } from 'react'
 
 const SearchForm = (props) => {
 
-    const [userInput, setUserInput] = useState("")
-    const [autoCompleteRes, setAutoCompleteRes] = useState([])
-    const [dropDownSelection, setDropDownSelection] = useState('placeholder')
+    const [userInput, setUserInput] = useState("");
+    const [autoCompleteRes, setAutoCompleteRes] = useState([]);
+    const [dropDownSelection, setDropDownSelection] = useState('');
 
     // This will track the users typing
     const handleUserInput = (e) => {
         const input = e.target.value;
-        getAutocomplete(input)
+        getAutocomplete(input);
         const lowerCaseInput = input.toLowerCase();
         setUserInput(lowerCaseInput);
     }
 
     const userDropDownSelection = (e) => {
         const input = e.target.value;
-        console.log(e.target.value)
+        console.log(e.target.value);
         setDropDownSelection(input);
-
     }
 
     const getAutocomplete = (userInput) => {
@@ -67,11 +66,11 @@ const SearchForm = (props) => {
             <div>
                 <form onSubmit={(e) => {
                     props.handleGetWords(e, dropDownSelection);
-                    setDropDownSelection('placeholder');
+                    setDropDownSelection('');
                 }}>
                     <label htmlFor='themes'>Or Select a Theme:</label>
                     <select name="themes" id="themes" required onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
-                        <option value="placeholder" disabled>select a theme</option>
+                        <option value='' disabled>select a theme</option>
                         <option value="winter">Winter</option>
                         <option value="spring">Spring</option>
                         <option value="summer">Summer</option>
