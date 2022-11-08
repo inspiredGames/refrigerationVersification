@@ -15,12 +15,20 @@ nav {
         font-size: 1.5rem;
         font-weight: 500;
         text-transform: uppercase;
+        &:hover,
+        &:focus {
+          color: white;
+          text-decoration: underline;
+        }
       }
     }
   }
 }
 
 .logo {
-  background-color: $yellow;
-  padding: 1rem;
+  max-width: 100%;
+  margin: 1rem;
+  img {
+    width: 50px;
+  }
 }

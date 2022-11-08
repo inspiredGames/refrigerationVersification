@@ -51,8 +51,8 @@ const SearchForm = (props) => {
                     props.handleGetWords(e, userInput)
                     setUserInput('')
                 }}>
-                    <label htmlFor="searchBar">Enter a word below</label>
-                    <input type="text" id="searchBar" list="searchList" onChange={(e) => { handleUserInput(e) }} value={userInput} required/>
+                    <label htmlFor="searchBar">Enter a word:</label>
+                    <input type="text" id="searchBar" list="searchList" placeholder='try "animals"' onChange={(e) => { handleUserInput(e) }} value={userInput} required/>
                     <datalist id="searchList">
                         {autoCompleteRes.map((item) => {
                             
@@ -69,7 +69,7 @@ const SearchForm = (props) => {
                     props.handleGetWords(e, dropDownSelection);
                     setDropDownSelection('placeholder');
                 }}>
-                    <label htmlFor='themes'>please select a theme!</label>
+                    <label htmlFor='themes'>Or Select a Theme:</label>
                     <select name="themes" id="themes" required onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
                         <option value="placeholder" disabled>select a theme</option>
                         <option value="winter">Winter</option>
