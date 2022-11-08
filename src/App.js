@@ -1,12 +1,12 @@
 import './App.scss';
-import Main from './Main';
+import Main from './Components/Main';
 import {
   Routes,
   Route
 } from 'react-router-dom';
-import NavBar from './NavBar';
-import Gallery from './Gallery';
-import About from './About';
+import NavBar from './Components/NavBar';
+import Gallery from './Components/Gallery';
+import About from './Components/About';
 
 function App() {
 

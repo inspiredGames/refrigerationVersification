@@ -5,12 +5,14 @@ import WordBank from './WordBank';
 
 const Main = () => {
 
-    const [words, setWords] = useState([])
-    const [isSubmitted, setIsSubmitted] = useState(false)
+    const [words, setWords] = useState([]);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [ searchQuery, setSearchQuery ] = useState('');
 
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
         console.log(userInput);
+        setSearchQuery(userInput);
         axios({
             url: "https://api.datamuse.com/words",
             method: "GET",
@@ -40,7 +42,7 @@ const Main = () => {
             {
                 isSubmitted === true 
                     ? words.length !== 0
-                        ? <WordBank words={words}/>
+                        ? <WordBank words={words} searchQuery={searchQuery} />
                         : <p>There are no words that match your search. Please enter another word!</p>
                     : null
             }
