@@ -55,3 +55,144 @@ fire
       //dragItem.current = position;
       //console.log(e.target.innerHTML)
     //}
+
+
+---
+### Code so far 
+   //create useRef state variable
+    const dragItem = useRef();
+    const dragOverItem = useRef();
+    const [ fridgePoem, setFridgePoem ] = useState([]);
+    const x = useRef(0);
+    const y = useRef(0);
+    const [ position, setPosition ] = useState({x:x, y:y})
+
+    // create the function for dragStart
+    const dragStart = (e, index) => {
+        dragItem.current = index;
+        console.log(dragItem.current);
+        const xCoord = e.target.offsetLeft;
+        const yCoord = e.target.offsetTop
+        x.current = xCoord;
+        y.current = yCoord;
+        setPosition({x:x, y:y})
+        console.log(x, y, 'from dragStart');
+    }
+
+    const dragEnter = (e, index) => {
+        dragOverItem.current = index;
+        const x = e.target.offsetLeft;
+        const y = e.target.offsetTop
+        console.log(x, y, 'from dragEnter');
+    }
+
+    const drop = (e) => {
+        const xCoord = e.target.offsetLeft;
+        console.log(e);
+        const yCoord = e.target.offsetTop;
+        console.log(xCoord, yCoord);
+        const copyPoem = [...fridgePoem];
+        console.log(copyPoem)
+        const dragPoemContent = copyPoem[dragItem.current];
+        console.log(dragPoemContent)
+        copyPoem.splice(dragItem.current, 1);
+        copyPoem.splice(dragOverItem.current, 0, dragPoemContent);
+        dragItem.current = null;
+        dragOverItem.current = null;
+        setFridgePoem(copyPoem);
+    }
+  return(
+        <div className="fridge">
+            <h2>this is the fridge!</h2>
+            <ul>
+                 {
+                userSelection.map((wordObject, index) => {
+                    return(
+                        <li 
+                        ref={dragItem}
+                        
+                        //adding the draggable
+                        draggable = "true"
+                        //adding the onDragStart
+                        onDragStart =
+                        { 
+                            (e) => dragStart(e, index) 
+                    }
+                        //adding the onDragStart
+                        onDragEnter =
+                        { 
+                            (e) => dragEnter(e, (`${wordObject['word']}Fridge`)) 
+                    }
+                        //adding the onDragEnd
+                        onDragEnd = { drop }
+                        
+
+                        onClick={(e) => {handleRemoveWord(e.target.textContent)}} 
+                        key={`${wordObject['word']}Fridge`}>{wordObject['word']}</li>
+                    )
+                  })
+                }
+            </ul>
+            <div>
+                <h2>drop stuff here!</h2>
+            </div>
+        </div>
+    )
+};
+
+
+---
+### Second Try
+   const [ word, setWord ] = useState('');
+
+    console.log(useRef(0));
+    const handleDragStart = (e) => {
+        console.log('dragstart')
+        e.dataTransfer.clearData();
+        e.dataTransfer.setData('text/plain', e.target.id);
+    }
+
+    const handleDragOver = (e) => {
+        console.log('dragover');
+        e.preventDefault();
+        console.log(e.dataTransfer)
+        console.log(e.dataTransfer.getData('text'))
+        setWord(e.dataTransfer.getData('text'));
+    }
+
+    const handleDrop = (e) => {
+        
+        e.preventDefault();
+        console.log('dropzone');
+        console.log(e.dataTransfer.getData('text'))
+        setWord(e.dataTransfer.getData('text'));
+        
+    }
+
+    return(
+        <div className="fridge">
+            <h2>this is the fridge!</h2>
+            <ul>
+                 {
+                userSelection.map((wordObject, index) => {
+                    return(
+                        <li 
+                        id={wordObject['word']}
+                        //adding the draggable
+                        draggable = "true"
+                        
+                        onDragStart={(e) => {handleDragStart(e)}}
+
+                        // onClick={(e) => {handleRemoveWord(e.target.textContent)}} 
+                        key={`${wordObject['word']}Fridge`}>{wordObject['word']}</li>
+                    )
+                  })
+                }
+            </ul>
+            <div id='target' onDragEnd={(e) => {handleDrop(e)}} onDragOver={(e) => {handleDragOver(e)}}>
+                <h2>drop stuff here!</h2>
+                <p>{word}</p>
+            </div>
+        </div>
+    )
+};
