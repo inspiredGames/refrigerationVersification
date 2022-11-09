@@ -69,7 +69,7 @@ const Fridge = ( { userSelection, handleRemoveWord} ) => {
                         onMouseDown={(e) => {handleMouseDown(e)}}
                         onMouseUp={() => handleMouseUp()}
                         onMouseMove={(e) => {handleMouseMove(e)}}
-                        // onClick={(e) => {handleRemoveWord(e.target.textContent)}} 
+                        onClick={(e) => {handleRemoveWord(e.target.textContent)}} 
                         key={`${wordObject['word']}Fridge`}>{wordObject['word']}</li>
                     )
                   })
