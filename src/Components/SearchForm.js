@@ -12,7 +12,7 @@ const SearchForm = (props) => {
         const input = e.target.value;
         getAutocomplete(input);
         const lowerCaseInput = input.toLowerCase();
-        setUserInput(lowerCaseInput);
+        setUserInput(lowerCaseInput)
     }
 
     const userDropDownSelection = (e) => {

@@ -7,32 +7,41 @@ const Main = () => {
 
     const [words, setWords] = useState([]);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [ searchQuery, setSearchQuery ] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
+    const Filter = require('bad-words')
+    const filter = new Filter({placeHolder: 'x'});
 
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
-        console.log(userInput);
         setSearchQuery(userInput);
-        axios({
-            url: "https://api.datamuse.com/words",
-            method: "GET",
-            dataResponse: "json",
-            params: {
-                ml: userInput,
-                max: 50
-            }
-        }).then((res) => {
-            const listOfWords = res.data.map((d) => {
-                return {
-                    word: d.word
+        console.log(userInput);
+        const safeUserInput = filter.clean(userInput)
+        // setUserInput(safeUserInput);
+        if (safeUserInput.includes("xx")) {
+            alert('No swear word ! Please enter another word')
+        } else {
+
+            axios({
+                url: "https://api.datamuse.com/words",
+                method: "GET",
+                dataResponse: "json",
+                params: {
+                    ml: userInput,
+                    max: 50
                 }
-            })
-            console.log(listOfWords)
-            setWords(listOfWords);
-            setIsSubmitted(true);
-        }).catch(() =>{
-            alert('Something went wrong. Please try again later!')
-        });
+            }).then((res) => {
+                const listOfWords = res.data.map((d) => {
+                    return {
+                        word: d.word
+                    }
+                })
+                console.log(listOfWords)
+                setWords(listOfWords);
+                setIsSubmitted(true);
+            }).catch(() => {
+                alert('Something went wrong. Please try again later!')
+            });
+        }
     }
 
     return (
@@ -40,13 +49,13 @@ const Main = () => {
             <SearchForm handleGetWords={handleGetWords} />
 
             {
-                isSubmitted === true 
+                isSubmitted === true
                     ? words.length !== 0
                         ? <WordBank words={words} searchQuery={searchQuery} />
                         : <p>There are no words that match your search. Please enter another word!</p>
                     : null
             }
-            
+
 
         </main>
     )
