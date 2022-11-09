@@ -1,32 +1,32 @@
-import { useDrag } from 'react-dnd';
-import {useState, useCapture} from 'react';
+import { useState } from 'react';
 
 const Fridge = ( { userSelection, handleRemoveWord} ) => {
     console.log('Fridge component has rendered');
 
-    const [ offset, setOffset ] = useState([]);
+    const [ offset, setOffset ] = useState([0, 0]);
     const [ isDown, setIsDown ] = useState(false);
-    
 
-    const handleMouseDown = (e, id) => {
+
+    const handleMouseDown = (e) => {
         setIsDown(true);
         setOffset([
-            id.offsetLeft - e.clientX,
-            id.offsetTop - e.clientY
+            e.target.offsetLeft - e.clientX,
+            e.target.offsetTop - e.clientY
         ])
     };
-    // remember to add the true in 
+    // remember to add capture = true
 
     const handleMouseUp = () => {
         setIsDown(false);
     }
 
-    const handleMouseMove = (e, id) => {
+    const handleMouseMove = (e) => {
         e.preventDefault();
+        console.log(e.target);
         if (isDown) {
             setOffset([
-                id.style.left = (e.clientX + offset[0]) + 'px',
-                id.style.top  = (e.clientY + offset[1]) + 'px'
+                e.target.style.left = (e.clientX + offset[0]) + 'px',
+                e.target.style.top  = (e.clientY + offset[1]) + 'px'
             ]) 
         }
     }
@@ -59,15 +59,16 @@ const Fridge = ( { userSelection, handleRemoveWord} ) => {
             <h2>this is the fridge!</h2>
             <ul>
                  {
-                userSelection.map((wordObject, index) => {
+                userSelection.map((wordObject) => {
                     return(
                         <li 
                         id={`${wordObject['word']}Fridge`}
                         className='draggableWord'
+                        draggable='true'
                         //adding the draggable
-                        onMouseDown={(e) => {handleMouseDown(e, (`${wordObject['word']}Fridge`))}}
+                        onMouseDown={(e) => {handleMouseDown(e)}}
                         onMouseUp={() => handleMouseUp()}
-                        onMouseMove={(e) => {handleMouseMove(e, (`${wordObject['word']}Fridge`))}}
+                        onMouseMove={(e) => {handleMouseMove(e)}}
                         // onClick={(e) => {handleRemoveWord(e.target.textContent)}} 
                         key={`${wordObject['word']}Fridge`}>{wordObject['word']}</li>
                     )

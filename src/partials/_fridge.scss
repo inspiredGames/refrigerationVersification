@@ -1,6 +1,7 @@
 @use './variables' as *;
 
 .fridge {
+  position: relative;
   background-color: rgb(241, 231, 213);
   margin: 1rem;
   border-radius: 1rem;
@@ -33,7 +34,5 @@
       position:absolute; 
       left:0; 
       top:0; 
-      width:100px;
-      height: 100px; 
   }
 }
