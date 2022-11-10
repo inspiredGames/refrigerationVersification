@@ -1,85 +1,184 @@
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
+ 
+const Fridge = ({ userSelection }) => {
+    console.log(userSelection, 'userSelection');
+    // map over the userSelection array and return a list of words
+    const userSelectionArr = userSelection.map((wordObject) => {
+        return wordObject.word;
+    });
+    console.log(userSelectionArr, 'userSelectionArr');
 
-const Fridge = ( { userSelection, handleRemoveWord} ) => {
-    console.log('Fridge component has rendered');
-
-    const [ offset, setOffset ] = useState([0, 0]);
-    const [ isDown, setIsDown ] = useState(false);
-
-
-    const handleMouseDown = (e) => {
-        setIsDown(true);
-        setOffset([
-            e.target.offsetLeft - e.clientX,
-            e.target.offsetTop - e.clientY
-        ])
-    };
-    // remember to add capture = true
-
-    const handleMouseUp = () => {
-        setIsDown(false);
-    }
-
-    const handleMouseMove = (e) => {
-        e.preventDefault();
-        console.log(e.target);
-        if (isDown) {
-            setOffset([
-                e.target.style.left = (e.clientX + offset[0]) + 'px',
-                e.target.style.top  = (e.clientY + offset[1]) + 'px'
-            ]) 
-        }
-    }
-    // var offset = [0,0];
-    // var divOverlay = document.getElementById ("overlay");
-    // var isDown = false;
-    // divOverlay.addEventListener('mousedown', function(e) {
-    //     isDown = true;
-    //     offset = [
-    //         divOverlay.offsetLeft - e.clientX,
-    //         divOverlay.offsetTop - e.clientY
-    //     ];
-    // }, true);
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+  const [poem, setPoem] = useState(['Empty Fridge']);
 
 
-    // document.addEventListener('mouseup', function() {
-    //     isDown = false;
-    // }, true);
+  const dragStart = (e, position) => {
+    dragItem.current = position;
+    console.log(e.target.innerHTML, 'dragStart');
+  };
+ 
+  const dragEnter = (e, position) => {
+    dragOverItem.current = position;
+    console.log(e.target.innerHTML, 'dragEnter');
+  };
 
-    // document.addEventListener('mousemove', function(e) {
-    //     event.preventDefault();
-    //     if (isDown) {
-    //         divOverlay.style.left = (e.clientX + offset[0]) + 'px';
-    //         divOverlay.style.top  = (e.clientY + offset[1]) + 'px';
-    //     }
-    // }, true);
+    
+//   const drop = (e) => {
+//     const copyPoemItems = [...userSelectionArr];
+//     const dragItemContent = copyPoemItems[dragItem.current];
+//     copyPoemItems.splice(dragItem.current, 1);
+//     copyPoemItems.splice(dragOverItem.current, 0, dragItemContent);
+//     dragItem.current = null;
+//     dragOverItem.current = null;
+//     setPoem(copyPoemItems);
+//   };
 
-    return(
-        <div className="fridge">
-            <h2>this is the fridge!</h2>
-            <ul>
-                 {
-                userSelection.map((wordObject) => {
-                    return(
-                        <li 
-                        id={`${wordObject['word']}Fridge`}
-                        className='draggableWord'
-                        draggable='true'
-                        //adding the draggable
-                        onMouseDown={(e) => {handleMouseDown(e)}}
-                        onMouseUp={() => handleMouseUp()}
-                        onMouseMove={(e) => {handleMouseMove(e)}}
-                        // onClick={(e) => {handleRemoveWord(e.target.textContent)}} 
-                        key={`${wordObject['word']}Fridge`}>{wordObject['word']}</li>
-                    )
-                  })
-                }
-            </ul>
-            <div id='target'>
-                <h2>drop stuff here!</h2>
-            </div>
-        </div>
-    )
+  const drop = (e) => {
+    const dragItemContent = userSelectionArr[dragItem.current];
+    userSelectionArr.splice(dragItem.current, 1);
+    userSelectionArr.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setPoem(userSelectionArr);
+  };
+
+  return (
+    <div className='fridge'>
+        <h2>this is the fridge!</h2>
+        <ul>
+    {
+        // if poem is not empty, map over it and return a list of words, else return a message
+        poem.length > 0 ? poem.map((word, index) => {
+            return (
+                <li
+      style={{ backgroundColor:'lightblue', margin:'5px 50px'}}
+        onDragStart={(e) => dragStart(e, index)}
+        onDragEnter={(e) => dragEnter(e, index)}
+        onDragEnd={drop}
+        key={index}
+        draggable>
+          {word}
+      </li>
+            );
+        }) : <p>your fridge is empty!</p>
+}
+      </ul>
+      <ul>
+    {
+    userSelectionArr.map((item, index) => {
+        return(
+      <li
+        onDragStart={(e) => dragStart(e, index)}
+        onDragEnter={(e) => dragEnter(e, index)}
+        onDragEnd={drop}
+        key={index}
+        draggable>
+          {item}
+      </li>
+        )
+    })
+}
+      </ul>
+    </div>
+  );
 };
+
+
+
+
+
+
+
+
+
+//     //make userSelection draggable
+//     const [draggable, setDraggable] = useState(true);
+//     //make userSelection droppable
+//     const [droppable, setDroppable] = useState(true);
+
+    
+
+
+
+//     const handleDragStart = (e) => {
+//         console.log(e, 'drag start');
+//         e.dataTransfer.setData('text/plain', e.target.id);
+//         e.dataTransfer.dropEffect = 'move';
+//     }
+
+//     const handleDragEnd = (e) => {
+//         console.log(e, 'drag end');
+//         setDraggable(false);
+//     }
+
+//     //make userSelection droppable
+//     const handleDragOver = (e) => {
+//         console.log(e, 'drag over');
+//         e.preventDefault();
+//         e.dataTransfer.dropEffect = 'move';
+//     }
+
+//     const handleDrop = (e) => {
+//         console.log(e, 'drop');
+//         e.preventDefault();
+//         const data = e.dataTransfer.getData('text');
+//         e.target.appendChild(document.getElementById(data));
+//     }
+
+// //useEffect to update draggable and droppable
+//     useEffect(() => {
+//         setDraggable(true);
+//         setDroppable(true);
+//     }, [userSelection]);
+    
+
+
+//     return (
+//         <div className="fridge">
+//             <h2>Fridge</h2>
+//             <ul className="fridge-words">
+//                 {userSelection.map((wordObject) => (
+//                     <li
+//                         draggable={draggable}
+//                         key={`${wordObject['word']}Fridge`}
+//                         id={`${wordObject['word']}Fridge`}
+//                         onDragStart={handleDragStart}
+//                         onDragEnd={handleDragEnd}
+//                         onDragOver={handleDragOver}
+//                         onDrop={handleDrop}
+
+//                         className="fridge-word"
+//                     >
+//                         {wordObject['word']}
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     )
+// }
+
+
+// //     return(
+// //         <div className="fridge">
+// //             <h2>this is the fridge!</h2>
+// //             <ul>
+// //                 {
+// //                 userSelection.map((wordObject) => {
+// //                     return(
+// //                         <li 
+// //                         id={`${wordObject['word']}Fridge`}
+
+// //                         key={`${wordObject['word']}Fridge`}>
+// //                             {wordObject['word']}</li>
+// //                     )
+// //                 })
+// //                 }
+// //             </ul>
+// //             <div id='target'>
+// //                 <h2>drop stuff here!</h2>
+// //             </div>
+// //         </div>
+// //     )
 
 export default Fridge;
