@@ -1,5 +1,39 @@
 import { useState } from 'react';
-import { useDrag } from '@use-gesture/react';
+import { useDrag, useGesture } from '@use-gesture/react';
+
+
+
+
+//*****USE-GESTURE DOCS */
+// // // when you use a gesture-specific hook
+// useDrag(state => doSomethingWith(state), { ...sharedOptions, ...dragOptions })
+
+// // when you use the useGesture hook
+// useGesture({
+//   onDrag: state => doSomethingWith(state),
+//   onPinch: state => doSomethingWith(state),
+//   // ...
+//   {
+//   // global options such as `target`
+//   ...sharedOptions,
+//   // gesture specific options
+//   drag: dragOptions,
+//   wheel: wheelOptions,
+//   pinch: pinchOptions,
+//   scroll: scrollOptions,
+//   hover: hoverOptions,
+//   }
+// })
+
+
+
+
+
+
+
+
+import { useRef } from 'react';
+
 
 
 const Fridge = ({ userSelection }) => {
@@ -7,47 +41,119 @@ const Fridge = ({ userSelection }) => {
     const userSelectionArr = userSelection.map((wordObject) => {
         return wordObject.word;
     });
-    console.log(userSelectionArr, 'userSelectionArr');
+    // console.log(userSelectionArr, 'userSelectionArr');
 
 
   const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });
-  const bindPoemWordPos = useDrag( (params) => {
-    setPoemWord({ 
-      x: params.offset[0], 
-      y: params.offset[1] 
-    });
-  });
+  // const [ drag, setDrag ] = useState(true);
 
-  console.log(poemWord, 'poemWord');
+
+  // setting useRef
+  const myRef = useRef(null)
+
+  //   // try using target and useRef 
+  useDrag(({ event }) => event.preventDefault(), {
+  target: myRef,
+  eventOptions: { passive: false }
+})
+
+console.log(useDrag, 'useDrag');
+
+
+  // const bindPoemWordPos = useDrag( (params, state) => {
+    
+    
+    
+  //   const { event, dragging } = state;
+
+  //   console.log(state, 'state');
+  //   setPoemWord({ 
+  //     x: params.offset[0], 
+  //     y: params.offset[1] 
+  //   });
+  //   // setDrag(false)
+  // });
+
+
+
+
+
+console.log(myRef, 'myRef');
+
+
+
+const handleClick = () => {
+  console.log(myRef, 'onclick');
+}
+
+
+// // // when you use a gesture-specific hook
+// useDrag(state => doSomethingWith(state), { ...sharedOptions, ...dragOptions })
+
+// // when you use the useGesture hook
+// useGesture({
+//   onDrag: state => doSomethingWith(state),
+//   onPinch: state => doSomethingWith(state),
+//   // ...
+//   {
+//   // global options such as `target`
+//   ...sharedOptions,
+//   // gesture specific options
+//   drag: dragOptions,
+//   wheel: wheelOptions,
+//   pinch: pinchOptions,
+//   scroll: scrollOptions,
+//   hover: hoverOptions,
+//   }
+
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // const bindPoemWordPos = useDrag( (params, state) => {
+  //   // TODO: bound li to fridge
+    
+  //   // try using target and useRef 
+    
+    
+  //   const { event, dragging } = state;
+
+  //   console.log(state, 'state');
+  //   setPoemWord({ 
+  //     x: params.offset[0], 
+  //     y: params.offset[1] 
+  //   });
+  //   // setDrag(false)
+  // });
+
+  // console.log(poemWord, 'poemWord');
 
   return (
     <div className='fridge'>
         <h2>this is the fridge!</h2>
         <ul>
-          {/* {
-            userSelection.map((wordObject) => {
-              return(
-                <li
-                {...bindPoemWordPos()} 
-                className="tester"
-                style={{
-                  top: poemWord.y,
-                  left: poemWord.x,
-                  backgroundColor: 'red',
-                }}
-                key={`${wordObject['word']}Fridge`}>{wordObject['word']}
-                </li>
-              )
-            })
-          } */}
-
-
-
     {
     userSelectionArr.map((item, index) => {
         return(
           <li
-          {...bindPoemWordPos()} 
+          // {...bindPoemWordPos()} 
+
+
+          //testing myRef
+          ref={myRef}
+          onClick={handleClick}
+
+
           style={{
             top: poemWord.y,
             left: poemWord.x,
