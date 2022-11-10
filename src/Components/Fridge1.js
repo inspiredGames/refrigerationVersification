@@ -1,61 +1,81 @@
-import { useState } from 'react';
-import { useDrag } from '@use-gesture/react';
-
-
+import React, { useState, useRef } from 'react';
+ 
 const Fridge = ({ userSelection }) => {
+    console.log(userSelection, 'userSelection');
     // map over the userSelection array and return a list of words
     const userSelectionArr = userSelection.map((wordObject) => {
         return wordObject.word;
     });
     console.log(userSelectionArr, 'userSelectionArr');
 
+  const dragItem = useRef();
+  const dragOverItem = useRef();
+  const [poem, setPoem] = useState(['Empty Fridge']);
 
-  const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });
-  const bindPoemWordPos = useDrag( (params) => {
-    setPoemWord({ 
-      x: params.offset[0], 
-      y: params.offset[1] 
-    });
-  });
 
-  console.log(poemWord, 'poemWord');
+  const dragStart = (e, position) => {
+    dragItem.current = position;
+    console.log(e.target.innerHTML, 'dragStart');
+  };
+ 
+  const dragEnter = (e, position) => {
+    dragOverItem.current = position;
+    console.log(e.target.innerHTML, 'dragEnter');
+  };
+
+    
+//   const drop = (e) => {
+//     const copyPoemItems = [...userSelectionArr];
+//     const dragItemContent = copyPoemItems[dragItem.current];
+//     copyPoemItems.splice(dragItem.current, 1);
+//     copyPoemItems.splice(dragOverItem.current, 0, dragItemContent);
+//     dragItem.current = null;
+//     dragOverItem.current = null;
+//     setPoem(copyPoemItems);
+//   };
+
+  const drop = (e) => {
+    const dragItemContent = userSelectionArr[dragItem.current];
+    userSelectionArr.splice(dragItem.current, 1);
+    userSelectionArr.splice(dragOverItem.current, 0, dragItemContent);
+    dragItem.current = null;
+    dragOverItem.current = null;
+    setPoem(userSelectionArr);
+  };
 
   return (
     <div className='fridge'>
         <h2>this is the fridge!</h2>
         <ul>
-          {/* {
-            userSelection.map((wordObject) => {
-              return(
+    {
+        // if poem is not empty, map over it and return a list of words, else return a message
+        poem.length > 0 ? poem.map((word, index) => {
+            return (
                 <li
-                {...bindPoemWordPos()} 
-                className="tester"
-                style={{
-                  top: poemWord.y,
-                  left: poemWord.x,
-                  backgroundColor: 'red',
-                }}
-                key={`${wordObject['word']}Fridge`}>{wordObject['word']}
-                </li>
-              )
-            })
-          } */}
-
-
-
+      style={{ backgroundColor:'lightblue', margin:'5px 50px'}}
+        onDragStart={(e) => dragStart(e, index)}
+        onDragEnter={(e) => dragEnter(e, index)}
+        onDragEnd={drop}
+        key={index}
+        draggable>
+          {word}
+      </li>
+            );
+        }) : <p>your fridge is empty!</p>
+}
+      </ul>
+      <ul>
     {
     userSelectionArr.map((item, index) => {
         return(
-          <li
-          {...bindPoemWordPos()} 
-          style={{
-            top: poemWord.y,
-            left: poemWord.x,
-            touchAction: 'none',
-          }}
-          key={index}>
-            {item} {index}
-          </li>
+      <li
+        onDragStart={(e) => dragStart(e, index)}
+        onDragEnter={(e) => dragEnter(e, index)}
+        onDragEnd={drop}
+        key={index}
+        draggable>
+          {item}
+      </li>
         )
     })
 }
