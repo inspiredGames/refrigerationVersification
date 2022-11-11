@@ -73,6 +73,7 @@ const WordBank = ({ words, searchQuery }) => {
     };
 
     const handleRemoveWord = (wordToRemove) => {
+        console.log(wordToRemove)
         const newUserSelection = userSelection.map(x => x);
         const isClickedWord = (element) => element.word === wordToRemove ;
         const indexNum = newUserSelection.findIndex(isClickedWord);

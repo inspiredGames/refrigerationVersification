@@ -1,7 +1,7 @@
 import SelectedWords from './SelectedWords';
 
 
-const Fridge = ({ userSelection }) => {
+const Fridge = ({ userSelection, handleRemoveWord }) => {
     // map over the userSelection array and return a list of words
     const userSelectionArr = userSelection.map((wordObject) => {
         return wordObject.word;
@@ -14,7 +14,7 @@ const Fridge = ({ userSelection }) => {
           {
             userSelectionArr.map((item) => {
                 return(
-                  <SelectedWords key={item} item={item}/>
+                  <SelectedWords key={item} item={item} handleRemoveWord={handleRemoveWord}/>
                 )
             })
           }

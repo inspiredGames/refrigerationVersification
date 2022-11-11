@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDrag } from '@use-gesture/react';
 
-const SelectedWords = ({item}) => {
+const SelectedWords = ({item, handleRemoveWord}) => {
 
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });
     const bindPoemWordPos = useDrag( (params) => {
@@ -10,6 +10,11 @@ const SelectedWords = ({item}) => {
           y: params.offset[1] 
         });
       });
+
+    const handleClick = (e) => {
+        console.log(e)
+    }
+
     return (
         <li 
           {...bindPoemWordPos()} 
@@ -18,6 +23,7 @@ const SelectedWords = ({item}) => {
             left: poemWord.x,
             touchAction: 'none',
           }}
+          onDoubleClick={(e) => {handleRemoveWord(e.target.textContent); handleClick(e)}}
         >{item}</li>
     )
 }
