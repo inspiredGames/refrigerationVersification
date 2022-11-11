@@ -22,6 +22,7 @@
   flex-wrap: wrap;
   padding: 0.5rem;
   li {
+    user-select: none;
     border: 2px solid black;
     box-shadow: 1px 1px black;
     margin: 0.5rem;
