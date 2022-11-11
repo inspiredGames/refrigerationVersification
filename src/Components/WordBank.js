@@ -111,7 +111,7 @@ const WordBank = ({ words, searchQuery }) => {
                 {
                     showWords 
                         ? (
-                            <ul className="associatedWords">
+                            <ul className="associatedWords words">
                                 {
                                     wordBank.length > 0
                                     ? (wordBank.map((wordObject) => {
@@ -139,7 +139,7 @@ const WordBank = ({ words, searchQuery }) => {
                 {
                     showHelperWords
                         ? (
-                            <ul className="helperWordBank">
+                            <ul className="helperWordBank words">
                             {
                                 helperWordBank.map((word) => {
                                     return (

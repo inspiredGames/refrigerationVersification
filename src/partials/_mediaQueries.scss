@@ -1,0 +1,25 @@
+@use './variables' as *;
+
+@media (max-width: 1000px) {
+    /* Styles for smaller desktop and tablet devices go within this breakpoint */
+    .displayWords {
+        flex-direction: column;
+      }
+}
+
+@media (max-width: 750px) {
+    .searchForm{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Styles for mobile devices go within this breakpoint */
+    nav{
+        padding: 0;
+    }
+    .searchForm{
+        text-align: center;
+        gap: 1rem;
+    }
+}
