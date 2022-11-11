@@ -5,10 +5,8 @@ const WordBank = ({ words, searchQuery }) => {
 
     console.log('wordbank has rendered');
 
-    const [selectedWord, setSelectedWords] = useState('');
     const [wordBank, setWordBank] = useState([]);
     const [userSelection, setUserSelection] = useState([]);
-    const [removeWord, setRemoveWord] = useState('');
     const [ showWords, setShowWords ] = useState(false);
     const [ showHelperWords, setShowHelperWords ] = useState(false);
 
@@ -38,8 +36,7 @@ const WordBank = ({ words, searchQuery }) => {
 
     const handleClick = (e, array) => {
         
-        const newUserSelection = userSelection;
-        console.log(e.target);
+        const newUserSelection = userSelection.map(x => x);
 
         if (array === 'apiWords') {
             // get index number of clickedword from wordBank array
@@ -72,11 +69,12 @@ const WordBank = ({ words, searchQuery }) => {
 
         // why do we need this line of code to make everything work even though we aren't using it 
         // it console logs the clicked word only after another word has been clicked
-        setSelectedWords(e.target.textContent);
+        // setSelectedWords(e.target.textContent);
     };
 
     const handleRemoveWord = (wordToRemove) => {
-        const newUserSelection = userSelection;
+        console.log(wordToRemove)
+        const newUserSelection = userSelection.map(x => x);
         const isClickedWord = (element) => element.word === wordToRemove ;
         const indexNum = newUserSelection.findIndex(isClickedWord);
 
@@ -95,8 +93,6 @@ const WordBank = ({ words, searchQuery }) => {
             newWordBankArray.push(wordToRemove);
             setHelperWordBank(newWordBankArray);
         }
-
-        setRemoveWord(wordToRemove);
     }
 
     return (

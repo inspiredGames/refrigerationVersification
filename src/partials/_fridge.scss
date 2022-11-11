@@ -1,6 +1,7 @@
 @use './variables' as *;
 
 .fridge {
+  position: relative;
   background-color: rgb(241, 231, 213);
   margin: 1rem;
   border-radius: 1rem;
@@ -12,6 +13,8 @@
     flex-wrap: wrap;
   }
   li {
+    position: relative;
+    user-select: none;
     align-self: flex-start;
     border: 2px solid black;
     box-shadow: 1px 1px black;
