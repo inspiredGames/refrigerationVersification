@@ -12,32 +12,14 @@
   width: 100%;
   .associatedWords,
   .helperWordBank {
-    // display: flex;
-    // flex-wrap: wrap;
     border: 1px solid $lightGreen;
     border-radius: 1rem;
-    // li {
-    //   border: 2px solid $lightGreen;
-    //   margin: 0.5rem;
-    //   padding: 0.5rem;
-    //   border-radius: 0.5rem;
-    //   background-color: $yellow;
-    //   color: $darkGreen;
-    //   font-size: 1.5rem;
-    //   font-weight: 700;
-    //   cursor: pointer;
-    //   &:hover {
-    //     background-color: white;
-    //     color: black;
-    //   }
-    // }
   }
 }
 
 .words{
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
   padding: 0.5rem;
   li {
     border: 2px solid black;
