@@ -15,10 +15,10 @@ const WordBank = ({ words, searchQuery }) => {
         'a', 'al', 'ance', 'are', 'ation', 'tion', 'an', 'and', 'sion', 'as', 'at', 'ery', 'ist', 'ity', 'ment', 'by', 'else', 'ness', 'for', 'from', 'th', 'if', 'in', 'ty', 'not', 'of', 'off', 'on', 'onto', 'or', 'out', 'able', 'ible', 'the', 'to', 'too', 'with', 'ary', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'is', 'it', 'its', 'ious', 'may', 'me', 'ful', 'ic', 'my', 'ous',  'y', 'ical', 'ly', 'our', 'ours', 'ish', 'she', 'should', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
     ]);
 
-    const { height, width } = useWindowDimensions();
+    const { width } = useWindowDimensions();
 
     useEffect(() => {
-        if (width > 750) {
+        if (width >= 750) {
             setShowWords(true);
             setShowHelperWords(true);
         }
