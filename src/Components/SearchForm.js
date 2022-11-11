@@ -6,13 +6,15 @@ const SearchForm = (props) => {
     const [userInput, setUserInput] = useState("");
     const [autoCompleteRes, setAutoCompleteRes] = useState([]);
     const [dropDownSelection, setDropDownSelection] = useState('');
+    const Filter = require('bad-words')
+    const filter = new Filter({placeHolder: 'x'});
 
     // This will track the users typing
     const handleUserInput = (e) => {
         const input = e.target.value;
         getAutocomplete(input);
         const lowerCaseInput = input.toLowerCase();
-        setUserInput(lowerCaseInput);
+        setUserInput(lowerCaseInput)
     }
 
     const userDropDownSelection = (e) => {
@@ -31,13 +33,27 @@ const SearchForm = (props) => {
             }
 
         }).then((res) => {
-            // sorry could someone please explain the purpose of the d here and then whats happening in the return✨✨✨✨✨
             const autoCompleteResults = res.data.map((d) => {
                 return {
                     word: d.word
                 }
             })
-            setAutoCompleteRes(autoCompleteResults);
+
+            console.log(autoCompleteResults)
+
+            const cleanResults = [];
+
+            autoCompleteResults.forEach((w) =>{
+                const cleanWord = filter.clean(w.word)
+                // console.log(cleanWord)
+                if(!cleanWord.includes("xx")){
+                    cleanResults.push(cleanWord)
+                }
+            })
+
+            console.log(cleanResults)
+            
+            setAutoCompleteRes(cleanResults);
         }).catch(() => {
             alert('Something went wrong. Please try again later!')
         })
@@ -56,7 +72,7 @@ const SearchForm = (props) => {
                         {autoCompleteRes.map((item) => {
                             
                             return (
-                                <option value={item.word} key={item.word}>{item.word} </option>
+                                <option value={item} key={item}>{item} </option>
                             )
                         })}
                     </datalist>
