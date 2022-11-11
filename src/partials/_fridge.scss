@@ -13,6 +13,8 @@
     flex-wrap: wrap;
   }
   li {
+    position: relative;
+    user-select: none;
     align-self: flex-start;
     border: 2px solid black;
     box-shadow: 1px 1px black;
@@ -27,12 +29,5 @@
       background-color: black;
       color: white;
     }
-  }
-
-
-  .draggableWord {
-      position:absolute; 
-      left:0; 
-      top:0; 
   }
 }
