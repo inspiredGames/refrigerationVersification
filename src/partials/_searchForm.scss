@@ -3,7 +3,7 @@
 
 .searchForm {
     display: flex;
-    gap: 1rem;
+    gap: 5%;
     @include desktop {
         flex-direction: column;
     }
@@ -24,7 +24,7 @@
     .searchTerm, .searchTheme{
         width: 100%;
         input, select {
-            width: 75%;
+            width: 80%;
             @include desktop {
                 width: 85%;
             }
