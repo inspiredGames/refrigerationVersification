@@ -1,3 +1,12 @@
+// FIXME:
+// extra code from dnd added bounds
+    // // get fridge by id
+    // const fridge = document.getElementById('fridge');
+    // //add id to fridge in jsx
+    // //get fridgePosition
+    // const fridgePosition = fridge.getBoundingClientRect();
+
+
 //TODO:
 
 //on Fridge.js Component
