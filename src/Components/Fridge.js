@@ -11,7 +11,6 @@ const Fridge = ({ userSelection }) => {
         return wordObject.word;
     });
 
-    
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
   };
@@ -24,48 +23,63 @@ const Fridge = ({ userSelection }) => {
     setUserId(localStorage.getItem("poetUserId"));
   }, []);
 
+// create variable to store poem innerHTML
+const [poemHtml, setPoemHtml] = useState("");
 
-  const [poemHtml, setPoemHtml] = useState("");
-  const database = getDatabase(firebaseConfig)
-  const dbRef = ref(database)
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const onChange = () => {
+  if (userSelection.length > 0) {
     const poem = document.querySelector(".poem");
     setPoemHtml(poem.innerHTML);
-    if (poemHtml !== "") {
-      const obj = {
-        key: userId,
-        storedPoemHtml: poemHtml,
-        user: {
-          uid: userId,
-        },
+    alert("Poem saved to your fridge!");
+  } else {
+    setPoemHtml("");
+    alert("You have no poem to save!");
+  }
+};
+
+
+
+    const database = getDatabase(firebaseConfig)
+    const dbRef = ref(database)
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (poemHtml !== "") {
+          const obj = {
+            key: userId,
+            storedPoemHtml: poemHtml,
+            user: {
+              uid: userId,
+            },
+            timestamp: Date.now(),
+          };
+          push(dbRef, obj);
+          alert("Your poem has been added to the gallery!");
+        } else {
+          alert("Please save your poem before submitting!");
+        }
       };
-      push(dbRef, obj);
-      alert("Your poem has been added to the gallery!");
-    } else {
-      alert("Please add a poem to the fridge before submitting!");
-    }
-  };
 
 
   return (
     <section className='fridge'>
-      <h2>this is the fridge!</h2>
+      <h2>this is the fridge! User must Save to setPoem first, then they can submit to Gallery</h2>
       <ul className='poem'>
         {
           userSelectionArr.map((item) => {
-            return(
-              <SelectedWords 
-              key={item} 
-              item={item}/>
-            )
+              return(
+                <SelectedWords 
+                key={item} 
+                item={item}/>
+              )
           })
         }
       </ul>
-      <button 
-      onClick={handleSubmit}
-      type="submit">Submit</button>
+      <div className='btnContainer'>
+        <button onClick={onChange}>Save Your Poem</button>
+        <button onClick={handleSubmit} type="submit">Add Saved Poem to Gallery</button>
+        </div>
     </section>  
   );
 };

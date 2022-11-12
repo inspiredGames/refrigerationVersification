@@ -18,9 +18,9 @@ const SelectedWords = ({item, handleRemoveWord}) => {
       // we need to figure out what to set the bounds to for different media queries
         bounds: {
             left: -200,
-            right: 300,
+            right: 200,
             top: -100,
-            bottom: 600,
+            bottom: 200,
         }
     });
 

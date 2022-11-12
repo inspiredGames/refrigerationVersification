@@ -14,8 +14,21 @@
     border: 2px solid hotpink;
     width: 300px;
     height: 300px;
+    margin: 100px 200px;
+    // text-align: center;
+    // margin: 0 auto;
   }
   li{
     position: relative;
   }
 }
+
+  .btnContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    flex-direction: space-evenly;
+    button {
+      margin: 1rem;
+    }
+  }

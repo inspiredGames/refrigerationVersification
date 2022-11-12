@@ -1,8 +1,3 @@
-//************************* */
-// SEE STYLES: CURRENTLY IN THE baseStyles partial
-// ************************* */
-
-
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useState, useEffect } from 'react';
@@ -20,7 +15,6 @@ const Gallery = () => {
         let dataKey = data[key];
         newState.push({
           key: key,
-          // poemString: dataKey.poemString,
           storedPoemHtml: dataKey.storedPoemHtml,
         });
       }
@@ -77,11 +71,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-
-
-
-
-
-
-// we might need to use ... and .join()
