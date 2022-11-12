@@ -1,27 +1,7 @@
-// FIXME:
-// extra code from dnd added bounds
-    // // get fridge by id
-    // const fridge = document.getElementById('fridge');
-    // //add id to fridge in jsx
-    // //get fridgePosition
-    // const fridgePosition = fridge.getBoundingClientRect();
+//************************* */
+// SEE STYLES: CURRENTLY IN THE baseStyles partial
+// ************************* */
 
-//TODO:
-
-//on Fridge.js Component
-  //onClick publish to gallery
-    //each user will be assigned a uid
-    //push user's Fridge.js poem to firebase database
-    //route user to gallery to view their poem with other stored poems in gallery
-  //STRETCH STRETCH GOAL user can update their UID to a unique display name 
-
-  //figure out how to capture an image of the poem and store it in the database
-  //figure out how to store the poems in the database
-  //figure out how to retrieve the poems from the database
-  //figure out how to display the poems on the gallery page
-
-        //**** POEM STRING WOULD MOST LIKELY BE BROKEN DOWN TO INDIVIDUAL WORDS TO DISPLAY THE POEM AS MAGNETS */
-          //OR STRUCTURE THE FIREBASE DATA TO STORE THE HTML FROM EACH FRIDGE POEM
 
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -40,7 +20,8 @@ const Gallery = () => {
         let dataKey = data[key];
         newState.push({
           key: key,
-          poemString: dataKey.poemString,
+          // poemString: dataKey.poemString,
+          storedPoemHtml: dataKey.storedPoemHtml,
         });
       }
       setPoems(newState);
@@ -50,17 +31,47 @@ const Gallery = () => {
   return (
     <section className="gallery">
       <h2>Beautiful Gallery</h2>
-      <ul>
-        {poems.length > 0 ? poems.map(({ key, poemString }) => {
+      <div className="cardContainer">     
+        {
+        poems.length > 0 ? poems.map(({ key, storedPoemHtml }) => {
           return (
-            <li key={key}>
-              <div className="galleryPoem">
-                <p>{poemString}</p>
-              </div>
-            </li>
-          );
-        }) : <p>There are no poems in the gallery</p>}
+            <div className="card" key={key}>
+              <ul 
+                dangerouslySetInnerHTML={{__html: storedPoemHtml}}
+                className="galleryPoem"></ul>
+        </div>
+            );
+          }) : <p>There are no poems in the gallery</p>
+          }
+
+        {/* SIMULATED POEM CARD WITH THE SAME LI POSITIONS 
+          ADDED FLEXBOX TO CARD CONTAINER TO DISPLAY CARDS IN A ROW */}
+{/* 
+      <div className="card">
+              <ul>
+        <li style={{
+          top: "115px", 
+          left: "-50px",
+          touchAction: "none", 
+        }}>
+          <p>give</p>
+        </li>
+        <li style={{
+          top: "79px", 
+          left: "27px"
+        }}>
+          <p>springtime</p>
+        </li>
+        <li style={{
+          top: "46px", 
+          left: "-108px",
+          touchAction: "none",
+        }}>
+          <p>arise</p>
+        </li>
       </ul>
+      </div> */}
+      </div>
     </section>
   );
 };

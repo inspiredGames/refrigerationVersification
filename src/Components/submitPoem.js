@@ -1,3 +1,6 @@
+// move submit button to a new component
+
+
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, push } from "firebase/database";
 
@@ -59,8 +62,6 @@ const Fridge = ({ userSelection }) => {
               return(
                 <SelectedWords 
                 key={item} 
-                // value={newPoem}
-                // onChange={onChange}
                 item={item}/>
               )
           })
