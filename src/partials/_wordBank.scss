@@ -1,9 +1,14 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .displayWords {
   display: flex;
   margin-top: 1rem;
   gap: 1rem;
+  @include desktop {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .wordBank {
@@ -16,7 +21,7 @@
     }
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
   }
   .associatedWords,
   .helperWordBank {
@@ -31,6 +36,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0.5rem;
+  margin-top: 0;
   li {
     user-select: none;
     border: 2px solid black;

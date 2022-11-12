@@ -1,9 +1,37 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .searchForm {
     display: flex;
-    flex-direction: row;
+    gap: 1rem;
+    @include desktop {
+        flex-direction: column;
+    }
     justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
+    @include mobile {
+        text-align: center;
+    }
+    .flexForm{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        @include mobile {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+    .searchTerm, .searchTheme{
+        width: 100%;
+        input, select {
+            width: 75%;
+            @include desktop {
+                width: 85%;
+            }
+            @include mobile {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
 }
