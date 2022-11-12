@@ -7,7 +7,6 @@ const SelectedWords = ({item, handleRemoveWord}) => {
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });
 
     const bind = useDrag((params) => {
-      console.log(params, 'params');
         setPoemWord({
             x: params.offset[0],
             y: params.offset[1],
