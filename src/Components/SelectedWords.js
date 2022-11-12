@@ -26,14 +26,14 @@ const SelectedWords = ({item, handleRemoveWord}) => {
 
     return (
         <li 
-          {...bind()} 
-          style={{ 
-            top: poemWord.y,
-            left: poemWord.x,
-            touchAction: 'none',
-          }}
-          onDoubleClick={(e) => {handleRemoveWord(e.target.textContent)}}>
-            <p>{item}</p>
+            {...bind()} 
+            style={{ 
+                top: poemWord.y,
+                left: poemWord.x,
+                touchAction: 'none',
+            }}
+            onDoubleClick={(e) => {handleRemoveWord(e.target.textContent)}}>
+                <p>{item}</p>
         </li>
     );
 };

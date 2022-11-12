@@ -17,28 +17,10 @@
   //STRETCH STRETCH GOAL user can update their UID to a unique display name 
 
 
-
-// Galley.js 
-// create firebase.js
-  //- link firebase and config
-
-// create firebase project and realtime database
-  //decide on how we'd like to structure our data and how to store the poems
-  
-  // create variables
-    //state variable
-      // const [poems, setPoems] = useState([]);
-  //variable to hold database
-    // const database = getDatabase(firebaseConfig)
-  //variable to hold the database reference
-  // const dbRef = ref(database)
-
-// render thoughts from firebase
-  // useEffect()
-    //get values from firebase
-    //create a newState array variable to push the firebase data into as an object
-    //loop thru data
-    //setPoems(newState);
+  //figure out how to capture an image of the poem and store it in the database
+  //figure out how to store the poems in the database
+  //figure out how to retrieve the poems from the database
+  //figure out how to display the poems on the gallery page
 
   //return()
     //section.gallery
@@ -49,15 +31,54 @@
         //**** POEM STRING WOULD MOST LIKELY BE BROKEN DOWN TO INDIVIDUAL WORDS TO DISPLAY THE POEM AS MAGNETS */
           //OR STRUCTURE THE FIREBASE DATA TO STORE THE HTML FROM EACH FRIDGE POEM
 
-  // we might need to use ... and .join()
-    
+import firebaseConfig from '../firebase';
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useState, useEffect } from 'react';
 
 const Gallery = () => {
+  const [poems, setPoems] = useState([]);
+  const database = getDatabase(firebaseConfig)
+  const dbRef = ref(database)
+
+  useEffect(() => {
+    onValue(dbRef, (res) => {
+      const data = res.val();
+      const newState = [];
+      for (let key in data) {
+        let dataKey = data[key];
+        newState.push({
+          key: key,
+          poem: dataKey.poem,
+        });
+      }
+      setPoems(newState);
+    });
+  }, []);
+
   return (
     <div className="gallery">
       <h2>Beautiful Gallery</h2>
+      <ul>
+        {poems.length > 0 ? poems.map((poem) => {
+          return (
+            <li key={poem.key}>
+              <div className="galleryPoem">
+                <p>{poem.poem}</p>
+              </div>
+            </li>
+          );
+        }) : <p>There are no poems in the gallery</p>}
+      </ul>
     </div>
   );
 };
 
 export default Gallery;
+
+
+
+
+
+
+
+// we might need to use ... and .join()
