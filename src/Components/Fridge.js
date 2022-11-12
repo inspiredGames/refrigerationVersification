@@ -10,7 +10,7 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   return (
     <div className='fridge'>
         <h2 >this is the fridge!</h2>
-        <ul>
+        <ul className='words'>
           {
             userSelectionArr.map((item) => {
                 return(

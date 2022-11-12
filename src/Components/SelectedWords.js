@@ -23,7 +23,6 @@ const SelectedWords = ({item, handleRemoveWord}) => {
             left: poemWord.x,
             touchAction: 'none',
           }}
-          className='words'
           onDoubleClick={(e) => {handleRemoveWord(e.target.textContent); handleClick(e)}}
         >{item}</li>
     )
