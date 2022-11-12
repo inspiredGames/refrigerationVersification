@@ -7,6 +7,13 @@
   height: 100vh;
   width: 100%;
   text-align: center;
+  ul {
+    //set this as absolute so list items can be positioned relative to it
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    // border: 2px solid hotpink;
+  }
   li{
     position: relative;
   }

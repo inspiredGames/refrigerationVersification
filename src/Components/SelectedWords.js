@@ -1,32 +1,42 @@
 import { useState } from 'react';
 import { useDrag } from '@use-gesture/react';
 
-const SelectedWords = ({item, handleRemoveWord}) => {
+const SelectedWords = ({item, handleRemoveWord, }) => {
+
 
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });
-    const bindPoemWordPos = useDrag( (params) => {
-        setPoemWord({ 
-          x: params.offset[0], 
-          y: params.offset[1] 
-        });
-      });
 
-    const handleClick = (e) => {
-        console.log(e)
-    }
+    const bind = useDrag((params) => {
+      console.log(params, 'params');
+        setPoemWord({
+            x: params.offset[0],
+            y: params.offset[1],
+        });
+    }, {
+
+// *** SEE _fridge.scss for the styles that are applied to the "ul" for poemWord ***
+      // list items are positioned absolute, so we need to set the bounds to the parent element which we have set ul as position relative
+      // we need to figure out what to set the bounds to for different media queries
+        bounds: {
+            left: -200,
+            right: 300,
+            top: -100,
+            bottom: 600,
+        }
+    });
 
     return (
         <li 
-          {...bindPoemWordPos()} 
-          style={{
+          {...bind()} 
+          style={{ 
             top: poemWord.y,
             left: poemWord.x,
             touchAction: 'none',
           }}
-          className='words'
-          onDoubleClick={(e) => {handleRemoveWord(e.target.textContent); handleClick(e)}}
-        >{item}</li>
-    )
-}
+          onDoubleClick={(e) => {handleRemoveWord(e.target.textContent)}}>
+            <p>{item}</p>
+        </li>
+    );
+};
 
 export default SelectedWords;
