@@ -6,7 +6,6 @@
     // //get fridgePosition
     // const fridgePosition = fridge.getBoundingClientRect();
 
-
 //TODO:
 
 //on Fridge.js Component
@@ -16,18 +15,11 @@
     //route user to gallery to view their poem with other stored poems in gallery
   //STRETCH STRETCH GOAL user can update their UID to a unique display name 
 
-
   //figure out how to capture an image of the poem and store it in the database
   //figure out how to store the poems in the database
   //figure out how to retrieve the poems from the database
   //figure out how to display the poems on the gallery page
 
-  //return()
-    //section.gallery
-    //ul
-      //write ternary operator to if there are poems
-      //than map the poems and return poems as li's
-        //each li can have a div for stored poem
         //**** POEM STRING WOULD MOST LIKELY BE BROKEN DOWN TO INDIVIDUAL WORDS TO DISPLAY THE POEM AS MAGNETS */
           //OR STRUCTURE THE FIREBASE DATA TO STORE THE HTML FROM EACH FRIDGE POEM
 
@@ -37,8 +29,8 @@ import { useState, useEffect } from 'react';
 
 const Gallery = () => {
   const [poems, setPoems] = useState([]);
-  const database = getDatabase(firebaseConfig)
-  const dbRef = ref(database)
+  const database = getDatabase(firebaseConfig);
+  const dbRef = ref(database);
 
   useEffect(() => {
     onValue(dbRef, (res) => {
@@ -48,28 +40,28 @@ const Gallery = () => {
         let dataKey = data[key];
         newState.push({
           key: key,
-          poem: dataKey.poem,
+          poemString: dataKey.poemString,
         });
       }
       setPoems(newState);
     });
-  }, []);
+  }, [dbRef]);
 
   return (
-    <div className="gallery">
+    <section className="gallery">
       <h2>Beautiful Gallery</h2>
       <ul>
-        {poems.length > 0 ? poems.map((poem) => {
+        {poems.length > 0 ? poems.map(({ key, poemString }) => {
           return (
-            <li key={poem.key}>
+            <li key={key}>
               <div className="galleryPoem">
-                <p>{poem.poem}</p>
+                <p>{poemString}</p>
               </div>
             </li>
           );
         }) : <p>There are no poems in the gallery</p>}
       </ul>
-    </div>
+    </section>
   );
 };
 
