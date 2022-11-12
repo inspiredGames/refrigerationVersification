@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDrag } from '@use-gesture/react';
 
-const SelectedWords = ({item, handleRemoveWord, }) => {
+const SelectedWords = ({item, handleRemoveWord}) => {
 
 
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });

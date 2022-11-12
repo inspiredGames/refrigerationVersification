@@ -10,9 +10,10 @@
   ul {
     //set this as absolute so list items can be positioned relative to it
     position: absolute;
+    //***For Testing purposes, I've added a border***
+    // border: 2px solid hotpink;
     width: 80%;
     height: 90%;
-    // border: 2px solid hotpink;
   }
   li{
     position: relative;
