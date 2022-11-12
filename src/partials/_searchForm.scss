@@ -3,7 +3,7 @@
 
 .searchForm {
     display: flex;
-    gap: 5%;
+    gap: 3%;
     @include desktop {
         flex-direction: column;
     }

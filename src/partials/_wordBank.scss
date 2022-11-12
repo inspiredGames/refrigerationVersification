@@ -4,7 +4,7 @@
 .displayWords {
   display: flex;
   margin-top: 1rem;
-  gap: 1rem;
+  gap: 3%;
   @include desktop {
     flex-direction: column;
     gap: 0;
