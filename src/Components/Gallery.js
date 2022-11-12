@@ -37,34 +37,6 @@ const Gallery = () => {
             );
           }) : <p>There are no poems in the gallery</p>
           }
-
-        {/* SIMULATED POEM CARD WITH THE SAME LI POSITIONS 
-          ADDED FLEXBOX TO CARD CONTAINER TO DISPLAY CARDS IN A ROW */}
-{/* 
-      <div className="card">
-              <ul>
-        <li style={{
-          top: "115px", 
-          left: "-50px",
-          touchAction: "none", 
-        }}>
-          <p>give</p>
-        </li>
-        <li style={{
-          top: "79px", 
-          left: "27px"
-        }}>
-          <p>springtime</p>
-        </li>
-        <li style={{
-          top: "46px", 
-          left: "-108px",
-          touchAction: "none",
-        }}>
-          <p>arise</p>
-        </li>
-      </ul>
-      </div> */}
       </div>
     </section>
   );

@@ -1,6 +1,3 @@
-// move submit button to a new component
-
-
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, push } from "firebase/database";
 
@@ -8,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import SelectedWords from "./SelectedWords";
 
-const Fridge = ({ userSelection }) => {
+const SubmitPoem = ({ userSelection }) => {
 
     const userSelectionArr = userSelection.map((wordObject) => {
         return wordObject.word;
@@ -26,37 +23,83 @@ const Fridge = ({ userSelection }) => {
     setUserId(localStorage.getItem("poetUserId"));
   }, []);
 
+// create variable to store poem innerHTML
+const [poemHtml, setPoemHtml] = useState("");
 
-    const [newPoem, setNewPoem] = useState("");
-    const database = getDatabase(firebaseConfig)
-    const dbRef = ref(database)
-    const handleSubmit = (e) => {
-      console.log("submitting");
-        e.preventDefault();
-        if (poemString !== "") {
+
+// const onChange = () => {
+//   if (userSelection.length > 0) {
+//     const poem = document.querySelector(".poem");
+//     setPoemHtml(poem.innerHTML);
+//     alert("Poem saved to your fridge!");
+//   } else {
+//     setPoemHtml("");
+//     alert("You have no poem to save!");
+//   }
+// };
+
+
+
+// setPoemHtml to poem.innerHTML when user clicks handleSubmit and push to firebase
+const handleSubmit = (e) => {
+    e.preventDefault();
+  if (poemHtml !== "") {
           const obj = {
             key: userId,
-            poemString: poemString,
+            storedPoemHtml: poemHtml,
             user: {
               uid: userId,
             },
+            timestamp: Date.now(),
           };
           push(dbRef, obj);
           alert("Your poem has been added to the gallery!");
-          //TODO:route user to gallery
         } else {
-          alert("Please add a poem to the fridge before submitting!");
+          alert("Please save your poem before submitting!");
         }
-      };
+};
+
+// useEffect to set poemHtml to the innerHTML of the poem div when handleSubmit is called
+
+useEffect(() => {
+  if (userSelection.length > 0) {
+    const poem = document.querySelector(".poem");
+    setPoemHtml(poem.innerHTML);
+    // alert("Poem saved to your fridge!");
+  } else {
+    setPoemHtml("");
+    // alert("You have no poem to save!");
+  }
+}, [userSelection]);
 
 
-      // create a function that will take the userSelectionArr and turn it into a string and store it in a variable to push to the database
-      const poemString = userSelectionArr.join(" ");
+
+    const database = getDatabase(firebaseConfig)
+    const dbRef = ref(database)
+
+    // const handleSubmit1 = (e) => {
+    //     e.preventDefault();
+    //     if (poemHtml !== "") {
+    //       const obj = {
+    //         key: userId,
+    //         storedPoemHtml: poemHtml,
+    //         user: {
+    //           uid: userId,
+    //         },
+    //         timestamp: Date.now(),
+    //       };
+    //       push(dbRef, obj);
+    //       alert("Your poem has been added to the gallery!");
+    //     } else {
+    //       alert("Please save your poem before submitting!");
+    //     }
+    //   };
+
 
   return (
     <section className='fridge'>
-      <h2>this is the fridge!</h2>
-      <ul>
+      <h2>This is the fridge! User must Save to setPoem first, then they can submit to Gallery</h2>
+      <ul className='poem'>
         {
           userSelectionArr.map((item) => {
               return(
@@ -67,14 +110,12 @@ const Fridge = ({ userSelection }) => {
           })
         }
       </ul>
-      <ul>
-      <button 
-      style={{margin: '-20vh 0'}}
-      onClick={handleSubmit}
-      type="submit">Submit</button>
-      </ul>
+      <div className='btnContainer'>
+        {/* <button onClick={onChange}>Save Your Poem</button> */}
+        <button onClick={handleSubmit} type="submit">Add Saved Poem to Gallery</button>
+        </div>
     </section>  
   );
 };
 
-export default Fridge;
+export default SubmitPoem;

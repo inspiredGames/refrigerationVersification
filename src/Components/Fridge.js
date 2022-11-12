@@ -23,22 +23,17 @@ const Fridge = ({ userSelection }) => {
     setUserId(localStorage.getItem("poetUserId"));
   }, []);
 
-// create variable to store poem innerHTML
-const [poemHtml, setPoemHtml] = useState("");
-
-
-const onChange = () => {
-  if (userSelection.length > 0) {
-    const poem = document.querySelector(".poem");
-    setPoemHtml(poem.innerHTML);
-    alert("Poem saved to your fridge!");
-  } else {
-    setPoemHtml("");
-    alert("You have no poem to save!");
-  }
-};
-
-
+  const [poemHtml, setPoemHtml] = useState("");
+  const onChange = () => {
+    if (userSelection.length > 0) {
+      const poem = document.querySelector(".poem");
+      setPoemHtml(poem.innerHTML);
+      alert("Poem saved to your fridge!");
+    } else {
+      setPoemHtml("");
+      alert("You have no poem to save!");
+    }
+  };
 
     const database = getDatabase(firebaseConfig)
     const dbRef = ref(database)
@@ -61,7 +56,6 @@ const onChange = () => {
         }
       };
 
-
   return (
     <section className='fridge'>
       <h2>this is the fridge! User must Save to setPoem first, then they can submit to Gallery</h2>
@@ -79,7 +73,7 @@ const onChange = () => {
       <div className='btnContainer'>
         <button onClick={onChange}>Save Your Poem</button>
         <button onClick={handleSubmit} type="submit">Add Saved Poem to Gallery</button>
-        </div>
+      </div>
     </section>  
   );
 };
