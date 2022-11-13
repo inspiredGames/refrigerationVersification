@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import SelectedWords from "./SelectedWords";
 
-const Fridge = ({ userSelection }) => {
+const Fridge = ({ userSelection, handleRemoveWord }) => {
 
     const userSelectionArr = userSelection.map((wordObject) => {
         return wordObject.word;
@@ -64,7 +64,8 @@ const Fridge = ({ userSelection }) => {
           userSelectionArr.map((item) => {
               return(
                 <SelectedWords 
-                key={item} 
+                key={item}
+                handleRemoveWord={handleRemoveWord} 
                 item={item}/>
               )
           })
