@@ -17,6 +17,7 @@
   width: 100%;
   button {
     h2 {
+      color: $darkGreen;
       font-size: 1.5rem;
     }
     display: flex;
@@ -47,7 +48,7 @@
     background-color: white;
     color: black;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     &:hover {
       background-color: black;

@@ -20,7 +20,8 @@ function App() {
       <NavBar />
 
       <header>
-        <h1>Refrigeration Versification</h1>
+        <h1><div className="title">Refrigeration</div> 
+        <div className="title">Versification</div></h1>
       </header>
 
       <Routes>

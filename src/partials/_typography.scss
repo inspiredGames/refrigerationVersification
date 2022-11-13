@@ -10,7 +10,24 @@ body, button, input, select{
 }
 
 h1 {
+    padding-top: 2rem;
     font-weight: bold;
+    color: white;
+    .title{
+        border: 2px solid black;
+        box-shadow: 1px 1px black;
+        padding: 0.25rem;
+        margin: 0.2rem;
+        background-color: white;
+        color: black;
+        font-weight: 600;
+        // transform: rotate(30deg);
+    }
+}
+
+h2 {
+    color: white;
+    font-weight: 600;
 }
 
 button, input, select {
@@ -26,5 +43,9 @@ h1, h2, h3, h4, p {
 label{
     font-size: 1.5rem;
     color: white;
+}
+
+select{
+    color: rgb(26, 69, 67, 0.5);
 }
 
