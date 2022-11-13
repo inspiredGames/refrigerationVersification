@@ -74,7 +74,7 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   return (
     <section className='fridge'>
       <h2>this is the fridge! User must Save to setPoem first, then they can submit to Gallery</h2>
-      <ul className='poem word'>
+      <ul className='poem words'>
         {
           userSelectionArr.map((item) => {
               return(
