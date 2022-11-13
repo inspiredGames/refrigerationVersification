@@ -2,11 +2,13 @@ import './App.scss';
 import Main from './Components/Main';
 import {
   Routes,
-  Route
+  Route,
+  Navigate
 } from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import Gallery from './Components/Gallery';
 import About from './Components/About';
+import User from './Components/User';
 
 function App() {
 
@@ -18,13 +20,17 @@ function App() {
       <NavBar />
 
       <header>
-        <h1>Refrigeration Versification</h1>
+        <h1><div className="title title1">Refrigeration</div> 
+        <div className="title">Versification</div></h1>
       </header>
 
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/rv/:userId" element={<User />} />
+        <Route path="*" element={<Navigate to="/" />} />        
+
       </Routes>
 
 

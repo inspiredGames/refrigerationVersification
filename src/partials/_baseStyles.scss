@@ -1,9 +1,16 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .wrapper {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -15,8 +22,10 @@ img {
 body {
     background-color: $darkGreen;
 }
+
 a {
     text-decoration: none;
+    color: white;
 }
 
 li {
@@ -24,17 +33,23 @@ li {
 }
 
 h1 {
-    margin: 2rem auto;
+    margin: 4rem auto;
+    margin-top: 7rem;
+    @include mobile{
+        margin: 2rem auto;
+    }
     text-align: center;
 }
 
-button {
+button, input, select {
     border: none;
-    background-color: $lightGreen;
-    color: $darkGreen;
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
     border-radius: 5px;
+}
+
+button {
+    background-color: $lightGreen;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:hover {
@@ -42,35 +57,19 @@ button {
     }
 }
 
-input {
-    border: none;
+input, select {
     background-color: white;
-    color: $darkGreen;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin: .5rem;
-}
-
-select {
-    border: none;
-    background-color: white;
-    color: $darkGreen;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    margin: .5rem;
+    padding: 0.25rem 1rem;
+    margin: 0.5rem 0;
 }
 
 label {
-    color: white;
-    font-size: 1.5rem;
-    margin: .5rem;
+    margin: .5rem 0;
 }
 
 footer {
+    margin-top: auto;
     color: white;
-    padding: 1rem;
     text-align: center;
     a {
         color: $yellow
