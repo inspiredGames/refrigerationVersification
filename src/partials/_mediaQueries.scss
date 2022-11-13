@@ -1,25 +1,25 @@
 @use './variables' as *;
 
-@media (max-width: 1000px) {
-    /* Styles for smaller desktop and tablet devices go within this breakpoint */
-    .displayWords {
-        flex-direction: column;
-      }
+@mixin desktop {
+    @media (max-width: 1000px) {
+      @content;
+    }
 }
-
-@media (max-width: 750px) {
-    .searchForm{
-        flex-direction: column;
+  
+@mixin tablet {
+    @media (max-width: 750px) {
+        @content;
     }
 }
 
-@media (max-width: 480px) {
-    /* Styles for mobile devices go within this breakpoint */
-    nav{
-        padding: 0;
-    }
-    .searchForm{
-        text-align: center;
-        gap: 1rem;
+@mixin mobile {
+    @media (max-width: 480px) {
+        @content;
     }
 }
+
+//   @mixin smallTablet {
+//     @media (max-width: 620px) {
+//       @content;
+//     }
+//   }
