@@ -4,7 +4,7 @@ html {
     font-size: 100%;
 }
 
-body {
+body, button, input, select{
     font-family: 'Kanit', sans-serif;
     font-size: 1rem;
 }
@@ -12,3 +12,19 @@ body {
 h1 {
     font-weight: bold;
 }
+
+button, input, select {
+    color: $darkGreen;
+    font-size: 1.5rem;
+}
+
+h1, h2, h3, h4, p {
+    padding: 0;
+    margin: 0;
+}
+
+label{
+    font-size: 1.5rem;
+    color: white;
+}
+

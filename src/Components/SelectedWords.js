@@ -26,6 +26,7 @@ const SelectedWords = ({item, handleRemoveWord}) => {
 
     return (
         <li 
+
             {...bind()} 
             style={{ 
                 top: poemWord.y,
@@ -33,7 +34,7 @@ const SelectedWords = ({item, handleRemoveWord}) => {
                 touchAction: 'none',
             }}
             onDoubleClick={(e) => {handleRemoveWord(e.target.textContent)}}>
-                <p>{item}</p>
+                {item}
         </li>
     );
 };

@@ -1,19 +1,34 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .displayWords {
   display: flex;
   margin-top: 1rem;
-  gap: 1rem;
+  gap: 3%;
+  @include desktop {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .wordBank {
   display: flex;
   flex-direction: column;
   width: 100%;
+  button {
+    h2 {
+      font-size: 1.5rem;
+    }
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+  }
   .associatedWords,
   .helperWordBank {
     border: 1px solid $lightGreen;
     border-radius: 1rem;
+    height: 400px;
+    overflow: scroll;
   }
 }
 
@@ -21,6 +36,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0.5rem;
+  margin-top: 0;
   li {
     user-select: none;
     border: 2px solid black;
