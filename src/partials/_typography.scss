@@ -10,18 +10,20 @@ body, button, input, select{
 }
 
 h1 {
-    padding-top: 2rem;
-    font-weight: bold;
-    color: white;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     .title{
         border: 2px solid black;
-        box-shadow: 1px 1px black;
-        padding: 0.25rem;
-        margin: 0.2rem;
+        box-shadow: 3px 5px 5px black;
+        padding: 0.5rem;
+        margin: 0.5rem;
         background-color: white;
-        color: black;
-        font-weight: 600;
-        // transform: rotate(30deg);
+        rotate: -2deg;
+    }
+    .title1{
+        rotate: 2deg;
     }
 }
 

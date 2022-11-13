@@ -20,7 +20,7 @@ function App() {
       <NavBar />
 
       <header>
-        <h1><div className="title">Refrigeration</div> 
+        <h1><div className="title title1">Refrigeration</div> 
         <div className="title">Versification</div></h1>
       </header>
 
