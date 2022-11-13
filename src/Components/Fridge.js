@@ -1,3 +1,7 @@
+
+// import logo from "../assets/logo.jpeg";
+// import fridge from "../assets/fridgeimgc.png";
+
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, push } from "firebase/database";
 
@@ -107,6 +111,7 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
       </div>
     </section>  
   );
+
 };
 
 export default Fridge;
