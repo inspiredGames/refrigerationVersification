@@ -1,0 +1,66 @@
+@use './variables' as *;
+
+.profileMagnet {
+    // background-color: $yellow;
+    background-color: white;
+    width: 40%;
+    border: 2px solid black;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 2%;
+
+}
+
+// would love to change h2/p text that's on the green background to be white/light grey
+h2 {
+    color: white;
+}
+
+.profileTop {
+    display: flex;
+
+    img {
+        max-height: 150px;
+        max-width: 150px;
+        border-radius: 60%;
+        margin-left: 20%;
+        margin: 5 20%;
+    }
+}
+
+.char {
+    margin-left: 10%;
+    rotate: 2deg;
+}
+
+.dana {
+    // margin-left: 50%;
+    rotate: 357deg;
+
+    h3 {
+        margin-left: 5%;
+    }
+
+    // img {
+    //     margin-top: 5%;
+    //     margin-left: 15%
+    // }
+}
+
+.jen {
+    margin-left: 8%;
+    rotate: 359deg;
+
+}
+
+.tina {
+    // margin-left: 40%;
+    rotate: 2deg;
+}
+
+.topRow,
+.bottomRow {
+    display: flex;
+}
+
+// h2 $yellow 
+// p white
