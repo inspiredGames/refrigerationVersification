@@ -1,53 +1,54 @@
-//TODO:
-
-//on Fridge.js Component
-  //onClick publish to gallery
-    //each user will be assigned a uid
-    //push user's Fridge.js poem to firebase database
-    //route user to gallery to view their poem with other stored poems in gallery
-  //STRETCH STRETCH GOAL user can update their UID to a unique display name 
-
-
-
-// Galley.js 
-// create firebase.js
-  //- link firebase and config
-
-// create firebase project and realtime database
-  //decide on how we'd like to structure our data and how to store the poems
-  
-  // create variables
-    //state variable
-      // const [poems, setPoems] = useState([]);
-  //variable to hold database
-    // const database = getDatabase(firebaseConfig)
-  //variable to hold the database reference
-  // const dbRef = ref(database)
-
-// render thoughts from firebase
-  // useEffect()
-    //get values from firebase
-    //create a newState array variable to push the firebase data into as an object
-    //loop thru data
-    //setPoems(newState);
-
-  //return()
-    //section.gallery
-    //ul
-      //write ternary operator to if there are poems
-      //than map the poems and return poems as li's
-        //each li can have a div for stored poem
-        //**** POEM STRING WOULD MOST LIKELY BE BROKEN DOWN TO INDIVIDUAL WORDS TO DISPLAY THE POEM AS MAGNETS */
-          //OR STRUCTURE THE FIREBASE DATA TO STORE THE HTML FROM EACH FRIDGE POEM
-
-  // we might need to use ... and .join()
-    
+import firebaseConfig from '../firebase';
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Gallery = () => {
+  const [poems, setPoems] = useState([]);
+  const database = getDatabase(firebaseConfig);
+  const dbRef = ref(database);
+
+  useEffect(() => {
+    onValue(dbRef, (res) => {
+      const data = res.val();
+      const newState = [];
+      for (let key in data) {
+        let dataKey = data[key];
+        let user = dataKey.user;
+        newState.push({
+          key: key,
+          storedPoemHtml: dataKey.storedPoemHtml,
+          title: dataKey.title,
+          userId: user.uid,
+          displayName: user.displayName,
+        });
+      }
+      setPoems(newState);
+    });
+  }, [dbRef]);
+
   return (
-    <div className="gallery">
+    <section className="gallery">
       <h2>Beautiful Gallery</h2>
-    </div>
+      <div className="cardContainer">     
+        {
+        poems.length > 0 ? poems.map(({ key, storedPoemHtml, displayName, userId, title }) => {
+          return ( 
+            <>
+              <h2>
+                {title ? title : "Untitled"} by <Link to={`/rv/${userId}`}> { displayName ? displayName : "Anonymous" }  </Link>
+                </h2>
+            <div className="card" key={key}>
+              <ul 
+                dangerouslySetInnerHTML={{__html: storedPoemHtml}}
+                className="galleryPoem"></ul>
+        </div>
+            </>
+            );
+          }) : <p>There are no poems in the gallery</p>
+          }
+      </div>
+    </section>
   );
 };
 

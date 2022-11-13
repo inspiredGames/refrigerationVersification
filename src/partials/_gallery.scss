@@ -1,0 +1,36 @@
+
+//FIXME: remember to remove borders that were for Testing purposes
+
+.cardContainer {
+  // border: 1px solid blue;
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: space-between;
+
+  .card {
+    border: 1px solid hotpink;
+    margin: 5rem 2rem;
+    padding: 10rem;
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    ul {
+      border: 1px solid red;
+      position: absolute;
+    }
+
+    li {
+      position: relative;
+      // margin: 1rem;
+      padding: 1px;
+    }
+  }
+  a {
+    color: orangered;
+    &:hover,
+    &:focus {
+      color: skyblue;
+    }
+  }
+}
