@@ -14,7 +14,7 @@
     border: 2px solid hotpink;
     width: 300px;
     height: 300px;
-    margin: 100px 200px;
+    margin: 50px 200px;
   }
   li{
     position: relative;
@@ -22,10 +22,13 @@
 }
 
   .btnContainer {
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-    flex-direction: space-evenly;
+    background-color: $darkGreen;
+    border-radius: 1rem;
+    margin: 50vh 1rem;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
     button {
       margin: 1rem;
     }

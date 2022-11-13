@@ -2,7 +2,7 @@
 //FIXME: remember to remove borders that were for Testing purposes
 
 .cardContainer {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   width: 80vw;
   display: flex;
   flex-wrap: wrap;
@@ -15,15 +15,22 @@
     display: flex;
     align-items: center;
     align-self: flex-start;
-    width: 100%;
     ul {
       border: 1px solid red;
       position: absolute;
-      margin: 0 25vw;
     }
 
     li {
       position: relative;
+      // margin: 1rem;
+      padding: 1px;
+    }
+  }
+  a {
+    color: orangered;
+    &:hover,
+    &:focus {
+      color: skyblue;
     }
   }
 }

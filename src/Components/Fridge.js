@@ -24,7 +24,9 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   }, []);
 
   const [poemHtml, setPoemHtml] = useState("");
-  const onChange = () => {
+  const [displayName, setDisplayName] = useState("Anonymous");
+  const [title, setTitle] = useState("Untitled");
+  const handleChange = () => {
     if (userSelection.length > 0) {
       const poem = document.querySelector(".poem");
       setPoemHtml(poem.innerHTML);
@@ -44,8 +46,10 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
           const obj = {
             key: userId,
             storedPoemHtml: poemHtml,
+            title: title,
             user: {
               uid: userId,
+              displayName: displayName,
             },
             timestamp: Date.now(),
           };
@@ -55,6 +59,13 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
           alert("Please save your poem before submitting!");
         }
       };
+
+  const handleUserInput = (e) => {
+      setDisplayName(e.target.value);
+  };
+  const handleTitleInput = (e) => {
+      setTitle(e.target.value);
+  };
 
   return (
     <section className='fridge'>
@@ -72,8 +83,27 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
         }
       </ul>
       <div className='btnContainer'>
-        <button onClick={onChange}>Save Your Poem</button>
+        <button onClick={handleChange}>Save Your Poem</button>
+        {/* add input text to update display name */}
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="displayName">Enter a Display Name:</label>
+          <input
+            type="text"
+            id="displayName"
+            placeholder='"Anonymous"'
+            value={displayName}
+            onChange={handleUserInput}
+          />
+          <label htmlFor="title">Enter a Title:</label>
+          <input
+            type="text"
+            id="title"
+            placeholder='"Untitled"'
+            value={title}
+            onChange={handleTitleInput}
+          />
         <button onClick={handleSubmit} type="submit">Add Saved Poem to Gallery</button>
+        </form>
       </div>
     </section>  
   );
