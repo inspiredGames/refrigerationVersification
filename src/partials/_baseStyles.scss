@@ -15,8 +15,10 @@ img {
 body {
     background-color: $darkGreen;
 }
+
 a {
     text-decoration: none;
+    color: white;
 }
 
 li {
@@ -46,7 +48,7 @@ button {
 
 input, select {
     background-color: white;
-    padding: 0.23rem;
+    padding: 0.25rem 1rem;
     margin: 0.5rem 0;
 }
 

@@ -5,34 +5,37 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     li {
-          border: 2px solid black;
-          margin: 0.5rem;
-          padding: 0.5rem;
-          border-radius: 0.5rem;
-          background-color: white;
-          color: $darkGreen;
-          font-size: 1.5rem;
-          font-weight: 700;
-          margin: 1rem;
-          cursor: pointer;
-          padding: 3% 8%;
-          margin-left: -60%;
-          box-shadow: 3px 5px 5px black;
-              &:hover {
-                background-color: $yellow;
-                color: black;
-              }
-          a {
-        color:black;
+      border: 2px solid black;
+      margin: 0.5rem;
+      padding: 0.5rem;
+      background-color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 1rem;
+      cursor: pointer;
+      padding: 3% 8%;
+      margin-left: -60%;
+      box-shadow: 3px 5px 5px black;
+
+      &:hover {
+        background-color: $yellow;
+        color: black;
+      }
+
+      a {
+        color: black;
         text-align: center;
         font-size: 1.5rem;
         font-weight: 500;
         text-transform: uppercase;
+
         &:hover,
         &:focus {
           color: black;
@@ -46,6 +49,7 @@ nav {
 .logo {
   max-width: 100%;
   margin: 1rem;
+
   img {
     width: 50px;
     margin-top: 20%;
