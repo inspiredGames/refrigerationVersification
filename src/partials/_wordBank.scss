@@ -1,33 +1,56 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .displayWords {
   display: flex;
-  flex-direction: row;
+  margin-top: 1rem;
+  gap: 3%;
+  @include desktop {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .wordBank {
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  width: 100%;
+  button {
+    h2 {
+      font-size: 1.5rem;
+    }
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+  }
   .associatedWords,
   .helperWordBank {
-    display: flex;
-    flex-wrap: wrap;
     border: 1px solid $lightGreen;
-    li {
-      border: 2px solid $lightGreen;
-      margin: 0.5rem;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      background-color: $yellow;
-      color: $darkGreen;
-      font-size: 1.5rem;
-      font-weight: 700;
-      cursor: pointer;
-      &:hover {
-        background-color: white;
-        color: black;
-      }
+    border-radius: 1rem;
+    height: 400px;
+    overflow: scroll;
+  }
+}
+
+.words{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  margin-top: 0;
+  li {
+    user-select: none;
+    border: 2px solid black;
+    box-shadow: 1px 1px black;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background-color: white;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+      color: white;
     }
   }
 }

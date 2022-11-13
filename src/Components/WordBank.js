@@ -1,20 +1,28 @@
 import Fridge from "./Fridge";
+import useWindowDimensions from '../hooks/useWindowDimensions';
 import { useState, useEffect } from 'react';
 
 const WordBank = ({ words, searchQuery }) => {
 
     console.log('wordbank has rendered');
 
-    const [selectedWord, setSelectedWords] = useState('');
     const [wordBank, setWordBank] = useState([]);
     const [userSelection, setUserSelection] = useState([]);
-    const [removeWord, setRemoveWord] = useState('');
     const [ showWords, setShowWords ] = useState(false);
     const [ showHelperWords, setShowHelperWords ] = useState(false);
 
     const [helperWordBank, setHelperWordBank] = useState([
         'a', 'al', 'ance', 'are', 'ation', 'tion', 'an', 'and', 'sion', 'as', 'at', 'ery', 'ist', 'ity', 'ment', 'by', 'else', 'ness', 'for', 'from', 'th', 'if', 'in', 'ty', 'not', 'of', 'off', 'on', 'onto', 'or', 'out', 'able', 'ible', 'the', 'to', 'too', 'with', 'ary', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'is', 'it', 'its', 'ious', 'may', 'me', 'ful', 'ic', 'my', 'ous',  'y', 'ical', 'ly', 'our', 'ours', 'ish', 'she', 'should', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
     ]);
+
+    const { width } = useWindowDimensions();
+
+    useEffect(() => {
+        if (width >= 750) {
+            setShowWords(true);
+            setShowHelperWords(true);
+        }
+    }, [])
 
     useEffect(() => {
         const newWordBankArray = [];
@@ -38,8 +46,7 @@ const WordBank = ({ words, searchQuery }) => {
 
     const handleClick = (e, array) => {
         
-        const newUserSelection = userSelection;
-        console.log(e.target);
+        const newUserSelection = userSelection.map(x => x);
 
         if (array === 'apiWords') {
             // get index number of clickedword from wordBank array
@@ -72,11 +79,12 @@ const WordBank = ({ words, searchQuery }) => {
 
         // why do we need this line of code to make everything work even though we aren't using it 
         // it console logs the clicked word only after another word has been clicked
-        setSelectedWords(e.target.textContent);
+        // setSelectedWords(e.target.textContent);
     };
 
     const handleRemoveWord = (wordToRemove) => {
-        const newUserSelection = userSelection;
+        console.log(wordToRemove)
+        const newUserSelection = userSelection.map(x => x);
         const isClickedWord = (element) => element.word === wordToRemove ;
         const indexNum = newUserSelection.findIndex(isClickedWord);
 
@@ -95,27 +103,25 @@ const WordBank = ({ words, searchQuery }) => {
             newWordBankArray.push(wordToRemove);
             setHelperWordBank(newWordBankArray);
         }
-
-        setRemoveWord(wordToRemove);
     }
 
     return (
         <section className="displayWords">
             <div className="wordBank">
-                <h2>Words associated with {searchQuery}:</h2>
+                    
                 <button onClick={() => setShowWords(!showWords)}>
+                    <h2>Words associated with {searchQuery}:</h2>
                     {
                     showWords 
                         ? <i className="fa-solid fa-chevron-up"></i> 
                         : <i className="fa-solid fa-chevron-down"></i>
                     }
-                </button>
+                </button> 
                 
-
                 {
                     showWords 
                         ? (
-                            <ul className="associatedWords">
+                            <ul className="associatedWords words">
                                 {
                                     wordBank.length > 0
                                     ? (wordBank.map((wordObject) => {
@@ -132,18 +138,19 @@ const WordBank = ({ words, searchQuery }) => {
                 }
                 
 
-                <h2>Connecting Words</h2>
                 <button onClick={() => setShowHelperWords(!showHelperWords)}>
+                    <h2>Connecting Words</h2>
                     {
                     showHelperWords 
                         ? <i className="fa-solid fa-chevron-up"></i> 
                         : <i className="fa-solid fa-chevron-down"></i>
                     }
                 </button>
+
                 {
                     showHelperWords
                         ? (
-                            <ul className="helperWordBank">
+                            <ul className="helperWordBank words">
                             {
                                 helperWordBank.map((word) => {
                                     return (

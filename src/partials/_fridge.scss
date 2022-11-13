@@ -1,8 +1,8 @@
 @use './variables' as *;
 
 .fridge {
+  position: relative;
   background-color: rgb(241, 231, 213);
-  margin: 1rem;
   border-radius: 1rem;
   height: 100vh;
   width: 100%;
@@ -17,26 +17,19 @@
   // transform: scale(.9);
   
   ul {
-    display: flex;
-    flex-wrap: wrap;
+    //set this as absolute so list items can be positioned relative to it
+    position: absolute;
+    //***For Testing purposes, I've added a border***
+    border: 2px solid hotpink;
+    width: 300px;
+    height: 300px;
+    margin: 50px 200px;
   }
-  li {
-    align-self: flex-start;
-    border: 2px solid black;
-    box-shadow: 1px 1px black;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    background-color: white;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-    &:hover {
-      background-color: black;
-      color: white;
-    }
+  li{
+    position: relative;
   }
 }
+
 
 li:nth-child(even) {
   transform: rotate(2deg);
@@ -44,3 +37,17 @@ li:nth-child(even) {
 li:nth-child(odd) {
   transform: rotate(359deg);
 }
+
+  .btnContainer {
+    background-color: $darkGreen;
+    border-radius: 1rem;
+    margin: 50vh 1rem;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    button {
+      margin: 1rem;
+    }
+  }
+

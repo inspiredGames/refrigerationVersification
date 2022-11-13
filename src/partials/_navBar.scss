@@ -1,12 +1,13 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
   ul {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     li {
           border: 2px solid black;

@@ -60,39 +60,43 @@ const SearchForm = (props) => {
     }
 
     return (
-        <div className='searchForm flexContainer'>
+        <div className='searchForm'>
             <div className='searchTerm'>
                 <form onSubmit={(e) => {
                     props.handleGetWords(e, userInput)
                     setUserInput('')
                 }}>
                     <label htmlFor="searchBar">Enter a word:</label>
-                    <input type="text" id="searchBar" list="searchList" placeholder='try "animals"' onChange={(e) => { handleUserInput(e) }} value={userInput} required/>
-                    <datalist id="searchList">
-                        {autoCompleteRes.map((item) => {
-                            
-                            return (
-                                <option value={item} key={item}>{item} </option>
-                            )
-                        })}
-                    </datalist>
-                    <button>Submit</button>
+                    <div className='flexForm'>
+                        <input type="text" id="searchBar" list="searchList" placeholder='try "animals"' onChange={(e) => { handleUserInput(e) }} value={userInput} required/>
+                        <datalist id="searchList">
+                            {autoCompleteRes.map((item) => {
+                                
+                                return (
+                                    <option value={item} key={item}>{item} </option>
+                                )
+                            })}
+                        </datalist>
+                        <button>Submit</button>
+                    </div>
                 </form>
             </div>
-            <div>
+            <div className='searchTheme'>
                 <form onSubmit={(e) => {
                     props.handleGetWords(e, dropDownSelection);
                     setDropDownSelection('');
                 }}>
                     <label htmlFor='themes'>Or Select a Theme:</label>
-                    <select name="themes" id="themes" required onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
-                        <option value='' disabled>select a theme</option>
-                        <option value="winter">Winter</option>
-                        <option value="spring">Spring</option>
-                        <option value="summer">Summer</option>
-                        <option value="fall">Fall</option>
-                    </select>
-                    <button>Submit</button>
+                    <div className='flexForm'>
+                        <select name="themes" id="themes" required onChange={(e) => { userDropDownSelection(e) }} value={dropDownSelection}>
+                            <option value='' disabled>select a theme</option>
+                            <option value="winter">Winter</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="fall">Fall</option>
+                        </select>
+                        <button>Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
