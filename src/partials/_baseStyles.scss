@@ -1,9 +1,16 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .wrapper {
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
+}
+
+main{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 img {
@@ -15,8 +22,10 @@ img {
 body {
     background-color: $darkGreen;
 }
+
 a {
     text-decoration: none;
+    color: white;
 }
 
 li {
@@ -31,7 +40,11 @@ li:nth-child(odd) {
 }
 
 h1 {
-    margin: 2rem auto;
+    margin: 4rem auto;
+    margin-top: 7rem;
+    @include mobile{
+        margin: 2rem auto;
+    }
     text-align: center;
 }
 
@@ -53,7 +66,7 @@ button {
 
 input, select {
     background-color: white;
-    padding: 0.23rem;
+    padding: 0.25rem 1rem;
     margin: 0.5rem 0;
 }
 
@@ -62,6 +75,10 @@ label {
 }
 
 footer {
+    padding-top: 20px;
     color: white;
     text-align: center;
+    a {
+        color: $yellow
+    }
 }

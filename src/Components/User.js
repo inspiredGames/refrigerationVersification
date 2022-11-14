@@ -38,7 +38,7 @@ const User = () => {
         {
           userPoems ? userPoems.map(({ key, storedPoemHtml, displayName, title }) => {
             return (
-              <>
+              <div className="poemContainer">
                 <h2>
                 {title ? title : "Untitled"} by { displayName ? displayName : "Anonymous" }
                   </h2>
@@ -48,10 +48,10 @@ const User = () => {
                   className="galleryPoem"
                   ></ul>
               </div>
-                  </>
+                  </div>
             );
           }
-          ) : <p>There are no poems in the gallery</p>
+          ) : <h3>Thanks for visiting the Gallery. There are no poems currently.</h3>
         }
       </div>
     </section>

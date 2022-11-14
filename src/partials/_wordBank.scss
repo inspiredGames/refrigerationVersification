@@ -17,6 +17,7 @@
   width: 100%;
   button {
     h2 {
+      color: $darkGreen;
       font-size: 1.5rem;
     }
     display: flex;
@@ -59,6 +60,7 @@
   flex-wrap: wrap;
   padding: 0.5rem;
   margin-top: 0;
+  align-items: center;
   li {
     user-select: none;
     border: 2px solid black;
@@ -68,11 +70,11 @@
     background-color: white;
     color: black;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     &:hover {
-      background-color: black;
-      color: white;
+      box-shadow: 5px 5px 5px black;
+      transform: rotate(5deg);
     }
   }
 }
