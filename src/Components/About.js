@@ -8,9 +8,9 @@ const About = () => {
     <>
       <section className="about">
         <div className="aboutIntro">
-          <h2>About Refrigeration Versification!</h2>
+          <h2>About Refrigeration Versification</h2>
           <p>Welcome to Refrigeration Versification, a virtual magnetic poetry app designed by Tina, Jen, Charlotte, and Dana from Juno College! This web-app works the same way Magnetic Poetry&#174; does in real life - for those of you who were lucky enough to have those sweet tiny magnets stuck to your fridge - but now with a few virtual-perks, of course! Enter a word and get an assortment of related words returned in the word bank, which you can mix and match with some connecting suffixes and transition words to get your poetry onto the fridge. You can even save your poem, as specifically-yours, or anonymously, to share with friends and family through our online-gallery! Try it yourself on our home page.</p>
-          <h2>About the Developers</h2>
+          <h2 className='h2About'>About the Developers</h2>
         </div>
 
         <div className="topRow">

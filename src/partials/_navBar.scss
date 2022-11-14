@@ -27,6 +27,7 @@ nav {
       &:hover {
         background-color: $yellow;
         color: black;
+        transform: scale(1.2);
       }
 
       a {

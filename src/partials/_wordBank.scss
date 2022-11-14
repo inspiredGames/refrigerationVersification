@@ -51,8 +51,8 @@
     font-weight: 600;
     cursor: pointer;
     &:hover {
-      background-color: black;
-      color: white;
+      box-shadow: 5px 5px 5px black;
+      transform: rotate(5deg);
     }
   }
 }

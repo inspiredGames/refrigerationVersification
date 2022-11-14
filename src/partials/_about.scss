@@ -5,16 +5,30 @@
     p {
         color: white;
         font-weight: 400;
+        border: 2px solid black;
+        box-shadow: 1px 1px black;
+        padding: 0.5rem;
+        background-color: $lightGreen;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 600;
+        border-radius: 5px;
     }
 
     h2 {
         font-size: 2rem;
-        margin: 8% 0;
+    }
+
+    .h2About {
+        margin-bottom: 30px;
     }
 
     p {
         font-size: 1.5rem;
-        margin-top: -2%;
+        margin: 30px auto 50px auto;
+        background-color: white;
+        width: 90%;
+        padding: 25px;
     }
 
 }
@@ -24,7 +38,6 @@
     border: 2px solid black;
     box-shadow: 2px 4px rgba(0, 0, 0, 0.8);
     margin: 2%;
-    
  
     h3 {
         margin-top: 10%;
@@ -40,7 +53,6 @@
 
     p {
         margin: 0% 8%;
-        font-size: 1rem;
     }
 
     i {
@@ -53,7 +65,6 @@
         }
     }
 }
-
 
 .profileTop {
     display: flex;
