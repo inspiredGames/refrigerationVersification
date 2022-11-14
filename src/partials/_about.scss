@@ -1,29 +1,79 @@
 @use './variables' as *;
 
+.aboutIntro {
+    h2, 
+    p {
+        color: white;
+        font-weight: 400;
+        border: 2px solid black;
+        box-shadow: 1px 1px black;
+        padding: 0.5rem;
+        background-color: $lightGreen;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .h2About {
+        margin-bottom: 30px;
+    }
+
+    p {
+        font-size: 1.5rem;
+        margin: 30px auto 50px auto;
+        background-color: white;
+        width: 90%;
+        padding: 25px;
+    }
+
+}
 .profileMagnet {
-    // background-color: $yellow;
     background-color: white;
-    width: 40%;
+    width: 60%;
     border: 2px solid black;
     box-shadow: 2px 4px rgba(0, 0, 0, 0.8);
     margin: 2%;
+ 
+    h3 {
+        margin-top: 10%;
+        font-size: 1.5rem;
+        color: $darkGreen;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+    
+    h2 {
+        color: white;
+    }
 
-}
+    p {
+        margin: 0% 8%;
+    }
 
-// would love to change h2/p text that's on the green background to be white/light grey
-h2 {
-    color: white;
+    i {
+        transform: scale(2);
+        margin: 5% 10%;
+        padding-left: 5%;
+        color: $darkGreen;
+        &:hover {
+            color: $lightGreen;
+        }
+    }
 }
 
 .profileTop {
     display: flex;
-
-    img {
+    img { 
+        padding-left: 4%;
         max-height: 150px;
         max-width: 150px;
         border-radius: 60%;
-        margin-left: 20%;
-        margin: 5 20%;
+        margin: 3% 4%;
     }
 }
 
@@ -33,27 +83,19 @@ h2 {
 }
 
 .dana {
-    // margin-left: 50%;
+    margin-bottom: 3%;
     rotate: 357deg;
-
-    h3 {
-        margin-left: 5%;
-    }
-
-    // img {
-    //     margin-top: 5%;
-    //     margin-left: 15%
-    // }
+    
 }
 
 .jen {
-    margin-left: 8%;
+    margin-left: 6%;
     rotate: 359deg;
-
+    margin-bottom: 3%;
 }
 
 .tina {
-    // margin-left: 40%;
+    
     rotate: 2deg;
 }
 
@@ -62,5 +104,3 @@ h2 {
     display: flex;
 }
 
-// h2 $yellow 
-// p white

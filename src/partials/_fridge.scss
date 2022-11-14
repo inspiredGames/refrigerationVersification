@@ -1,30 +1,21 @@
 @use './variables' as *;
 
 .fridge {
-  position: relative;
-  background-color: rgb(241, 231, 213);
+  background: rgb(244, 229, 203);
+  background: linear-gradient(90deg, rgba(244, 229, 203, 1) 0%, rgba(255, 255, 255, 1) 27%, #f4e5cb 100%);
   border-radius: 1rem;
-  height: 100vh;
+  height: 945px;
   width: 100%;
   text-align: center;
-  margin-top: 6%;
-
-  // background-image: url(../assets/smegss.jpeg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  
-  // transform: scale(.9);
+  position: relative;
   
   ul {
-    //set this as absolute so list items can be positioned relative to it
     position: absolute;
-    //***For Testing purposes, I've added a border***
-    // border: 2px solid hotpink;
-    // width: 300px;
-    // height: 300px;
+    width: 300px;
+    height: 300px;
     margin: 50px 200px;
   }
+  
   li {
     position: relative;
     // display: inline-block;
@@ -47,24 +38,37 @@
   }
 }
 
+.fridgeHandle {
+position: absolute;
+top: 475px;
+left: 10%;
+width: 100px;
+height: auto;
+  img {
+    display: block;
+  }
+}
 
 li:nth-child(even) {
   transform: rotate(2deg);
 }
+
 li:nth-child(odd) {
   transform: rotate(359deg);
 }
 
-  .btnContainer {
-    background-color: $darkGreen;
-    border-radius: 1rem;
-    margin: 50vh 1rem;
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    button {
-      margin: 1rem;
-    }
+.btnContainer {
+  background-color: $darkGreen;
+  border-radius: 1rem;
+  margin: 50vh 1rem;
+  display: none;
+
+  form {
+    display: flex;
+    flex-direction: column;
   }
 
+  button {
+    margin: 1rem;
+  }
+}

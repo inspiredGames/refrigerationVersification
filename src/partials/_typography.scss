@@ -6,11 +6,30 @@ html {
 
 body, button, input, select{
     font-family: 'Kanit', sans-serif;
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 
 h1 {
-    font-weight: bold;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .title{
+        border: 2px solid black;
+        box-shadow: 3px 5px 5px black;
+        padding: 0.5rem;
+        margin: 0.5rem;
+        background-color: white;
+        rotate: -2deg;
+    }
+    .title1{
+        rotate: 2deg;
+    }
+}
+
+h2 {
+    color: white;
+    font-weight: 600;
 }
 
 button, input, select {
@@ -26,5 +45,9 @@ h1, h2, h3, h4, p {
 label{
     font-size: 1.5rem;
     color: white;
+}
+
+select{
+    color: rgb(26, 69, 67, 0.5);
 }
 

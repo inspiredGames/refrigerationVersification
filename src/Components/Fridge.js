@@ -1,6 +1,6 @@
 
 // import logo from "../assets/logo.jpeg";
-// import fridge from "../assets/fridgeimgc.png";
+import fridgeHandle from "../assets/firdgehandle.jpg";
 
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, push } from "firebase/database";
@@ -73,8 +73,12 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
 
   return (
     <section className='fridge'>
-      <h2>this is the fridge! User must Save to setPoem first, then they can submit to Gallery</h2>
-      <ul className='poem'>
+      <div className='fridgeHandle'>
+      <img src={fridgeHandle} alt="headshot" />
+
+      </div>
+      {/* <h2>this is the fridge!</h2> */}
+      <ul className='poem words'>
         {
           userSelectionArr.map((item) => {
               return(

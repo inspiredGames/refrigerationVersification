@@ -5,20 +5,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 }
 nav {
+
 
   ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
     li {
       border: 2px solid black;
       margin: 0.5rem;
       padding: 0.5rem;
-      border-radius: 0.5rem;
       background-color: white;
       color: $darkGreen;
+
       font-size: 1.5rem;
       font-weight: 700;
       margin: 1rem;
@@ -29,13 +32,16 @@ nav {
       &:hover {
         background-color: $yellow;
         color: black;
+        transform: scale(1.2);
       }
+
       a {
-        color:black;
+        color: black;
         text-align: center;
         font-size: 1.5rem;
         font-weight: 500;
         text-transform: uppercase;
+
         &:hover,
         &:focus {
           color: black;
