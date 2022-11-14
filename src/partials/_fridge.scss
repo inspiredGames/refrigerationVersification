@@ -19,23 +19,6 @@
   
   li {
     position: relative;
-    // display: inline-block;
-    //taken from .words li - we might want to try a mixin for this style block
-    user-select: none;
-    border: 2px solid black;
-    box-shadow: 1px 1px black;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    background-color: white;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: 700;
-    cursor: pointer;
-
-    &:hover {
-      background-color: black;
-      color: white;
-    }
   }
 }
 
@@ -68,10 +51,6 @@ li:nth-child(odd) {
     display: flex;
     flex-direction: column;
   }
-}
-
-
-
 
   button {
     margin: 1rem;
