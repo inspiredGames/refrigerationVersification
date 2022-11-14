@@ -9,14 +9,14 @@ const About = () => {
       <section className="about">
         <div className="aboutIntro">
           <h2>About Refrigeration Versification!</h2>
-          <p>Welcome to Refrigeration Versification, a virtual magnetic poetry app designed by Tina, Jen, Charlotte, and Dana from Juno College!This web-app works the same way Magnetic Poetry&#174; does in real life - for those of you who were lucky enough to have those sweet tiny magnets stuck to your fridge - but now with a few virtual-perks, of course!Enter a word and get an assortment of related words returned in the word bank, which you can mix and match with some connecting suffixes and transition words to get your poetry onto the fridge.You can even save your poem, as specifically-yours, or anonymously, to share with friends and family through our online-gallery! Try it yourself on our home page.</p>
+          <p>Welcome to Refrigeration Versification, a virtual magnetic poetry app designed by Tina, Jen, Charlotte, and Dana from Juno College! This web-app works the same way Magnetic Poetry&#174; does in real life - for those of you who were lucky enough to have those sweet tiny magnets stuck to your fridge - but now with a few virtual-perks, of course! Enter a word and get an assortment of related words returned in the word bank, which you can mix and match with some connecting suffixes and transition words to get your poetry onto the fridge. You can even save your poem, as specifically-yours, or anonymously, to share with friends and family through our online-gallery! Try it yourself on our home page.</p>
           <h2>About the Developers</h2>
         </div>
 
         <div className="topRow">
           <div className="profileMagnet char">
             <div className="profileTop">
-              <img src={char} alt="headshot profile picture" />
+              <img src={char} alt="headshot" />
               <h3>Charlotte Duppre</h3>
             </div>
             <p>I am a bilingual Front-End Developer who brings 10+ years of international experience in Business and Financial Analysis roles - most of which in the tech industry - as well as recent experience developing responsive, accessible web applications using JavaScript, React, HTML and CSS. I am a detail oriented developer who writes clean and organized code and a team player who excels at communicating with team members across all levels of management and technical abilities.</p>
@@ -33,7 +33,7 @@ const About = () => {
 
           <div className="profileMagnet dana">
             <div className="profileTop">
-              <img src={dana} alt="headshot profile picture" />
+              <img src={dana} alt="headshot" />
               <h3>Dana Filatov</h3>
             </div>
 
@@ -55,7 +55,7 @@ const About = () => {
         <div className="bottomRow">
           <div className="profileMagnet jen">
             <div className="profileTop">
-              <img src={jen} alt="headshot profile picture" />
+              <img src={jen} alt="headshot" />
               <h3>Jen Luu</h3>
             </div>
             <p>Hi, I’m Jen! I am a Front-End Developer, experienced Tech Manager and VP Sales. I have a background in financial services and hold a Bachelor of Science from the University of Windsor. Outside of coding, my personal interests include finance and blockchain. I live in British Columbia with my husband, where I enjoy skiing, kitesurfing, keelboat sailing, practicing yoga, multi-pitch sport and trad climbing.</p>
@@ -72,7 +72,7 @@ const About = () => {
 
           <div className="profileMagnet tina">
             <div className="profileTop">
-              <img src={tina} alt="headshot profile picture" />
+              <img src={tina} alt="headshot" />
               <h3>Tina Lu</h3>
             </div>
             <p>Hello! My name is Tina and I am a scientist turned front-end developer! I love to solve problems and create aesthetic applications with clean and re-useable code. I would like to use my skills to develop engaging applications tailored to each client's needs.
