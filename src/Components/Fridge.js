@@ -5,15 +5,46 @@
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, push } from "firebase/database";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useLayoutEffect, useRef } from "react";
 
 import SelectedWords from "./SelectedWords";
 
 const Fridge = ({ userSelection, handleRemoveWord }) => {
 
-    const userSelectionArr = userSelection.map((wordObject) => {
-        return wordObject.word;
-    });
+  const fridgeRef = useRef(null);
+
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  const [widthArray, setWidthArray ] = useState([]);
+  const [heightArray, setHeightArray] = useState([])
+
+  useLayoutEffect(() => {
+    setWidth(fridgeRef.current.clientWidth); //offsetWidth includes borders, padding, vertical scrollbars, clientWidth includes padding but exclude borders, margins, scrollbars
+    setHeight(fridgeRef.current.clientHeight);
+    console.log(document.querySelector("#wordContainer").getBoundingClientRect());
+  }, []);  
+
+  const handleGetWordDimensions = (width, height) => {
+    const newWidthArray = widthArray.map(x => x);
+    const newHeightArray = heightArray.map(x => x);
+    newWidthArray.push(width);
+    newHeightArray.push(height);
+    setWidthArray(newWidthArray);
+    setHeightArray(newHeightArray);
+    console.log(widthArray, heightArray, 'handlegetwords');
+  }
+
+  // useEffect(() => {
+  //   document.querySelector("#wordContainer").style.height = 100;
+  //   document.querySelector("#wordContainer").style.height = width;
+  //   console.log(document.querySelector("#wordContainer").style);
+  // }, [height, width])
+  
+
+  // const userSelectionArr = userSelection.map((wordObject) => {
+  //     return wordObject.word;
+  // });
 
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
@@ -72,16 +103,30 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   };
 
   return (
-    <section className='fridge'>
+    <section className='fridge' ref={fridgeRef}>
+      <div>
+        width={width}
+        height={height}
+      </div>
       <h2>this is the fridge! User must Save to setPoem first, then they can submit to Gallery</h2>
-      <ul className='poem words'>
+      <ul className='poem words' id='wordContainer' style={{ 
+                width: `${width}px`,
+                height: `${height}px`,
+            }}>
         {
-          userSelectionArr.map((item) => {
+          userSelection.map((item, index) => {
               return(
                 <SelectedWords 
-                key={item}
+                key={item.word}
+                index={index}
                 handleRemoveWord={handleRemoveWord} 
-                item={item}/>
+                item={item}
+                width={width}
+                height={height}
+                fridgeRef={fridgeRef}
+                handleGetWordDimensions={handleGetWordDimensions}
+                widthArray={widthArray}
+                heightArray={heightArray}/>
               )
           })
         }
