@@ -23,7 +23,7 @@ const WordBank = ({ words, searchQuery }) => {
             setShowWords(true);
             setShowHelperWords(true);
         }
-    }, [])
+    }, [width])
 
     useEffect(() => {
         const newWordBankArray = [];
