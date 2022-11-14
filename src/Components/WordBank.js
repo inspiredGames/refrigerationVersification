@@ -11,9 +11,10 @@ const WordBank = ({ words, searchQuery }) => {
     const [ showWords, setShowWords ] = useState(false);
     const [ showHelperWords, setShowHelperWords ] = useState(false);
 
-    const [helperWordBank, setHelperWordBank] = useState([
-        'a', 'al', 'ance', 'are', 'ation', 'tion', 'an', 'and', 'sion', 'as', 'at', 'ery', 'ist', 'ity', 'ment', 'by', 'else', 'ness', 'for', 'from', 'th', 'if', 'in', 'ty', 'not', 'of', 'off', 'on', 'onto', 'or', 'out', 'able', 'ible', 'the', 'to', 'too', 'with', 'ary', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'is', 'it', 'its', 'ious', 'may', 'me', 'ful', 'ic', 'my', 'ous',  'y', 'ical', 'ly', 'our', 'ours', 'ish', 'she', 'should', 'that', 'their', 'ed', 'en', 'er', 'these', 'they', 'this', 'ing', 'ton', 'ize', 'ise', 'ify', 'fy', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'you', 'your', 'yours'
+    const [helperWordBank, setHelperWordBank] = useState(['a', 'able', 'al', 'am', 'an', 'ance', 'and', 'are', 'ary', 'as', 'at', 'ation', 'by', 'do', 'did', 'ed', 'else', 'en', 'er', 'ery', 'for', 'from', 'ful', 'fy', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'ible', 'ic', 'ical', 'if', 'ify', 'in', 'ing', 'ious', 'is', 'ise', 'ish', 'ist', 'it', 'its', 'ity', 'ize', 'ly', 'make', 'may', 'me', 'ment', 'my', 'ness', 'not', 'of', 'off', 'on', 'onto', 'or', 'our', 'ours', 'ous', 'out', 'she', 'should', 'sion', 'th', 'that', 'the', 'their', 'these', 'they', 'this', 'tion', 'to', 'ton', 'too', 'ty', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'with', 'y', 'you', 'your', 'yours'
     ]);
+
+    console.log(helperWordBank.sort())
 
     const { width } = useWindowDimensions();
 
