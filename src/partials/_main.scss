@@ -1,0 +1,36 @@
+@use './variables' as *;
+
+main {
+    display: flex;
+    flex-direction: column;
+    .instructions {
+        border-radius: 10px;
+        margin-bottom: 30px;
+        button {
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid black;
+            box-shadow: 1px 1px black;
+            background-color: $lightGreen;
+            color: black;
+            font-size: 1.5rem;
+            font-weight: 700;
+            width: 100%;
+        }
+        h2 {
+            font-size: 1.25rem;
+            color: $darkGreen;
+        }
+        ul {
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: 1px 1px black;
+            padding: 10px;
+            border-radius: 10px;
+            li {
+                transform: rotate(0deg);
+                padding: 5px 0;
+            }
+        }
+    }
+}
