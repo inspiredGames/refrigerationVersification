@@ -9,12 +9,25 @@
   text-align: center;
   position: relative;
   
+.fridgeHandle {
+  position: absolute;
+  top: 475px;
+  left: 10%;
+  width: 100px;
+  height: auto;
+    img {
+      display: block;
+    }
+}
   ul {
     position: absolute;
     overflow: hidden;
-    width: 300px;
-    height: 300px;
-    margin: 50px 200px;
+    border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
   }
   
   li {
@@ -22,16 +35,6 @@
   }
 }
 
-.fridgeHandle {
-position: absolute;
-top: 475px;
-left: 10%;
-width: 100px;
-height: auto;
-  img {
-    display: block;
-  }
-}
 
 li:nth-child(even) {
   transform: rotate(2deg);

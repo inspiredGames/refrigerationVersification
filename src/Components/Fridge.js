@@ -20,9 +20,8 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   const [heightArray, setHeightArray] = useState([])
 
   useLayoutEffect(() => {
-    setWidth(fridgeRef.current.clientWidth); //offsetWidth includes borders, padding, vertical scrollbars, clientWidth includes padding but exclude borders, margins, scrollbars
+    setWidth(fridgeRef.current.clientWidth); 
     setHeight(fridgeRef.current.clientHeight);
-    console.log(document.querySelector("#wordContainer").getBoundingClientRect());
   }, []);  
 
   const handleGetWordDimensions = (width, height) => {
@@ -32,23 +31,12 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
     newHeightArray.push(height);
     setWidthArray(newWidthArray);
     setHeightArray(newHeightArray);
-    console.log(widthArray, heightArray, 'handlegetwords');
   }
-
-  // useEffect(() => {
-  //   document.querySelector("#wordContainer").style.height = 100;
-  //   document.querySelector("#wordContainer").style.height = width;
-  //   console.log(document.querySelector("#wordContainer").style);
-  // }, [height, width])
-  
-
-  // const userSelectionArr = userSelection.map((wordObject) => {
-  //     return wordObject.word;
-  // });
 
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
   };
+
   const [userId, setUserId] = useState(localStorage.getItem("poetUserId"));
   useEffect(() => {
     if (!localStorage.getItem("poetUserId")) {
@@ -72,28 +60,28 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
     }
   };
 
-    const database = getDatabase(firebaseConfig)
-    const dbRef = ref(database)
+  const database = getDatabase(firebaseConfig)
+  const dbRef = ref(database)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (poemHtml !== "") {
-          const obj = {
-            key: userId,
-            storedPoemHtml: poemHtml,
-            title: title,
-            user: {
-              uid: userId,
-              displayName: displayName,
-            },
-            timestamp: Date.now(),
-          };
-          push(dbRef, obj);
-          alert("Your poem has been added to the gallery!");
-        } else {
-          alert("Please save your poem before submitting!");
-        }
-      };
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      if (poemHtml !== "") {
+        const obj = {
+          key: userId,
+          storedPoemHtml: poemHtml,
+          title: title,
+          user: {
+            uid: userId,
+            displayName: displayName,
+          },
+          timestamp: Date.now(),
+        };
+        push(dbRef, obj);
+        alert("Your poem has been added to the gallery!");
+      } else {
+        alert("Please save your poem before submitting!");
+      }
+    };
 
   const handleUserInput = (e) => {
       setDisplayName(e.target.value);
