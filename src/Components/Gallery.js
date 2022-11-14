@@ -29,23 +29,23 @@ const Gallery = () => {
 
   return (
     <section className="gallery">
-      <h2>Beautiful Gallery</h2>
+      <h2>Welcome to the Gallery</h2>
       <div className="cardContainer">     
         {
         poems.length > 0 ? poems.map(({ key, storedPoemHtml, displayName, userId, title }) => {
           return ( 
-            <>
-              <h2>
+            <div className='poemContainer'>
+              <h3>
                 {title ? title : "Untitled"} by <Link to={`/rv/${userId}`}> { displayName ? displayName : "Anonymous" }  </Link>
-                </h2>
+                </h3>
             <div className="card" key={key}>
-              <ul 
+              <ul
                 dangerouslySetInnerHTML={{__html: storedPoemHtml}}
                 className="galleryPoem"></ul>
         </div>
-            </>
+            </div>
             );
-          }) : <p>There are no poems in the gallery</p>
+          }) : <h3>Thanks for visiting the Gallery. There are no poems currently.</h3>
           }
       </div>
     </section>
