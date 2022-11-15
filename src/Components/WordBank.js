@@ -23,7 +23,7 @@ const WordBank = ({ words, searchQuery }) => {
             setShowWords(true);
             setShowHelperWords(true);
         }
-    }, [])
+    }, [width])
 
     useEffect(() => {
         const newWordBankArray = [];
@@ -99,10 +99,12 @@ const WordBank = ({ words, searchQuery }) => {
             const newWordBankArray = wordBank;
             newWordBankArray.push(clickedWord);
             setWordBank(newWordBankArray);
+            console.log('word removed!')
         } else if (clickedWord['apiData'] === false) {
             const newWordBankArray = helperWordBank;
             newWordBankArray.push(wordToRemove);
             setHelperWordBank(newWordBankArray);
+            console.log('word removed!')
         }
     }
 
