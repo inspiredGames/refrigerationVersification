@@ -1,18 +1,35 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
+import openFridge from "../assets/fridgeOpen.jpg"
 
 const NavBar = () => {
+  const [showMenu, setShowMenu] = useState(false);
+
+  if (showMenu) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+
+  const handleClick = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleClose = () => {
+    setShowMenu(false);
+  };
+
   return (
     <nav>
       <div className="desktopNav">
-          <div className="logo">
-        <NavLink to="/">
-          <img className="closedf" src={logo} alt="logo of closed fridge" />
-          {/* <div className="openFridge"> */}
-          <img className="openf" src={openFridge} alt="logo with open fridge" />
-          {/* </div> */}
-        </NavLink>
-      </div>
+        <div className="logo">
+          <NavLink to="/">
+            <img className="closedf" src={logo} alt="logo of closed fridge" />
+            <img className="openf" src={openFridge} alt="logo with open fridge" />
+
+          </NavLink>
+        </div>
         <div className="navContainer">
           <ul>
             <li className="home">
@@ -50,7 +67,6 @@ const NavBar = () => {
             </ul>
           </div>
         )}
-
       </div>
     </nav>
   );

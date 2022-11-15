@@ -1,10 +1,16 @@
 @use './variables' as *;
 @use './mediaQueries' as *;
 
-nav {
+.desktopNav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+}
+
+nav {
+
+
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -15,6 +21,8 @@ nav {
       margin: 0.5rem;
       padding: 0.5rem;
       background-color: white;
+      color: $darkGreen;
+
       font-size: 1.5rem;
       font-weight: 700;
       margin: 1rem;
@@ -39,25 +47,25 @@ nav {
         &:hover,
         &:focus {
           color: black;
-          // text-decoration: underline;
         }
       }
     }
   }
 }
 
-.logo {
+.logo,
+.hamburger {
   max-width: 100%;
   margin: 1rem;
 
   .closedf {
-    width: 50px;
-    margin-top: 20%;
-
-    &:hover {
-      opacity: 0;
+      width: 50px;
+      margin-top: 20%;
+  
+      &:hover {
+        opacity: 0;
+      }
     }
-  }
 
   .openf {
     width: 90px;
@@ -67,6 +75,8 @@ nav {
 
     &:hover {
       opacity: 1;
+    }
+  }
 
   img,
   i {
@@ -139,7 +149,6 @@ nav {
       .xIcon {
         margin-left: 10rem;
       }
-
     }
   }
 }

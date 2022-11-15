@@ -4,13 +4,12 @@
 .aboutIntro {
     h2, 
     p {
-        color: white;
         font-weight: 400;
         border: 2px solid black;
         box-shadow: 1px 1px black;
         padding: 0.5rem;
         background-color: $lightGreen;
-        color: black;
+        color: $darkGreen;
         font-size: 1.5rem;
         font-weight: 600;
         border-radius: 5px;
