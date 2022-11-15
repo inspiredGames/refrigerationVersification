@@ -6,7 +6,12 @@
   justify-content: space-between;
   align-items: center;
 
-    ul {
+}
+
+nav {
+
+
+  ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -25,6 +30,7 @@
       padding: 3% 8%;
       margin-left: -60%;
       box-shadow: 3px 5px 5px black;
+
       &:hover {
         background-color: $yellow;
         color: black;
@@ -52,32 +58,22 @@
   max-width: 100%;
   margin: 1rem;
 
-  .closedf {
+  img,
+  i {
     width: 50px;
     margin-top: 20%;
-   &:hover {
-    opacity: 0;
-  }
-}
-  .openf {
-    width: 90px;
-    margin-top: -87%;
-    margin-left: -40%;
-    opacity: 0;
-    &:hover {
-      opacity: 1;
-    }
   }
 }
 
 @include desktop {
-  .navContainer{
+  .navContainer {
     display: none;
   }
 }
 
 .mobileMenu {
   display: none;
+
   @include desktop {
     display: flex;
     position: absolute;
@@ -85,24 +81,28 @@
     right: 0;
     width: 100vw;
   }
-  
+
   .hamburger {
     display: none;
     position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
+
     i {
       color: white;
       font-size: 2.1rem;
+
       &:hover {
         color: $yellow;
       }
     }
+
     @include desktop {
       display: block;
     }
   }
+
   .menu {
     height: 100vh;
     width: 100vw;
@@ -113,16 +113,19 @@
     justify-content: center;
     align-items: center;
     z-index: 100;
+
     ul {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       margin: 0 auto;
+
       li {
         margin: 0.5rem;
         padding: 0.5rem;
       }
+
       .xIcon {
         margin-left: 10rem;
       }
