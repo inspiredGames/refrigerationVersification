@@ -13,16 +13,21 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
 
   const fridgeRef = useRef(null);
 
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [fridgeWidth, setFridgeWidth] = useState(0);
+  const [fridgeHeight, setFridgeHeight] = useState(0);
 
   const [widthArray, setWidthArray ] = useState([]);
   const [heightArray, setHeightArray] = useState([])
 
+  const [fridgeX, setFridgeX] = useState(0);
+  const [fridgeY, setFridgeY] = useState(0)
+
   useLayoutEffect(() => {
-    setWidth(fridgeRef.current.clientWidth); //offsetWidth includes borders, padding, vertical scrollbars, clientWidth includes padding but exclude borders, margins, scrollbars
-    setHeight(fridgeRef.current.clientHeight);
-    console.log(document.querySelector("#wordContainer").getBoundingClientRect());
+    setFridgeWidth(fridgeRef.current.clientWidth); //offsetWidth includes borders, padding, vertical scrollbars, clientWidth includes padding but exclude borders, margins, scrollbars
+    setFridgeHeight(fridgeRef.current.clientHeight);
+    const fridge = document.querySelector(`#fridge`)
+    setFridgeX(fridge.getBoundingClientRect().left)
+    setFridgeY(fridge.getBoundingClientRect().top)
   }, []);  
 
   const handleGetWordDimensions = (width, height) => {
@@ -32,19 +37,15 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
     newHeightArray.push(height);
     setWidthArray(newWidthArray);
     setHeightArray(newHeightArray);
-    console.log(widthArray, heightArray, 'handlegetwords');
+    // console.log(widthArray, heightArray, 'handlegetwords');
   }
 
   // useEffect(() => {
-  //   document.querySelector("#wordContainer").style.height = 100;
-  //   document.querySelector("#wordContainer").style.height = width;
+  //   document.querySelector("#wordContainer").style.height = height;
+  //   document.querySelector("#wordContainer").style.width = width;
   //   console.log(document.querySelector("#wordContainer").style);
   // }, [height, width])
   
-
-  // const userSelectionArr = userSelection.map((wordObject) => {
-  //     return wordObject.word;
-  // });
 
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
@@ -103,13 +104,13 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   };
 
   return (
-    <section className='fridge' ref={fridgeRef}>
+    <section className='fridge' ref={fridgeRef} id='fridge'>
       <div className='fridgeHandle'>
         <img src={fridgeHandle} alt="headshot" />
       </div>
       <ul className='poem words' id='wordContainer' style={{ 
-                width: `${width}px`,
-                height: `${height}px`,
+                width: `${fridgeWidth}px`,
+                height: `${fridgeHeight}px`,
             }}>
         {
           userSelection.map((item, index) => {
@@ -119,8 +120,10 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
                 index={index}
                 handleRemoveWord={handleRemoveWord} 
                 item={item}
-                width={width}
-                height={height}
+                fridgeWidth={fridgeWidth}
+                fridgeHeight={fridgeHeight}
+                fridgeX={fridgeX}
+                fridgeY={fridgeY}
                 fridgeRef={fridgeRef}
                 handleGetWordDimensions={handleGetWordDimensions}
                 widthArray={widthArray}

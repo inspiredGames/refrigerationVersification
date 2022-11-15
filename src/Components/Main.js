@@ -15,9 +15,7 @@ const Main = () => {
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
         setSearchQuery(userInput);
-        console.log(userInput);
         const safeUserInput = filter.clean(userInput)
-        // setUserInput(safeUserInput);
         if (safeUserInput.includes("xx")) {
             alert('No swear words ! Please enter another word')
         } else {
@@ -36,7 +34,6 @@ const Main = () => {
                         word: d.word
                     }
                 })
-                console.log(listOfWords)
                 setWords(listOfWords);
                 setIsSubmitted(true);
             }).catch(() => {

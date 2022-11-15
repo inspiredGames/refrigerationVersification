@@ -11,14 +11,19 @@
   
   ul {
     position: absolute;
-    overflow: hidden;
+    // overflow: hidden;
     width: 300px;
     height: 300px;
-    margin: 50px 200px;
+    border: 2px solid red;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
   }
   
   li {
     position: relative;
+
   }
 }
 

@@ -14,8 +14,6 @@ const WordBank = ({ words, searchQuery }) => {
     const [helperWordBank, setHelperWordBank] = useState(['a', 'able', 'al', 'am', 'an', 'ance', 'and', 'are', 'ary', 'as', 'at', 'ation', 'by', 'do', 'did', 'ed', 'else', 'en', 'er', 'ery', 'for', 'from', 'ful', 'fy', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'ible', 'ic', 'ical', 'if', 'ify', 'in', 'ing', 'ious', 'is', 'ise', 'ish', 'ist', 'it', 'its', 'ity', 'ize', 'ly', 'make', 'may', 'me', 'ment', 'my', 'ness', 'not', 'of', 'off', 'on', 'onto', 'or', 'our', 'ours', 'ous', 'out', 'she', 'should', 'sion', 'th', 'that', 'the', 'their', 'these', 'they', 'this', 'tion', 'to', 'ton', 'too', 'ty', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'with', 'y', 'you', 'your', 'yours'
     ]);
 
-    console.log(helperWordBank.sort())
-
     const { width } = useWindowDimensions();
 
     useEffect(() => {
@@ -23,7 +21,7 @@ const WordBank = ({ words, searchQuery }) => {
             setShowWords(true);
             setShowHelperWords(true);
         }
-    }, [])
+    }, [width])
 
     useEffect(() => {
         const newWordBankArray = [];
