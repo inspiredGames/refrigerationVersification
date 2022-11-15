@@ -2,13 +2,13 @@ import './App.scss';
 import Main from './Components/Main';
 import {
   Routes,
-  Route,
-  Navigate
+  Route
 } from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import Gallery from './Components/Gallery';
 import About from './Components/About';
 import User from './Components/User';
+import ErrorPage from './Components/ErrorPage';
 
 function App() {
 
@@ -29,7 +29,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/rv/:userId" element={<User />} />
-        <Route path="*" element={<Navigate to="/" />} />        
+        <Route path="*" element={<ErrorPage />} />        
 
       </Routes>
 

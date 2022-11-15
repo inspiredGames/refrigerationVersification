@@ -31,6 +31,13 @@ a {
 li {
     list-style: none;
 }
+li:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+li:nth-child(odd) {
+    transform: rotate(359deg);
+}
 
 h1 {
     margin: 4rem auto;
@@ -52,8 +59,8 @@ button {
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    &:hover {
-        background-color: $lightGreen;
+    &:hover, &:focus {
+        transform: scale(1.01);
     }
 }
 

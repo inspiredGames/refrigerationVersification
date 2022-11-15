@@ -8,6 +8,7 @@ const Main = () => {
     const [words, setWords] = useState([]);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [showInstructions, setShowInstructions] = useState(true);
     const Filter = require('bad-words')
     const filter = new Filter({placeHolder: 'x'});
 
@@ -46,6 +47,30 @@ const Main = () => {
 
     return (
         <main>
+            <div className="instructions">
+                <button onClick={() => setShowInstructions(!showInstructions)}>
+                    <h2>How to Play</h2>
+                    {
+                    showInstructions
+                        ? <i className="fa-solid fa-chevron-up"></i> 
+                        : <i className="fa-solid fa-chevron-down"></i>
+                    }
+                </button>
+                {
+                    showInstructions
+                        ? (
+                            <ul>
+                                <li>1. Enter a search term, or select a theme, to get a list of associated words.</li>
+                                <li>2. Click on the words you would like to use to make them appear on the fridge. You can pick as many words as you would like from the associated words bank, as well as the helper word bank, for your poem.</li>
+                                <li>3. Once the words are on the fridge, drag them around to rearrange the words.</li>
+                                <li>4. Don't want a word anymore? Simply double click on the word to remove it from the fridge. </li>
+                                <li>5. Create a magnetic poetry masterpiece!</li>
+                            </ul>
+                        )
+                        : null
+                }
+            </div>
+
             <SearchForm handleGetWords={handleGetWords} />
 
             {

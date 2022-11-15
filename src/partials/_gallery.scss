@@ -1,36 +1,53 @@
-
+@use 'variables' as *;
 //FIXME: remember to remove borders that were for Testing purposes
 
 .cardContainer {
-  // border: 1px solid blue;
-  width: 80vw;
+  margin: 2rem auto;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: space-between;
-
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
   .card {
-    border: 1px solid hotpink;
-    margin: 5rem 2rem;
-    padding: 10rem;
+    margin: 2rem auto 4rem auto;
+    padding: 15rem;
     display: flex;
+    justify-content: center;
     align-items: center;
-    align-self: flex-start;
+    width: 70%;
+    background-color: rgb(241, 231, 213);
+    border: 25px solid rgb(34, 34, 34);
+    box-shadow: inset 3px 7px 2px 5px rgba(0, 0, 0, .4);
+    outline: .6rem double $yellow;
+    border-radius: 1px;
+
     ul {
-      border: 1px solid red;
       position: absolute;
     }
-
     li {
       position: relative;
-      // margin: 1rem;
-      padding: 1px;
+      margin: .5rem;
+      padding: .5rem;
+      border: 2px solid black;
+      // box-shadow: 1px 1px black;
+      box-shadow: 3px 5px 5px black;
+      background-color: white;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
     }
   }
+
   a {
-    color: orangered;
+    color: $lightGreen;
+
     &:hover,
     &:focus {
-      color: skyblue;
+      color: $yellow;
     }
+  }
+
+  h3 {
+    color: white;
   }
 }
