@@ -36,6 +36,18 @@
 }
 
 
+.fridgeHandle {
+position: absolute;
+top: 500px;
+left: 8%;
+width: 70px;
+height: auto;
+  img {
+    display: block;
+  }
+}
+
+
 li:nth-child(even) {
   transform: rotate(2deg);
 }

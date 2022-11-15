@@ -6,11 +6,10 @@
   justify-content: space-between;
   align-items: center;
 
-}
+
 nav {
-
-
   ul {
+
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -55,6 +54,22 @@ nav {
 .hamburger {
   max-width: 100%;
   margin: 1rem;
+
+  .closedf {
+    width: 50px;
+    margin-top: 20%;
+   &:hover {
+    opacity: 0;
+  }
+}
+  .openf {
+    width: 90px;
+    margin-top: -87%;
+    margin-left: -40%;
+    opacity: 0;
+    &:hover {
+      opacity: 1;
+
   img,
   i {
     width: 50px;
@@ -62,6 +77,7 @@ nav {
     &:hover {
       transition: all 0.6s ease-in-out;
       transform: rotate(360deg) scale(1.3);
+
     }
   }
 }

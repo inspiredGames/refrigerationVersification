@@ -19,7 +19,7 @@ const About = () => {
               <img src={char} alt="headshot" />
               <h3>Charlotte Duppre</h3>
             </div>
-            <p>I am a bilingual Front-End Developer who brings 10+ years of international experience in Business and Financial Analysis roles - most of which in the tech industry - as well as recent experience developing responsive, accessible web applications using JavaScript, React, HTML and CSS. I am a detail oriented developer who writes clean and organized code and a team player who excels at communicating with team members across all levels of management and technical abilities.</p>
+            <p>Hi, I’m Charlotte ! I am a bilingual Front-End Developer who brings 10+ years of international experience in Financial Analysis roles - most of which in the tech industry - as well as recent experience developing responsive, accessible websites. When I am not coding, I love spending time with my family, practicing yoga and exploring Toronto’s food scene!</p>
             <a href="https://github.com/chaarz" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
             </a>
@@ -39,7 +39,7 @@ const About = () => {
 
             <p>Hey! My name is Dana (she/her), and I'm an artist turned Front-end Web Developer navigating my way from an ocean of paint and clay to a sea of zeros and ones.
 
-              Trained in visual communicaton and creative problem-solving, I'm shifting my analogue skills to the screen🪄✨ Based in Toronto, when I'm not coding or making art, you can find me cooking, traveling, hiking, or maybe even hiking on my travels after cooking😉 </p>
+              Trained in visual communicaton and creative problem-solving, I'm shifting my analogue skills to the screen! Based in Toronto, when I'm not coding or making art, you can find me cooking, hiking, or playing with my two cats </p>
             <a href="https://github.com/DanaFCodes" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
             </a>

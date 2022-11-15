@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
+import openFridge from '../assets/fridgeOpen.jpg';
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,12 +22,17 @@ const NavBar = () => {
 
   return (
     <nav>
+
+      <div className="logo">
+        <NavLink to="/">
+          <img className="closedf"src={logo} alt="logo of closed fridge" />
+          {/* <div className="openFridge"> */}
+          <img className="openf" src={openFridge} alt="logo with open fridge" />
+          {/* </div> */}
+        </NavLink>
+
       <div className="desktopNav">
-        <div className="logo">
-          <NavLink to="/">
-            <img src={logo} alt="logo" />
-          </NavLink>
-        </div>
+
         <div className="navContainer">
           <ul>
             <li className="home">
@@ -40,6 +46,7 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
+
       </div>
 
 
