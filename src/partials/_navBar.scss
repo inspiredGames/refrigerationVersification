@@ -5,7 +5,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -68,6 +67,79 @@ nav {
 
     &:hover {
       opacity: 1;
+
+  img,
+  i {
+    width: 50px;
+    margin-top: 20%;
+  }
+}
+
+@include desktop {
+  .navContainer {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  display: none;
+
+  @include desktop {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+  }
+
+  .hamburger {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+
+    i {
+      color: white;
+      font-size: 2.1rem;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  .menu {
+    height: 100vh;
+    width: 100vw;
+    background: $darkGreen;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+
+      li {
+        margin: 0.5rem;
+        padding: 0.5rem;
+      }
+
+      .xIcon {
+        margin-left: 10rem;
+      }
+
     }
   }
 }
