@@ -16,36 +16,15 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   const [fridgeWidth, setFridgeWidth] = useState(0);
   const [fridgeHeight, setFridgeHeight] = useState(0);
 
-  const [widthArray, setWidthArray ] = useState([]);
-  const [heightArray, setHeightArray] = useState([])
-
   const [fridgeX, setFridgeX] = useState(0);
   const [fridgeY, setFridgeY] = useState(0)
 
   useLayoutEffect(() => {
     setFridgeWidth(fridgeRef.current.clientWidth); //offsetWidth includes borders, padding, vertical scrollbars, clientWidth includes padding but exclude borders, margins, scrollbars
     setFridgeHeight(fridgeRef.current.clientHeight);
-    const fridge = document.querySelector(`#fridge`)
-    setFridgeX(fridge.getBoundingClientRect().left)
-    setFridgeY(fridge.getBoundingClientRect().top)
+    setFridgeX(fridgeRef.current.getBoundingClientRect().left);
+    setFridgeY(fridgeRef.current.getBoundingClientRect().top);
   }, []);  
-
-  const handleGetWordDimensions = (width, height) => {
-    const newWidthArray = widthArray.map(x => x);
-    const newHeightArray = heightArray.map(x => x);
-    newWidthArray.push(width);
-    newHeightArray.push(height);
-    setWidthArray(newWidthArray);
-    setHeightArray(newHeightArray);
-    // console.log(widthArray, heightArray, 'handlegetwords');
-  }
-
-  // useEffect(() => {
-  //   document.querySelector("#wordContainer").style.height = height;
-  //   document.querySelector("#wordContainer").style.width = width;
-  //   console.log(document.querySelector("#wordContainer").style);
-  // }, [height, width])
-  
 
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
@@ -125,9 +104,7 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
                 fridgeX={fridgeX}
                 fridgeY={fridgeY}
                 fridgeRef={fridgeRef}
-                handleGetWordDimensions={handleGetWordDimensions}
-                widthArray={widthArray}
-                heightArray={heightArray}/>
+                userSelection={userSelection}/>
               )
           })
         }

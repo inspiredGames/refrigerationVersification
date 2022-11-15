@@ -1,13 +1,11 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, useRef } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { useEffect } from 'react';
 
 
-const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth, fridgeX, fridgeY, handleGetWordDimensions, widthArray, heightArray}) => {
+const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth, fridgeX, fridgeY, userSelection}) => {
     // console.log(`selectedword has rerendered ${item.word}`)
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0 });
-    const [addedWidths, setAddedWidths] = useState(0);
-    const [addedHeights, setAddedHeights] = useState(0);
     const [marginX, setMarginX] = useState(0);
     const [marginY, setMarginY] = useState(0);
     const [wordWidth, setWordWidth] = useState(0);
@@ -15,15 +13,23 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
 
     const [wordX, setWordX] = useState(0);
     const [wordY, setWordY] = useState(0);
+    const wordRef = useRef(null);
 
+
+    // set word position to absolute once it has rendered on the page(?)
+    // reset style for positioning on initial render
+    // update wordX, wordY, marginX, marginY everytime userselection updates in fridge
+
+
+
+    // set position, top, left to empty strings on initial layout
+    // everytime user selection changes, set top and left to last dragged position 
     useLayoutEffect(() => {
-        const wordItem = document.querySelector(`#${item.word.replace(/\s/g, '')}`);
-        const wordX = wordItem.getBoundingClientRect().left;
-        const wordY = wordItem.getBoundingClientRect().top;
+        const wordX = wordRef.current.getBoundingClientRect().left;
+        const wordY = wordRef.current.getBoundingClientRect().top;
 
-        setWordWidth(wordItem.getBoundingClientRect().width);
-        setWordHeight(wordItem.getBoundingClientRect().height);
-        handleGetWordDimensions(wordX, wordY);
+        setWordWidth(wordRef.current.getBoundingClientRect().width);
+        setWordHeight(wordRef.current.getBoundingClientRect().height);
 
         setMarginX(wordX-fridgeX);
         setMarginY(wordY-fridgeY);
@@ -31,33 +37,23 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
         console.log(wordX-fridgeX, 'marginx')
         console.log(wordY-fridgeY, 'marginy')
 
-        console.log(fridgeHeight, fridgeWidth, 'fridge height and width', fridgeX, fridgeY, 'fridge X and Y')
+        console.log(fridgeHeight, fridgeWidth, 'fridge height and width', fridgeX, fridgeY, 'fridge X and Y');
+        // wordItem.style.position = '';
+        // wordItem.style.top = '';
+        // wordItem.style.left = '';
+        // console.log(wordItem.style.position, wordItem.style.top, wordItem.style.left)
+
+        console.log(wordRef.current.getBoundingClientRect())
     }, [])
 
-    
-
-    // useEffect(() => {
-    //     // loop through the array add together all the widths, heights from 0 - index 
-    //     for (let i = 0; i < index; i= i+1) {
-    //         setAddedWidths(addedWidths + widthArray[i])
-    //         setAddedHeights(addedHeights + heightArray[i])
-    //         console.log(i);
-    //         if (addedWidths > fridgeWidth ) {
-    //             setAddedWidths(0);
-    //         }
-    //         if (addedHeights > fridgeHeight) {
-    //             setAddedHeights(0);
-    //         }
-    //     }
-    //     // console.log(addedWidths);
-    //     // console.log(widthArray, heightArray, 'from selectedwords')
-    // }, [widthArray, heightArray])
-
     useEffect(() => {
-        const wordItem = document.querySelector(`#${item.word.replace(/\s/g, '')}`)
-        setWordX(wordItem.getBoundingClientRect().left);
-        setWordY(wordItem.getBoundingClientRect().top);
-    }, [widthArray, heightArray]);
+        wordRef.current.style.top = poemWord.y;
+        wordRef.current.style.left = poemWord.x;
+
+        // setPoemWord({x:wordRef.current.getBoundingClientRect().left , y:wordRef.current.getBoundingClientRect().top})
+
+    }, [userSelection])
+
 
     const bind = useDrag((params) => {
         setPoemWord({
@@ -65,34 +61,6 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
             y: params.offset[1],
         });
     }, {
-
-// *** SEE _fridge.scss for the styles that are applied to the "ul" for poemWord ***
-      // list items are positioned absolute, so we need to set the bounds to the parent element which we have set ul as position relative
-      // we need to figure out what to set the bounds to for different media queries
-        // bounds: {
-        //     left: -200,
-        //     right: 200,
-        //     top: -100,
-        //     bottom: 200,
-        // }
-        // bounds: {
-        //     minX:0 - poemWord.x,
-        //     maxX:width - poemWord.x,
-        //     minY:0 - poemWord.y,
-        //     maxY:height - poemWord.y,
-        // }
-        // bounds: {
-        //     left: (-selectedWord.width),
-        //     right: (width-selectedWord.width-50),
-        //     top: 0,
-        //     bottom: (height-selectedWord.height-50),
-        // },
-        // bounds: {
-        //     left: (-addedWidths),
-        //     right: (fridgeWidth-addedWidths),
-        //     top: (-addedHeights),
-        //     bottom: (fridgeHeight-addedHeights),
-        // },
         bounds: {
             left: (0-marginX),
             right: (fridgeWidth-marginX-wordWidth),
@@ -104,12 +72,14 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
     return (
         <li 
             // onClick = {(e) => {handleClick(e)}}
-            
+            ref={wordRef}
             {...bind()} 
             style={{ 
+                // position: 'absolute',
                 top: poemWord.y,
                 left: poemWord.x,
                 touchAction: 'none',
+                
             }}
             id={item.word.replace(/\s/g, '')}
             onDoubleClick={(e) => {handleRemoveWord(e.target.textContent)}}>
