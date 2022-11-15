@@ -1,12 +1,16 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpeg";
+import openFridge from '../assets/fridgeOpen.jpg';
 
 const NavBar = () => {
   return (
     <nav>
       <div className="logo">
         <NavLink to="/">
-          <img src={logo} alt="logo" />
+          <img className="closedf"src={logo} alt="logo of closed fridge" />
+          {/* <div className="openFridge"> */}
+          <img className="openf" src={openFridge} alt="logo with open fridge" />
+          {/* </div> */}
         </NavLink>
       </div>
       <div className="navContainer">

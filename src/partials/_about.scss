@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .aboutIntro {
     h2, 
@@ -18,11 +19,7 @@
     h2 {
         font-size: 2rem;
     }
-
-    .h2About {
-        margin-bottom: 30px;
-    }
-
+    
     p {
         font-size: 1.5rem;
         margin: 30px auto 50px auto;
@@ -30,14 +27,19 @@
         width: 90%;
         padding: 25px;
     }
-
+    
+    .h2About {
+        margin-bottom: 30px;
+    }
 }
+
 .profileMagnet {
     background-color: white;
     width: 60%;
     border: 2px solid black;
     box-shadow: 2px 4px rgba(0, 0, 0, 0.8);
     margin: 2%;
+    padding: 2%;
  
     h3 {
         margin-top: 10%;
@@ -47,10 +49,6 @@
         letter-spacing: 1px;
     }
     
-    h2 {
-        color: white;
-    }
-
     p {
         margin: 0% 8%;
     }
@@ -58,7 +56,7 @@
     i {
         transform: scale(2);
         margin: 5% 10%;
-        padding-left: 5%;
+        padding-left: 4%;
         color: $darkGreen;
         &:hover {
             color: $lightGreen;
@@ -80,27 +78,72 @@
 .char {
     margin-left: 10%;
     rotate: 2deg;
+    i {
+            padding-top: 5%;
+    }
 }
 
 .dana {
-    margin-bottom: 3%;
-    rotate: 357deg;
-    
-}
+    rotate: 357deg;   
+    margin-left: 5%;
+    i {
+        padding-top: 3%;
+    }
+  }
 
 .jen {
     margin-left: 6%;
     rotate: 359deg;
-    margin-bottom: 3%;
+    i {
+        padding-top: 5%;
+    }
 }
 
 .tina {
-    
     rotate: 2deg;
+    i {
+            padding-top: 5%;
+        }
 }
 
 .topRow,
 .bottomRow {
     display: flex;
+
+    @include tablet {
+        flex-direction: column;
+        .profileMagnet {
+            width: 80%;
+            h3 {
+                font-size: 1.3rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            i {
+                transform: scale(1);
+                margin: 5% 3%;
+            }
+            img {
+                
+                max-height: 90px;
+                max-width: 90px;
+               
+            }
+        }
+
+        .jen {
+            margin-left: 15%;
+            transform: rotate(3deg);
+        }
+        .tina {
+            margin-left: 8%;
+            transform: rotate(356deg);
+        }
+        .dana {
+            margin-left: 8%;
+            
+        }
+    }
 }
 
