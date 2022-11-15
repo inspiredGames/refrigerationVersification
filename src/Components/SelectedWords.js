@@ -38,17 +38,19 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
         console.log(wordY-fridgeY, 'marginy')
 
         console.log(fridgeHeight, fridgeWidth, 'fridge height and width', fridgeX, fridgeY, 'fridge X and Y');
+        wordRef.current.position = '';
         // wordItem.style.position = '';
-        // wordItem.style.top = '';
-        // wordItem.style.left = '';
+        wordRef.current.style.top = '';
+        wordRef.current.style.left = '';
         // console.log(wordItem.style.position, wordItem.style.top, wordItem.style.left)
 
         console.log(wordRef.current.getBoundingClientRect())
     }, [])
 
     useEffect(() => {
-        wordRef.current.style.top = poemWord.y;
-        wordRef.current.style.left = poemWord.x;
+        // wordRef.current.style.top = poemWord.y;
+        // wordRef.current.style.left = poemWord.x;
+        wordRef.current.position = 'absolute';
 
         // setPoemWord({x:wordRef.current.getBoundingClientRect().left , y:wordRef.current.getBoundingClientRect().top})
 
