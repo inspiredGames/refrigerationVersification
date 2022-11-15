@@ -47,6 +47,11 @@ const Gallery = () => {
             );
           }) : <h3>Thanks for visiting the Gallery. There are no poems currently.</h3>
           }
+      <div className='construction'>
+        <h3>
+          🚧 Under Construction! Upcoming feature - stay tuned to publish your poem to the Gallery! 🚧
+        </h3>
+      </div>
       </div>
     </section>
   );
