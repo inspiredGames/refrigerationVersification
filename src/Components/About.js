@@ -37,9 +37,7 @@ const About = () => {
               <h3>Dana Filatov</h3>
             </div>
 
-            <p>Hey! My name is Dana (she/her), and I'm an artist turned Front-end Web Developer navigating my way from an ocean of paint and clay to a sea of zeros and ones.
-
-              Trained in visual communicaton and creative problem-solving, I'm shifting my analogue skills to the screen! Based in Toronto, when I'm not coding or making art, you can find me cooking, hiking, or playing with my two cats </p>
+            <p>Hey! My name is Dana (she/her), and I'm an artist turned Front-end Web Developer navigating my way from an ocean of paint and clay to a sea of zeros and ones. Trained in visual communicaton and creative problem-solving, I'm shifting my analogue skills to the screen! Based in Toronto, when I'm not coding or making art, you can find me cooking, hiking, or playing with my two cats </p>
             <a href="https://github.com/DanaFCodes" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
             </a>

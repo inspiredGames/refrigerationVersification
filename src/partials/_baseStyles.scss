@@ -40,8 +40,7 @@ li:nth-child(odd) {
 }
 
 h1 {
-    margin: 4rem auto;
-    margin-top: 7rem;
+    margin: 3rem auto;
     @include mobile{
         margin: 2rem auto;
     }

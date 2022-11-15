@@ -1,21 +1,13 @@
-
-// import logo from "../assets/logo.jpeg";
 import fridgeHandle from "../assets/firdgehandle.jpg";
-
 import firebaseConfig from '../firebase';
 import { getDatabase, ref, push } from "firebase/database";
-
 import { useEffect, useState, useLayoutEffect, useRef } from "react";
-
 import SelectedWords from "./SelectedWords";
 
 const Fridge = ({ userSelection, handleRemoveWord }) => {
-
   const fridgeRef = useRef(null);
-
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-
   const [widthArray, setWidthArray ] = useState([]);
   const [heightArray, setHeightArray] = useState([])
 
@@ -116,10 +108,10 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
               )
           })
         }
+        
       </ul>
       <div className='btnContainer'>
         <button onClick={handleChange}>Save Your Poem</button>
-        {/* add input text to update display name */}
         <form onSubmit={handleSubmit}>
           <label htmlFor="displayName">Enter a Display Name:</label>
           <input

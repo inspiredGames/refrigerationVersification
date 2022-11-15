@@ -45,8 +45,6 @@ const NavBar = () => {
         </div>
       </div>
 
-
-      {/* hamburger menu */}
       <div className="mobileMenu">
         <div className="hamburger" onClick={handleClick}>
           <i className="fa-sharp fa-solid fa-bars-staggered"></i>

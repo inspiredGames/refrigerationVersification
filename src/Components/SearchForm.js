@@ -19,7 +19,6 @@ const SearchForm = (props) => {
 
     const userDropDownSelection = (e) => {
         const input = e.target.value;
-        console.log(e.target.value);
         setDropDownSelection(input);
     }
 
@@ -39,19 +38,14 @@ const SearchForm = (props) => {
                 }
             })
 
-            console.log(autoCompleteResults)
-
             const cleanResults = [];
 
             autoCompleteResults.forEach((w) =>{
                 const cleanWord = filter.clean(w.word)
-                // console.log(cleanWord)
                 if(!cleanWord.includes("xx")){
                     cleanResults.push(cleanWord)
                 }
             })
-
-            console.log(cleanResults)
             
             setAutoCompleteRes(cleanResults);
         }).catch(() => {
