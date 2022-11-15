@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 .fridge {
   background: rgb(244, 229, 203);
@@ -13,16 +14,23 @@
   position: absolute;
   top: 475px;
   left: 10%;
-  width: 100px;
+  width: 60px;
   height: auto;
+  @include mobile {
+      top: 400px;
+    }
+  
     img {
       display: block;
+     
+      @include mobile {
+        transform: scale(.5);
+      }
     }
 }
   ul {
     position: absolute;
     overflow: hidden;
-    border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -32,17 +40,6 @@
   
   li {
     position: relative;
-  }
-}
-
-.fridgeHandle {
-position: absolute;
-top: 500px;
-left: 8%;
-width: 70px;
-height: auto;
-  img {
-    display: block;
   }
 }
 

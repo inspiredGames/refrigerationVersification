@@ -57,7 +57,7 @@
         margin: 5% 10%;
         padding-left: 4%;
         color: $darkGreen;
-        &:hover {
+        &:hover, &:focus {
             color: $lightGreen;
         }
     }

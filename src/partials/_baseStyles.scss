@@ -7,10 +7,36 @@
     margin: 0 auto;
 }
 
-main{
+main {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.words {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    margin-top: 0;
+    align-items: center;
+
+    li, .divWords, .divWords1 {
+        user-select: none;
+        border: 2px solid black;
+        box-shadow: 1px 1px black;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        background-color: white;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 600;
+        cursor: grab;
+
+        &:hover, &:focus {
+            box-shadow: 5px 5px 5px black;
+            transform: rotate(5deg);
+        }
+    }
 }
 
 img {
@@ -39,19 +65,6 @@ li:nth-child(odd) {
     transform: rotate(359deg);
 }
 
-h1 {
-    margin: 3rem auto;
-    @include mobile{
-        margin: 2rem auto;
-    }
-    text-align: center;
-}
-
-button, input, select {
-    border: none;
-    border-radius: 5px;
-}
-
 button {
     background-color: $lightGreen;
     margin: 0.5rem 0;
@@ -67,10 +80,6 @@ input, select {
     background-color: white;
     padding: 0.25rem 1rem;
     margin: 0.5rem 0;
-}
-
-label {
-    margin: .5rem 0;
 }
 
 footer {

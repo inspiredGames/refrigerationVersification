@@ -55,28 +55,4 @@
   }
 }
 
-.words{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.5rem;
-  margin-top: 0;
-  align-items: center;
-  li {
-    user-select: none;
-    border: 2px solid black;
-    box-shadow: 1px 1px black;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    background-color: white;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    &:hover {
-      box-shadow: 5px 5px 5px black;
-      transform: rotate(5deg);
-    }
-  }
-}
-
 
