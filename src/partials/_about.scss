@@ -1,0 +1,123 @@
+@use './variables' as *;
+@use './mediaQueries' as *;
+
+.aboutIntro {
+    p {
+        border: 2px solid black;
+        border-radius: 5px;
+        box-shadow: 1px 1px black;
+        margin: 30px auto 50px auto;
+        background-color: white;
+        width: 90%;
+        padding: 25px;
+        line-height: 2rem;
+        @include tablet {
+            width: 100%;
+            line-height:normal;
+            padding: 15px;
+        }
+    }
+
+    .h2About {
+        margin-bottom: 30px;
+    }
+}
+
+.profileMagnet {
+    background-color: white;
+    min-width: 50%;
+    height: auto;
+    border: 2px solid black;
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.8);
+    margin: 2%;
+    padding: 2%;
+
+    p {
+        margin: 0% 8%;
+        color: black;
+        font-weight: 400;
+    }
+
+    i {
+        transform: scale(2);
+        margin: 5% 10%;
+        padding: 5% 4%;
+        color: $darkGreen;
+        &:hover, &:focus {
+            color: $lightGreen;
+        }
+    }
+}
+
+.profileTop {
+    display: flex;
+    img {
+        padding-left: 4%;
+        max-height: 150px;
+        max-width: 150px;
+        border-radius: 60%;
+        margin: 3% 4%;
+    }
+}
+
+.dana {
+    rotate: 357deg;
+    margin-left: 3%;
+}
+
+.jen {
+    margin-left: 4%;
+    rotate: 359deg;
+    i {
+        padding-top: 7%;
+    }
+}
+
+.tina, .char {
+    rotate: 2deg;
+}
+
+.topRow,
+.bottomRow {
+    display: flex;
+    width: 90%;
+
+    @include tablet {
+        flex-direction: column;
+        .profileMagnet {
+            width: 80%;
+            h3 {
+                font-size: 1.3rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            i {
+                transform: scale(1);
+                margin: 5% 3%;
+            }
+            img {
+
+                max-height: 90px;
+                max-width: 90px;
+
+            }
+        }
+
+        .char {
+            margin-left: 12%;
+        }
+        .jen {
+            margin-left: 15%;
+            transform: rotate(3deg);
+        }
+        .tina {
+            margin-left: 8%;
+            transform: rotate(356deg);
+        }
+        .dana {
+            margin-left: 8%;
+
+        }
+    }
+}

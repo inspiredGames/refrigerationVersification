@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Main from './Components/Main';
+import {
+  Routes,
+  Route
+} from 'react-router-dom';
+import NavBar from './Components/NavBar';
+import Gallery from './Components/Gallery';
+import About from './Components/About';
+import User from './Components/User';
+import ErrorPage from './Components/ErrorPage';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+    <main className="wrapper">
+      <NavBar />
+
+      <header>
+        <h1 className='words'>
+          <span className="divWords">Refrigeration</span> 
+          <span className="divWords1">Versification</span>
+        </h1>
       </header>
-    </div>
+
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/rv/:userId" element={<User />} />
+        <Route path="*" element={<ErrorPage />} />        
+
+      </Routes>
+
+
+      <footer>
+        <p>Copyright © 2022 <a href="https://junocollege.com/">Juno College</a></p>
+      </footer>
+      
+    </main>
   );
 }
 

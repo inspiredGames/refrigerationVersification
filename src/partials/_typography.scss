@@ -1,0 +1,74 @@
+@use './variables' as *;
+@use './mediaQueries' as *;
+
+html {
+    font-size: 100%;
+}
+
+body, button, input, select{
+    font-family: 'Kanit', sans-serif;
+    color: $darkGreen
+}
+
+h1 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    text-align: center;
+    font-weight: 600;
+    justify-content: center;
+    pointer-events: none;
+    margin: 3rem auto;
+    @include mobile {
+        margin: 2rem auto;
+    }
+    span{
+        rotate: -2deg;
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+    }
+    .divWords1 {
+        rotate: 2deg;
+    }
+}
+
+
+h2 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 600;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px black;
+    background-color: $lightGreen;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+h3 {
+    margin-top: 10%;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+p{
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 600;
+}
+
+button, input, select {
+    color: $darkGreen;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+label {
+    font-size: 1.5rem;
+    color: white;
+    margin: .5rem 0;
+}
+
+select{
+    color: rgb(26, 69, 67, 0.5);
+}
+

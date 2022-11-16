@@ -1,0 +1,51 @@
+@use './variables' as *;
+@use './mediaQueries' as *;
+
+.searchForm {
+    display: flex;
+    gap: 3%;
+    @include desktop {
+        flex-direction: column;
+    }
+    justify-content: space-between;
+    align-items: center;
+    @include mobile {
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .flexForm{
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        @include tablet {
+            flex-direction: column;
+            gap: 0;
+        }
+    }
+    .searchTerm, .searchTheme{
+        width: 100%;
+        input, select {
+            width: 80%;
+            @include desktop {
+                width: 85%;
+            }
+            @include tablet {
+                width: 100%;
+            }
+            @include mobile {
+                text-align: center;
+            }
+        }
+        button {
+            @include tablet {
+                width: 30%;
+                min-width: fit-content;
+                align-self: flex-end;
+            }
+            @include mobile {
+                width:100%;
+            }
+        }
+    }
+}

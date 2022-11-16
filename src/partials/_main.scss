@@ -1,0 +1,56 @@
+@use './variables' as *;
+@use './mediaQueries' as *;
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    .instructions {
+        border-radius: 10px;
+        margin-bottom: 30px;
+
+        button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 2px solid black;
+            box-shadow: 1px 1px black;
+            width: 100%;
+
+            h2 {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        ul {
+            width: 90%;
+            background-color: white;
+            border: 2px solid black;
+            box-shadow: 1px 1px black;
+            padding: 25px;
+            border-radius: 5px;
+            margin: 30px auto 50px auto;
+            @include tablet {
+                margin: 30px 0 0 0;
+                padding: 15px;
+                width: 100%;
+            }
+
+            li {
+                transform: rotate(0deg);
+                padding: 5px 0;
+                font-weight: 600;
+                color: $darkGreen;
+                font-size: clamp(1rem, 2vw, 1.5rem)
+            }
+        }
+    }
+}
+
+.errorH2 {
+    text-align: center;
+    padding: 15px;
+}

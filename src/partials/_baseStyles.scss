@@ -1,0 +1,97 @@
+@use './variables' as *;
+@use './mediaQueries' as *;
+
+.wrapper {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h2, h3, h4, p, ul {
+    padding: 0;
+    margin: 0;
+}
+
+.words {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    align-items: center;
+
+    li, .divWords, .divWords1 {
+        user-select: none;
+        border: 2px solid black;
+        box-shadow: 1px 1px black;
+        margin: 0.5rem;
+        background-color: white;
+        color: black;
+        cursor: grab;
+        &:hover, &:focus {
+            box-shadow: 5px 5px 5px black;
+            transform: rotate(5deg);
+        }
+    }
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: $darkGreen;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style: none;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 600;
+    padding: 0.5rem;
+}
+
+li:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+li:nth-child(odd) {
+    transform: rotate(359deg);
+}
+
+button {
+    background-color: $lightGreen;
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover, &:focus {
+        transform: scale(1.01);
+    }
+}
+
+input, select {
+    background-color: white;
+    padding: 0.25rem 1rem;
+    margin: 0.5rem 0;
+    color: black;
+}
+
+footer {
+    padding-top: 20px;
+    color: white;
+    text-align: center;
+    a {
+        color: $yellow
+    }
+}
