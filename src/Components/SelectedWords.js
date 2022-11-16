@@ -8,6 +8,7 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
     const [wordX, setWordX] = useState(0);
     const [wordY, setWordY] = useState(0);
     const wordRef = useRef(null);
+    const [wordPosition, setWordPosition] = useState('relative')
 
     // const [arrayLength, setArrayLength] = useState(userSelection.length);
 
@@ -36,27 +37,23 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
     // }, [userSelection])
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (wordX !== 0 || wordY !== 0) {
-            wordRef.current.position = 'absolute';
-            wordRef.current.style.top = wordY;
-            wordRef.current.style.left = wordX;
-            wordRef.current.style.display = 'inline';
-            console.log('yayyyyy')
+    //     if (wordX !== 0 || wordY !== 0) {
+    //         wordRef.current.style.top = wordY;
+    //         wordRef.current.style.left = wordX;
+    //         console.log('yayyyyy')
+    //         setWordPosition('absolute')
+    //     }
+    // }, [userSelection])
 
-        }
-        
-
-    }, [userSelection])
-
-    useEffect(() => {
-        setWordX(wordRef.current.getBoundingClientRect().left);
-        setWordY(wordRef.current.getBoundingClientRect().top);
-        console.log(wordRef.current)
-        console.log(wordX, wordY, 'from getwordcoords')
-    }, [poemWord])
-
+    // useEffect(() => {
+    //     setWordX(wordRef.current.getBoundingClientRect().left);
+    //     setWordY(wordRef.current.getBoundingClientRect().top);
+    //     console.log(wordRef.current)
+    //     console.log(wordX, wordY, 'from getwordcoords')
+    //     setWordPosition('absolute')
+    // }, [poemWord])
 
     // useEffect(() => {
         
@@ -77,21 +74,15 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
         
     // }, [userSelection])
 
+    useEffect(() => {
+        setWordX(wordRef.current.getBoundingClientRect().left);
+        setWordY(wordRef.current.getBoundingClientRect().top);
+        console.log(wordX, wordY)
+    }, [])
 
-    // const bind = useDrag((params) => {
-    //     setPoemWord({
-    //         x: params.offset[0],
-    //         y: params.offset[1],
-    //     });
-    // }, {
-    //     bounds: {
-    //         left: (0-marginX),
-    //         right: (fridgeWidth-marginX-wordWidth),
-    //         top: (0-marginY),
-    //         bottom: (fridgeHeight-marginY-wordHeight),
-    //     },
-        
-    // });
+    const changePosition = () => {
+        setWordPosition('absolute')
+    }
 
     const bind = useDrag((params) => {
         setPoemWord({
@@ -110,8 +101,10 @@ const SelectedWords = ({item, index, handleRemoveWord, fridgeHeight, fridgeWidth
                 top: poemWord.y,
                 left: poemWord.x,
                 touchAction: 'none',
+                position: wordPosition
+                // position: 'relative'
             }}
-
+            onMouseDown={changePosition}
             id={item.word.replace(/\s/g, '')}
             onDoubleClick={(e) => {handleRemoveWord(e.target.textContent)}}>
                 {item.word}
