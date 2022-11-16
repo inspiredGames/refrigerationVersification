@@ -11,7 +11,7 @@ body, button, input, select{
 }
 
 h1 {
-    font-size: clamp(2rem, 2vw, 2.5rem);
+    font-size: clamp(2rem, 4vw, 4rem);
     text-align: center;
     font-weight: 600;
     justify-content: center;
@@ -41,6 +41,13 @@ h2 {
     background-color: $lightGreen;
     padding: 0.5rem 1rem;
     margin: 0.5rem 0;
+}
+
+h3 {
+    margin-top: 10%;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 p{
