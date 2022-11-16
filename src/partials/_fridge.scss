@@ -2,32 +2,35 @@
 @use './mediaQueries' as *;
 
 .fridge {
+  margin-top: .5rem;
   background: rgb(244, 229, 203);
   background: linear-gradient(90deg, rgba(244, 229, 203, 1) 0%, rgba(255, 255, 255, 1) 27%, #f4e5cb 100%);
   border-radius: 1rem;
-  height: 945px;
+  height: 962px;
   width: 100%;
   text-align: center;
   position: relative;
-  
-.fridgeHandle {
-  position: absolute;
-  top: 475px;
-  left: 10%;
-  width: 60px;
-  height: auto;
-  @include mobile {
+
+  .fridgeHandle {
+    position: absolute;
+    top: 475px;
+    left: 10%;
+    width: 60px;
+    height: auto;
+
+    @include mobile {
       top: 400px;
     }
-  
+
     img {
       display: block;
-     
+
       @include mobile {
         transform: scale(.5);
       }
     }
-}
+  }
+
   ul {
     position: absolute;
     overflow: hidden;
@@ -37,7 +40,7 @@
     align-items: flex-start;
     align-content: flex-start;
   }
-  
+
   li {
     position: relative;
   }

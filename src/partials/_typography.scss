@@ -7,36 +7,52 @@ html {
 
 body, button, input, select{
     font-family: 'Kanit', sans-serif;
+    color: $darkGreen
 }
 
 h1 {
-    margin: 3rem auto;
+    font-size: clamp(2rem, 4vw, 4rem);
     text-align: center;
     font-weight: 600;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     pointer-events: none;
-    font-size: 3rem;
-
+    margin: 3rem auto;
     @include mobile {
         margin: 2rem auto;
     }
-    .divWords{
+    span{
         rotate: -2deg;
-        font-size: 3rem;
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
     }
-    
     .divWords1 {
         rotate: 2deg;
-        font-size: 2rem;
     }
 }
 
+
 h2 {
-    color: $darkGreen;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     font-weight: 600;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px black;
+    background-color: $lightGreen;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+h3 {
+    margin-top: 10%;
     font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+p{
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 600;
 }
 
 button, input, select {
@@ -44,11 +60,6 @@ button, input, select {
     font-size: 1.5rem;
     border: none;
     border-radius: 5px;
-}
-
-h1, h2, h3, h4, p {
-    padding: 0;
-    margin: 0;
 }
 
 label {

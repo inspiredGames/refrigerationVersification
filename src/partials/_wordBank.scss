@@ -7,22 +7,25 @@
   gap: 3%;
   @include desktop {
     flex-direction: column;
-    gap: 0;
+    gap: 1rem;;
   }
 }
 
 .wordBank {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
   width: 100%;
   button {
-    h2 {
-      color: $darkGreen;
-      font-size: 1.5rem;
-    }
     display: flex;
     justify-content: space-between;
-    margin: 0 0 20px 0;
+    align-items: center;
+    h2 {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+    }
   }
   .associatedWords,
   .helperWordBank {
