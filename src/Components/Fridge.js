@@ -6,24 +6,14 @@ import SelectedWords from "./SelectedWords";
 
 const Fridge = ({ userSelection, handleRemoveWord }) => {
   const fridgeRef = useRef(null);
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [widthArray, setWidthArray ] = useState([]);
-  const [heightArray, setHeightArray] = useState([])
+
+  const [fridgeWidth, setFridgeWidth] = useState(0);
+  const [fridgeHeight, setFridgeHeight] = useState(0);
 
   useLayoutEffect(() => {
-    setWidth(fridgeRef.current.clientWidth); 
-    setHeight(fridgeRef.current.clientHeight);
+    setFridgeWidth(fridgeRef.current.clientWidth); 
+    setFridgeHeight(fridgeRef.current.clientHeight);
   }, []);  
-
-  const handleGetWordDimensions = (width, height) => {
-    const newWidthArray = widthArray.map(x => x);
-    const newHeightArray = heightArray.map(x => x);
-    newWidthArray.push(width);
-    newHeightArray.push(height);
-    setWidthArray(newWidthArray);
-    setHeightArray(newHeightArray);
-  }
 
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
@@ -83,28 +73,22 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   };
 
   return (
-    <section className='fridge' ref={fridgeRef}>
+    <section className='fridge' ref={fridgeRef} id='fridge'>
       <div className='fridgeHandle'>
         <img src={fridgeHandle} alt="headshot" />
       </div>
       <ul className='poem words' id='wordContainer' style={{ 
-                width: `${width}px`,
-                height: `${height}px`,
+                width: `${fridgeWidth}px`,
+                height: `${fridgeHeight}px`,
             }}>
         {
-          userSelection.map((item, index) => {
+          userSelection.map((item) => {
               return(
                 <SelectedWords 
                 key={item.word}
-                index={index}
                 handleRemoveWord={handleRemoveWord} 
                 item={item}
-                width={width}
-                height={height}
-                fridgeRef={fridgeRef}
-                handleGetWordDimensions={handleGetWordDimensions}
-                widthArray={widthArray}
-                heightArray={heightArray}/>
+                fridgeRef={fridgeRef}/>
               )
           })
         }

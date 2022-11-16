@@ -53,6 +53,9 @@ const Gallery = () => {
         </h4>
       </div>
       </div>
+      <div className='construction'>
+        🚧 Under Construction! Upcoming feature - stay tuned to publish your poem to the Gallery! 🚧
+      </div>
     </section>
   );
 };
