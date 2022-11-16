@@ -16,14 +16,9 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
   const [fridgeWidth, setFridgeWidth] = useState(0);
   const [fridgeHeight, setFridgeHeight] = useState(0);
 
-  const [fridgeX, setFridgeX] = useState(0);
-  const [fridgeY, setFridgeY] = useState(0)
-
   useLayoutEffect(() => {
-    setFridgeWidth(fridgeRef.current.clientWidth); //offsetWidth includes borders, padding, vertical scrollbars, clientWidth includes padding but exclude borders, margins, scrollbars
+    setFridgeWidth(fridgeRef.current.clientWidth); 
     setFridgeHeight(fridgeRef.current.clientHeight);
-    setFridgeX(fridgeRef.current.getBoundingClientRect().left);
-    setFridgeY(fridgeRef.current.getBoundingClientRect().top);
   }, []);  
 
   const uid = () => {
@@ -92,19 +87,13 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
                 height: `${fridgeHeight}px`,
             }}>
         {
-          userSelection.map((item, index) => {
+          userSelection.map((item) => {
               return(
                 <SelectedWords 
                 key={item.word}
-                index={index}
                 handleRemoveWord={handleRemoveWord} 
                 item={item}
-                fridgeWidth={fridgeWidth}
-                fridgeHeight={fridgeHeight}
-                fridgeX={fridgeX}
-                fridgeY={fridgeY}
-                fridgeRef={fridgeRef}
-                userSelection={userSelection}/>
+                fridgeRef={fridgeRef}/>
               )
           })
         }
