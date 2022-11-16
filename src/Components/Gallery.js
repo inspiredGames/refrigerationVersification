@@ -30,31 +30,28 @@ const Gallery = () => {
   return (
     <section className="gallery">
       <h2>Welcome to the Gallery</h2>
+      <div className='construction'>
+          🚧 Under Construction! Upcoming feature - stay tuned to publish your poem to the Gallery! 🚧
+      </div>
       <div className="cardContainer">     
         {
         poems.length > 0 ? poems.map(({ key, storedPoemHtml, displayName, userId, title }) => {
           return ( 
-            <div className='poemContainer'>
+            <div className='poemContainer' key={`${key}${displayName}`}>
               <h3>
                 {title ? title : "Untitled"} by <Link to={`/rv/${userId}`}> { displayName ? displayName : "Anonymous" }  </Link>
-                </h3>
-            <div className="card" key={key}>
-              <ul
-                dangerouslySetInnerHTML={{__html: storedPoemHtml}}
-                className="galleryPoem"></ul>
-        </div>
+              </h3>
+              <div className="card">
+                <ul
+                  dangerouslySetInnerHTML={{__html: storedPoemHtml}}
+                  className="galleryPoem">
+                  
+                </ul>
+              </div>
             </div>
             );
           }) : <h3>Thanks for visiting the Gallery. There are no poems currently.</h3>
-          }
-      <div className='construction'>
-        <h4>
-          🚧 Under Construction! Upcoming feature - stay tuned to publish your poem to the Gallery! 🚧
-        </h4>
-      </div>
-      </div>
-      <div className='construction'>
-        🚧 Under Construction! Upcoming feature - stay tuned to publish your poem to the Gallery! 🚧
+        }
       </div>
     </section>
   );

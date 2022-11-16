@@ -10,13 +10,15 @@
     justify-content: space-between;
     align-items: center;
     @include mobile {
+        gap: 2rem;
         text-align: center;
     }
+
     .flexForm{
         display: flex;
         justify-content: space-between;
         gap: 1rem;
-        @include mobile {
+        @include tablet {
             flex-direction: column;
             gap: 0;
         }
@@ -28,9 +30,21 @@
             @include desktop {
                 width: 85%;
             }
-            @include mobile {
+            @include tablet {
                 width: 100%;
+            }
+            @include mobile {
                 text-align: center;
+            }
+        }
+        button {
+            @include tablet {
+                width: 30%;
+                min-width: fit-content;
+                align-self: flex-end;
+            }
+            @include mobile {
+                width:100%;
             }
         }
     }

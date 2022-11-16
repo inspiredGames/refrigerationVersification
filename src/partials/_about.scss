@@ -11,13 +11,13 @@
         width: 90%;
         padding: 25px;
         line-height: 2rem;
-        @include mobile{
+        @include tablet {
             width: 100%;
             line-height:normal;
             padding: 15px;
         }
     }
-    
+
     .h2About {
         margin-bottom: 30px;
     }
@@ -25,19 +25,13 @@
 
 .profileMagnet {
     background-color: white;
-    width: 60%;
+    min-width: 50%;
+    height: auto;
     border: 2px solid black;
     box-shadow: 2px 4px rgba(0, 0, 0, 0.8);
     margin: 2%;
     padding: 2%;
- 
-    h3 {
-        margin-top: 10%;
-        font-size: 1.5rem;
-        font-weight: 400;
-        letter-spacing: 1px;
-    }
-    
+
     p {
         margin: 0% 8%;
         color: black;
@@ -47,7 +41,7 @@
     i {
         transform: scale(2);
         margin: 5% 10%;
-        padding-left: 4%;
+        padding: 5% 4%;
         color: $darkGreen;
         &:hover, &:focus {
             color: $lightGreen;
@@ -57,7 +51,7 @@
 
 .profileTop {
     display: flex;
-    img { 
+    img {
         padding-left: 4%;
         max-height: 150px;
         max-width: 150px;
@@ -66,40 +60,27 @@
     }
 }
 
-.char {
-    margin-left: 10%;
-    rotate: 2deg;
-    i {
-            padding-top: 5%;
-    }
-}
-
 .dana {
-    rotate: 357deg;   
-    margin-left: 5%;
-    i {
-        padding-top: 3%;
-    }
-  }
+    rotate: 357deg;
+    margin-left: 3%;
+}
 
 .jen {
-    margin-left: 6%;
+    margin-left: 4%;
     rotate: 359deg;
     i {
-        padding-top: 5%;
+        padding-top: 7%;
     }
 }
 
-.tina {
+.tina, .char {
     rotate: 2deg;
-    i {
-            padding-top: 5%;
-        }
 }
 
 .topRow,
 .bottomRow {
     display: flex;
+    width: 90%;
 
     @include tablet {
         flex-direction: column;
@@ -116,13 +97,16 @@
                 margin: 5% 3%;
             }
             img {
-                
+
                 max-height: 90px;
                 max-width: 90px;
-               
+
             }
         }
 
+        .char {
+            margin-left: 12%;
+        }
         .jen {
             margin-left: 15%;
             transform: rotate(3deg);
@@ -133,8 +117,7 @@
         }
         .dana {
             margin-left: 8%;
-            
+
         }
     }
 }
-

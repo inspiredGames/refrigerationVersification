@@ -33,7 +33,7 @@ main {
             padding: 25px;
             border-radius: 5px;
             margin: 30px auto 50px auto;
-            @include mobile{
+            @include tablet {
                 margin: 30px 0 0 0;
                 padding: 15px;
                 width: 100%;
