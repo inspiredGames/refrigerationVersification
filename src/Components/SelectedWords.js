@@ -1,7 +1,7 @@
 import { useState, useRef} from 'react';
 import { useDrag } from '@use-gesture/react';
 
-
+// used useDrag from package use_gesture to implement drag & drop functionality
 const SelectedWords = ({item, handleRemoveWord, fridgeRef}) => {
 
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0});

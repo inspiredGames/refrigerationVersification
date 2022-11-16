@@ -15,6 +15,7 @@ const Fridge = ({ userSelection, handleRemoveWord }) => {
     setFridgeHeight(fridgeRef.current.clientHeight);
   }, []);  
 
+  // Firebase logic used to save a poem and display it to the gallery - under construction
   const uid = () => {
     return `poet-${Date.now().toString(36)}${Math.random().toString(36).substring(2)}`;
   };
