@@ -21,7 +21,7 @@ const SearchForm = (props) => {
         const input = e.target.value;
         setDropDownSelection(input);
     }
-
+    // API call to the Datamuse API autocomplete endpoint
     const getAutocomplete = (userInput) => {
         axios({
             url: "https://api.datamuse.com/sug",
@@ -37,7 +37,7 @@ const SearchForm = (props) => {
                     word: d.word
                 }
             })
-
+            // implemented 'bad' words filter using the npm bad-words package to exclude bad words from API results
             const cleanResults = [];
 
             autoCompleteResults.forEach((w) =>{
