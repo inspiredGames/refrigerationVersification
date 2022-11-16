@@ -7,22 +7,25 @@
   gap: 3%;
   @include desktop {
     flex-direction: column;
-    gap: 0;
+    gap: 1rem;;
   }
 }
 
 .wordBank {
   display: flex;
   flex-direction: column;
+  gap: .5rem;
   width: 100%;
   button {
-    h2 {
-      color: $darkGreen;
-      font-size: 1.5rem;
-    }
     display: flex;
     justify-content: space-between;
-    margin: 0 0 20px 0;
+    align-items: center;
+    h2 {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+    }
   }
   .associatedWords,
   .helperWordBank {
@@ -52,30 +55,6 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #6eb66d; 
-  }
-}
-
-.words{
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.5rem;
-  margin-top: 0;
-  align-items: center;
-  li {
-    user-select: none;
-    border: 2px solid black;
-    box-shadow: 1px 1px black;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    background-color: white;
-    color: black;
-    font-size: 1.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    &:hover {
-      box-shadow: 5px 5px 5px black;
-      transform: rotate(5deg);
-    }
   }
 }
 

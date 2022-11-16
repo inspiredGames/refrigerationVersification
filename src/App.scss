@@ -1,7 +1,7 @@
 @use './partials/setup';
 @use './partials/variables';
-@use './partials/typography';
 @use './partials/baseStyles'; 
+@use './partials/typography';
 @use './partials/main';
 @use './partials/about';
 @use './partials/navBar';
@@ -10,8 +10,3 @@
 @use './partials/fridge';
 @use './partials/gallery';
 @use './partials/mediaQueries';
-
-
-
-// TODO: 
-// -Font: Decide on a new font from Google fonts and import/link Google fonts

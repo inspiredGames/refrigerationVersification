@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 html {
     font-size: 100%;
@@ -6,45 +7,65 @@ html {
 
 body, button, input, select{
     font-family: 'Kanit', sans-serif;
-    font-size: 1.25rem;
+    color: $darkGreen
 }
 
 h1 {
+    font-size: clamp(2rem, 4vw, 4rem);
+    text-align: center;
     font-weight: 600;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    .title{
-        border: 2px solid black;
-        box-shadow: 3px 5px 5px black;
-        padding: 0.5rem;
-        margin: 0.5rem;
-        background-color: white;
-        rotate: -2deg;
+    pointer-events: none;
+    margin: 3rem auto;
+    @include mobile {
+        margin: 2rem auto;
     }
-    .title1{
+    span{
+        rotate: -2deg;
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+    }
+    .divWords1 {
         rotate: 2deg;
     }
 }
 
+
 h2 {
-    color: white;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 600;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px black;
+    background-color: $lightGreen;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+}
+
+h3 {
+    margin-top: 10%;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+p{
+    font-size: clamp(1rem, 2vw, 1.5rem);
     font-weight: 600;
 }
 
 button, input, select {
     color: $darkGreen;
     font-size: 1.5rem;
+    border: none;
+    border-radius: 5px;
 }
 
-h1, h2, h3, h4, p {
-    padding: 0;
-    margin: 0;
-}
-
-label{
+label {
     font-size: 1.5rem;
     color: white;
+    margin: .5rem 0;
 }
 
 select{

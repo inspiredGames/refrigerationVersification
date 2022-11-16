@@ -2,8 +2,7 @@ import './App.scss';
 import Main from './Components/Main';
 import {
   Routes,
-  Route,
-  Navigate
+  Route
 } from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import Gallery from './Components/Gallery';
@@ -16,13 +15,13 @@ function App() {
   return (
 
     <main className="wrapper">
-
-  
       <NavBar />
 
       <header>
-        <h1><div className="title title1">Refrigeration</div> 
-        <div className="title">Versification</div></h1>
+        <h1 className='words'>
+          <span className="divWords">Refrigeration</span> 
+          <span className="divWords1">Versification</span>
+        </h1>
       </header>
 
       <Routes>

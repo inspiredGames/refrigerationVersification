@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDrag } from '@use-gesture/react';
 
+
 const SelectedWords = ({item, handleRemoveWord, fridgeRef}) => {
 
     const [poemWord, setPoemWord] = useState({ x: 0, y: 0});
     const wordRef = useRef(null);
+
 
     const bind = useDrag((params) => {
         setPoemWord({
@@ -13,11 +15,13 @@ const SelectedWords = ({item, handleRemoveWord, fridgeRef}) => {
         });
     }, {
         bounds: fridgeRef,
+
     });
     
     return (
         <li 
             ref={wordRef}
+
             {...bind()} 
             style={{ 
                 top: poemWord.y,

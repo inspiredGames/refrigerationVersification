@@ -56,7 +56,7 @@ const Main = () => {
                 {
                     showInstructions
                         ? (
-                            <ul>
+                            <ul className='aboutIntro'>
                                 <li>1. Enter a search term, or select a theme, to get a list of associated words.</li>
                                 <li>2. Click on the words you would like to use to make them appear on the fridge. You can pick as many words as you would like from the associated words bank, as well as the helper word bank, for your poem.</li>
                                 <li>3. Once the words are on the fridge, drag them around to rearrange the words.</li>

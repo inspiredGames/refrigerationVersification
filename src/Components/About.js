@@ -9,7 +9,7 @@ const About = () => {
       <section className="about">
         <div className="aboutIntro">
           <h2>About Refrigeration Versification</h2>
-          <p>Welcome to Refrigeration Versification, a virtual magnetic poetry app designed by Tina, Jen, Charlotte, and Dana from Juno College! This web-app works the same way Magnetic Poetry&#174; does in real life - for those of you who were lucky enough to have those sweet tiny magnets stuck to your fridge - but now with a few virtual-perks, of course! Enter a word and get an assortment of related words returned in the word bank, which you can mix and match with some connecting suffixes and transition words to get your poetry onto the fridge. You can even save your poem, as specifically-yours, or anonymously, to share with friends and family through our online-gallery! Try it yourself on our home page.</p>
+          <p>Welcome to Refrigeration Versification, a virtual magnetic poetry app designed by Tina, Jen, Charlotte, and Dana from Juno College! This web-app works the same way Magnetic Poetry&#174; does in real life - for those of you who were lucky enough to have those sweet tiny magnets stuck to your fridge - but now with a few virtual-perks, of course! Enter a word and get an assortment of related words returned in the word bank, which you can mix and match with some connecting suffixes and transition words to get your poetry onto the fridge. Coming soon... you will also be able to save your poem, as specifically-yours, or anonymously, to share with friends and family through our online-gallery! Try it yourself on our home page.</p>
           <h2 className='h2About'>About the Developers</h2>
         </div>
 
@@ -19,7 +19,7 @@ const About = () => {
               <img src={char} alt="headshot" />
               <h3>Charlotte Duppre</h3>
             </div>
-            <p>I am a bilingual Front-End Developer who brings 10+ years of international experience in Business and Financial Analysis roles - most of which in the tech industry - as well as recent experience developing responsive, accessible web applications using JavaScript, React, HTML and CSS. I am a detail oriented developer who writes clean and organized code and a team player who excels at communicating with team members across all levels of management and technical abilities.</p>
+            <p>Hi, I’m Charlotte ! I am a bilingual Front-End Developer who brings 10+ years of international experience in Financial Analysis roles - most of which in the tech industry - as well as recent experience developing responsive, accessible websites. When I am not coding, I love spending time with my family, practicing yoga and exploring Toronto’s food scene!</p>
             <a href="https://github.com/chaarz" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
             </a>
@@ -37,9 +37,7 @@ const About = () => {
               <h3>Dana Filatov</h3>
             </div>
 
-            <p>Hey! My name is Dana (she/her), and I'm an artist turned Front-end Web Developer navigating my way from an ocean of paint and clay to a sea of zeros and ones.
-
-              Trained in visual communicaton and creative problem-solving, I'm shifting my analogue skills to the screen🪄✨ Based in Toronto, when I'm not coding or making art, you can find me cooking, traveling, hiking, or maybe even hiking on my travels after cooking😉 </p>
+            <p>Hey! My name is Dana (she/her), and I'm an artist turned Front-end Web Developer navigating my way from an ocean of paint and clay to a sea of zeros and ones. Trained in visual communicaton and creative problem-solving, I'm shifting my analogue skills to the screen! Based in Toronto, when I'm not coding or making art, you can find me cooking, hiking, or playing with my two cats </p>
             <a href="https://github.com/DanaFCodes" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
             </a>
@@ -75,8 +73,7 @@ const About = () => {
               <img src={tina} alt="headshot" />
               <h3>Tina Lu</h3>
             </div>
-            <p>Hello! My name is Tina and I am a scientist turned front-end developer! I love to solve problems and create aesthetic applications with clean and re-useable code. I would like to use my skills to develop engaging applications tailored to each client's needs.
-              Outside of coding, you can find me trying new recipes and attempting to keep my plants alive. Feel free to reach out if you are in need of a developer, in the mood for cool science facts, or just for fun!</p>
+            <p>Hello! My name is Tina, a front-end developer and scientist! Prior to starting my coding journey, I graduated with an MSc in Immunology from the University of Toronto and have a strong background in medical communications management. Outside of coding, you can find me trying new recipes and attempting to keep my plants alive. Feel free to reach out if you are in need of a developer, in the mood for cool science facts, or just for fun!</p>
             <a href="https://github.com/tinacllu" target="_blank" rel="noopener noreferrer">
               <i class="fa-brands fa-github"></i>
             </a>
