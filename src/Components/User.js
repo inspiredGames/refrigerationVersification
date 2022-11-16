@@ -39,9 +39,9 @@ const User = () => {
           userPoems ? userPoems.map(({ key, storedPoemHtml, displayName, title }) => {
             return (
               <div className="poemContainer">
-                <h2>
+                <h3>
                 {title ? title : "Untitled"} by { displayName ? displayName : "Anonymous" }
-                  </h2>
+                  </h3>
               <div className="card" key={key}>                
                 <ul
                   dangerouslySetInnerHTML={{ __html: storedPoemHtml }}
