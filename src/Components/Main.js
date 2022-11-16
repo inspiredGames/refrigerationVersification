@@ -12,6 +12,7 @@ const Main = () => {
     const Filter = require('bad-words')
     const filter = new Filter({placeHolder: 'x'});
 
+    // function that handles API call to the Datamuse /words endpoint
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
         setSearchQuery(userInput);

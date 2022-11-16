@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import firebaseConfig from "../firebase";
 import { getDatabase, onValue, ref } from "firebase/database";
 
-
+// use useParam hook to create user pages based on UID stored on Firebase
 const User = () => {
   const { userId } = useParams();
   const [userPoems, setUserPoems] = useState(null);

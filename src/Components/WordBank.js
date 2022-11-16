@@ -12,6 +12,8 @@ const WordBank = ({ words, searchQuery }) => {
     const [helperWordBank, setHelperWordBank] = useState(['a', 'able', 'al', 'am', 'an', 'ance', 'and', 'are', 'ary', 'as', 'at', 'ation', 'by', 'do', 'did', 'ed', 'else', 'en', 'er', 'ery', 'for', 'from', 'ful', 'fy', 'had', 'has', 'have', 'he', 'her', 'hers', 'him', 'his', 'I', 'ible', 'ic', 'ical', 'if', 'ify', 'in', 'ing', 'ious', 'is', 'ise', 'ish', 'ist', 'it', 'its', 'ity', 'ize', 'ly', 'make', 'may', 'me', 'ment', 'my', 'ness', 'not', 'of', 'off', 'on', 'onto', 'or', 'our', 'ours', 'ous', 'out', 'she', 'should', 'sion', 'th', 'that', 'the', 'their', 'these', 'they', 'this', 'tion', 'to', 'ton', 'too', 'ty', 'we', 'what', 'where', 'which', 'who', 'whom', 'whose', 'why', 'will', 'with', 'y', 'you', 'your', 'yours'
     ]);
 
+    // created a custom hook to check the window's dimensions
+        // use window width to determine whether to show wordBank words on page load (hidden on smaller devices)
     const { width } = useWindowDimensions();
 
     useEffect(() => {
@@ -36,6 +38,7 @@ const WordBank = ({ words, searchQuery }) => {
         setUserSelection([]);
     }, [searchQuery]);
 
+    // when user clicks on a word, move word to userSelection array and display on the fridge
     const handleClick = (e, array) => {
         
         const newUserSelection = userSelection.map(x => x);
@@ -62,6 +65,7 @@ const WordBank = ({ words, searchQuery }) => {
         setUserSelection(newUserSelection);
     };
 
+    // when user removes a word, remove selected word from userSelection array and put it back into wordBank
     const handleRemoveWord = (wordToRemove) => {
         const newUserSelection = userSelection.map(x => x);
         const isClickedWord = (element) => element.word === wordToRemove ;
