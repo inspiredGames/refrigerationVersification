@@ -19,8 +19,9 @@ function App() {
 
       <header>
         <h1 className='words'>
-          <div className="divWords">Refrigeration</div> 
-        <div className="divWords1">Versification</div></h1>
+          <span className="divWords">Refrigeration</span> 
+          <span className="divWords1">Versification</span>
+        </h1>
       </header>
 
       <Routes>

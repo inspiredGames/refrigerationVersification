@@ -3,21 +3,27 @@
 main {
     display: flex;
     flex-direction: column;
+
     .instructions {
         border-radius: 10px;
         margin-bottom: 30px;
+
         button {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             border: 2px solid black;
             box-shadow: 1px 1px black;
-            background-color: $lightGreen;
-            color: black;
-            font-size: 1.5rem;
-            font-weight: 700;
             width: 100%;
+
+            h2 {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
         }
-    
+
         ul {
             width: 90%;
             background-color: white;
@@ -26,10 +32,10 @@ main {
             padding: 25px;
             border-radius: 5px;
             margin: 30px auto 50px auto;
+
             li {
                 transform: rotate(0deg);
                 padding: 5px 0;
-                font-size: 1.5rem;
                 font-weight: 600;
                 color: $darkGreen;
             }

@@ -2,29 +2,15 @@
 @use './mediaQueries' as *;
 
 .aboutIntro {
-    h2, 
     p {
-        // font-weight: 400;
         border: 2px solid black;
-        box-shadow: 1px 1px black;
-        padding: 0.5rem;
-        background-color: $lightGreen;
-        color: $darkGreen;
-        font-size: 1.5rem;
-        font-weight: 600;
         border-radius: 5px;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-    
-    p {
-        font-size: 1.5rem;
+        box-shadow: 1px 1px black;
         margin: 30px auto 50px auto;
         background-color: white;
         width: 90%;
         padding: 25px;
+        line-height: 2rem;
     }
     
     .h2About {
@@ -43,13 +29,14 @@
     h3 {
         margin-top: 10%;
         font-size: 1.5rem;
-        color: $darkGreen;
         font-weight: 400;
         letter-spacing: 1px;
     }
     
     p {
         margin: 0% 8%;
+        color: black;
+        font-weight: 400;
     }
 
     i {
