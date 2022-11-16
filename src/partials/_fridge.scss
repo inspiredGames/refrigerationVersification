@@ -2,6 +2,7 @@
 @use './mediaQueries' as *;
 
 .fridge {
+  margin-top: .5rem;
   background: rgb(244, 229, 203);
   background: linear-gradient(90deg, rgba(244, 229, 203, 1) 0%, rgba(255, 255, 255, 1) 27%, #f4e5cb 100%);
   border-radius: 1rem;

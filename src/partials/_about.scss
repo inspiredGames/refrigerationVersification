@@ -11,6 +11,11 @@
         width: 90%;
         padding: 25px;
         line-height: 2rem;
+        @include mobile{
+            width: 100%;
+            line-height:normal;
+            padding: 15px;
+        }
     }
     
     .h2About {

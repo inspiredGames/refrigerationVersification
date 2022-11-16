@@ -1,4 +1,5 @@
 @use './variables' as *;
+@use './mediaQueries' as *;
 
 main {
     display: flex;
@@ -32,12 +33,18 @@ main {
             padding: 25px;
             border-radius: 5px;
             margin: 30px auto 50px auto;
+            @include mobile{
+                margin: 30px 0 0 0;
+                padding: 15px;
+                width: 100%;
+            }
 
             li {
                 transform: rotate(0deg);
                 padding: 5px 0;
                 font-weight: 600;
                 color: $darkGreen;
+                font-size: clamp(1rem, 2vw, 1.5rem)
             }
         }
     }
