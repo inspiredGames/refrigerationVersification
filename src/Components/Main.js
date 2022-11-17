@@ -15,12 +15,12 @@ const Main = () => {
     // function that handles API call to the Datamuse /words endpoint
     const handleGetWords = (e, userInput) => {
         e.preventDefault();
-        setSearchQuery(userInput);
+
         const safeUserInput = filter.clean(userInput)
+
         if (safeUserInput.includes("xx")) {
             alert('No swear words ! Please enter another word')
         } else {
-
             axios({
                 url: "https://api.datamuse.com/words",
                 method: "GET",
@@ -40,6 +40,8 @@ const Main = () => {
             }).catch(() => {
                 alert('Something went wrong. Please try again later!')
             });
+
+            setSearchQuery(userInput);
         }
     }
 
