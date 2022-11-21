@@ -1,4 +1,4 @@
-import dana from "../assets/Dana-Feldman.jpg";
+import dana from "../assets/DanaFeldman.jpg";
 import tina from "../assets/tina.jpg";
 import char from "../assets/char.png"
 import jen from "../assets/jen.jpeg"
